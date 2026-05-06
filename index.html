@@ -610,50 +610,105 @@
     <pre class="banner" id="banner"></pre>
     <div class="status-row">
       <span>user: <b>alex</b></span>
-      <span>shell: <b>zsh 5.9</b></span>
-      <span>kernel: <b>linux 6.8.0</b></span>
+      <span>training day: <b id="stat-trainday">--</b></span>
+      <span>cpts: <b id="stat-cpts">--</b></span>
+      <span>readiness: <b id="stat-readiness">--</b></span>
       <span>tasks active: <b id="stat-tasks">--</b></span>
-      <span>goals: <b id="stat-goals">--</b></span>
-      <span class="ok">all systems nominal</span>
+      <span class="ok" id="stat-status">all systems nominal</span>
     </div>
   </section>
 
-  <!-- Physical Goals -->
-  <section class="panel col-7" id="panel-goals">
-    <h2>physical_goals.sh <span class="id">// 0x01</span></h2>
-    <div id="goals-list"><div class="loading">loading...</div></div>
+  <!-- Today's Training -->
+  <section class="panel col-7" id="panel-training">
+    <h2>training.today <span class="id">// 0x01 — hybrid program</span></h2>
+    <div id="training-today"></div>
     <details>
-      <summary>+ new goal</summary>
-      <div class="input-row">
-        <input type="text" id="g-name" placeholder="goal name (e.g. bench press)" />
-        <input type="number" id="g-current" placeholder="current" step="0.1" />
-        <input type="number" id="g-target" placeholder="target" step="0.1" />
-        <input type="text" id="g-unit" placeholder="unit (lbs, mi, reps)" style="max-width:120px"/>
-        <button onclick="addGoal()">add</button>
+      <summary>view full 8-day rotation</summary>
+      <div id="training-week" style="margin-top:10px;"></div>
+    </details>
+    <details>
+      <summary>log workout / set PRs</summary>
+      <div class="metric-input-grid" style="margin-top:10px;">
+        <div><label>bench 1RM (lbs)</label><input type="number" id="pr-bench" step="2.5"/></div>
+        <div><label>pullups (max reps)</label><input type="number" id="pr-pullups"/></div>
+        <div><label>mile time (min, e.g. 7.25)</label><input type="number" id="pr-mile" step="0.05"/></div>
+        <div><label>squat 1RM (lbs)</label><input type="number" id="pr-squat" step="2.5"/></div>
+        <div><label>deadlift 1RM (lbs)</label><input type="number" id="pr-deadlift" step="2.5"/></div>
+        <div><label>ohp 1RM (lbs)</label><input type="number" id="pr-ohp" step="2.5"/></div>
       </div>
+      <button onclick="savePRs()">save PRs</button>
     </details>
   </section>
 
-  <!-- Stats summary -->
-  <section class="panel col-5" id="panel-stats">
-    <h2>system_stats <span class="id">// 0x02</span></h2>
-    <div class="stats">
-      <div class="stat"><div class="v" id="s-events">0</div><div class="l">upcoming events</div></div>
-      <div class="stat"><div class="v" id="s-improve">0</div><div class="l">improving on</div></div>
-      <div class="stat"><div class="v" id="s-htb">0</div><div class="l">htb queue</div></div>
-      <div class="stat"><div class="v" id="s-school">0</div><div class="l">homework</div></div>
-      <div class="stat"><div class="v" id="s-reading">0</div><div class="l">reading list</div></div>
-      <div class="stat"><div class="v" id="s-streak">0</div><div class="l">log entries</div></div>
+  <!-- Goal progress (auto-tracking from PRs) -->
+  <section class="panel col-5" id="panel-goals">
+    <h2>physical_goals.sh <span class="id">// 0x02</span></h2>
+    <div id="goals-list"><div class="loading">loading...</div></div>
+    <div style="font-size:10px;color:var(--dim);margin-top:10px;border-top:1px dashed var(--border);padding-top:8px;">
+      goals auto-update when you save PRs in training.today panel above
     </div>
-    <div style="font-size:11px;color:var(--dim);border-top:1px solid var(--border);padding-top:10px;">
-      <div>$ uptime</div>
-      <div id="motd" style="color:var(--text);margin-top:4px;"></div>
+  </section>
+
+  <!-- Health metrics -->
+  <section class="panel col-7" id="panel-health">
+    <h2>health.metrics <span class="id">// 0x03 — daily check-in</span></h2>
+    <div id="health-score-display"></div>
+    <details>
+      <summary>+ log today's metrics</summary>
+      <div class="metric-input-grid" style="margin-top:10px;">
+        <div><label>weight (lbs)</label><input type="number" id="h-weight" step="0.1"/></div>
+        <div><label>body fat % (optional)</label><input type="number" id="h-bf" step="0.1"/></div>
+        <div><label>sleep (hours)</label><input type="number" id="h-sleep" step="0.25"/></div>
+        <div><label>resting HR (bpm)</label><input type="number" id="h-rhr"/></div>
+        <div><label>energy (1-10)</label><input type="number" id="h-energy" min="1" max="10"/></div>
+        <div><label>soreness (1-10)</label><input type="number" id="h-soreness" min="1" max="10"/></div>
+        <div><label>stress (1-10)</label><input type="number" id="h-stress" min="1" max="10"/></div>
+        <div><label>steps</label><input type="number" id="h-steps"/></div>
+        <div><label>protein (g)</label><input type="number" id="h-protein"/></div>
+        <div><label>water (oz)</label><input type="number" id="h-water"/></div>
+      </div>
+      <button onclick="saveHealth()">log metrics</button>
+    </details>
+    <div id="health-history" class="metric-history scrollable" style="max-height:200px;"></div>
+  </section>
+
+  <!-- Diagnostic / what to improve -->
+  <section class="panel col-5" id="panel-diag">
+    <h2>improve.engine <span class="id">// 0x04 — auto-analysis</span></h2>
+    <div id="diag-output" class="diag-list"></div>
+    <div style="font-size:10px;color:var(--dim);margin-top:14px;border-top:1px dashed var(--border);padding-top:8px;">
+      analyzes your last 7 days of metrics + PRs to flag what's on track and what needs work
+    </div>
+  </section>
+
+  <!-- CPTS tracker -->
+  <section class="panel col-12" id="panel-cpts">
+    <h2>cpts.path <span class="id">// 0x05 — htb penetration tester</span></h2>
+    <div class="cpts-summary">
+      <div class="stat"><div class="v" id="cpts-pct">0%</div><div class="l">complete</div></div>
+      <div class="stat"><div class="v" id="cpts-done">0/28</div><div class="l">modules</div></div>
+      <div class="stat"><div class="v" id="cpts-cubes">0</div><div class="l">study hours</div></div>
+      <div class="stat"><div class="v" id="cpts-eta">--</div><div class="l">eta @ 8h/wk</div></div>
+      <div class="stat"><div class="v" id="cpts-streak">0</div><div class="l">study streak</div></div>
+    </div>
+    <div class="cpts-progress-bar"><div class="fill" id="cpts-fill" style="width:0%"></div></div>
+    <div id="cpts-modules"></div>
+    <details style="margin-top:14px;">
+      <summary>log study session</summary>
+      <div class="input-row" style="margin-top:8px;">
+        <input type="number" id="study-hours" placeholder="hours studied" step="0.25" style="max-width:140px;"/>
+        <input type="text" id="study-note" placeholder="what you covered today"/>
+        <button onclick="logStudy()">commit</button>
+      </div>
+    </details>
+    <div style="font-size:10px;color:var(--dim);margin-top:10px;">
+      click a module to cycle: todo → in-progress → done
     </div>
   </section>
 
   <!-- Calendar -->
   <section class="panel col-6" id="panel-cal">
-    <h2>calendar.events <span class="id">// 0x03</span></h2>
+    <h2>calendar.events <span class="id">// 0x06</span></h2>
     <div id="cal-list" class="list scrollable"></div>
     <details>
       <summary>+ new event</summary>
@@ -663,50 +718,15 @@
       </div>
       <div class="input-row">
         <input type="text" id="c-time" placeholder="time (e.g. 5:00 PM)" />
-        <input type="text" id="c-loc" placeholder="location (optional)" />
+        <input type="text" id="c-loc" placeholder="location" />
         <button onclick="addEvent()">add</button>
       </div>
     </details>
   </section>
 
-  <!-- Things to improve on -->
-  <section class="panel col-6" id="panel-improve">
-    <h2>improve.log <span class="id">// 0x04</span></h2>
-    <div id="improve-list" class="list scrollable"></div>
-    <div class="input-row" style="margin-top:12px;">
-      <input type="text" id="i-text" placeholder="what to improve... (e.g. ship faster, less screen time)" onkeypress="if(event.key==='Enter')addImprove()"/>
-      <button onclick="addImprove()">add</button>
-    </div>
-  </section>
-
-  <!-- Studies (HTB + School tabs) -->
-  <section class="panel col-7" id="panel-study">
-    <h2>studies.queue <span class="id">// 0x05</span></h2>
-    <div class="tabs">
-      <button class="tab active" data-tab="htb" onclick="switchTab('htb')">htb / cyber</button>
-      <button class="tab" data-tab="school" onclick="switchTab('school')">school</button>
-    </div>
-    <div id="study-htb" class="study-pane">
-      <div id="htb-list" class="list scrollable"></div>
-      <div class="input-row" style="margin-top:12px;">
-        <input type="text" id="h-title" placeholder="machine / module / topic" onkeypress="if(event.key==='Enter')addStudy('htb')"/>
-        <input type="text" id="h-note" placeholder="note (optional)" />
-        <button onclick="addStudy('htb')">queue</button>
-      </div>
-    </div>
-    <div id="study-school" class="study-pane" style="display:none;">
-      <div id="school-list" class="list scrollable"></div>
-      <div class="input-row" style="margin-top:12px;">
-        <input type="text" id="s-title" placeholder="assignment / class" onkeypress="if(event.key==='Enter')addStudy('school')"/>
-        <input type="date" id="s-due" />
-        <button onclick="addStudy('school')">add</button>
-      </div>
-    </div>
-  </section>
-
   <!-- Reading list -->
-  <section class="panel col-5" id="panel-reading">
-    <h2>reading.list <span class="id">// 0x06</span></h2>
+  <section class="panel col-6" id="panel-reading">
+    <h2>reading.list <span class="id">// 0x07</span></h2>
     <div id="reading-list" class="list scrollable"></div>
     <details>
       <summary>+ new item</summary>
@@ -725,33 +745,30 @@
 
   <!-- News briefing -->
   <section class="panel col-12" id="panel-news">
-    <h2>daily.briefing <span class="id">// 0x07 — 20:00</span></h2>
+    <h2>daily.briefing <span class="id">// 0x08 — 20:00</span></h2>
     <div class="news-meta">
       <div>
         <span id="news-status">no briefing yet</span>
         · <span style="color:var(--dim)">last updated: <span id="news-updated">never</span></span>
       </div>
       <div style="display:flex;gap:6px;">
-        <button class="small" id="news-refresh-btn" onclick="requestNewsRefresh()">request refresh</button>
+        <button class="small" onclick="requestNewsRefresh()">request refresh</button>
         <button class="small ghost" onclick="clearNews()">clear</button>
       </div>
     </div>
     <div id="news-content">
       <div class="news-empty">
         nothing loaded yet.<br/>
-        ask claude any time after 8pm: <span class="cmd">"daily briefing please"</span><br/>
-        <span style="color:var(--dim);font-size:10px;margin-top:8px;display:inline-block;">
-          claude pulls from multiple sources (left, right, center, international) and summarizes the middle ground for cyber + political news
-        </span>
+        ask claude any time after 8pm: <span class="cmd">"daily briefing please"</span>
       </div>
     </div>
   </section>
 
   <!-- Backup / restore -->
   <section class="panel col-12" id="panel-backup">
-    <h2>data.management <span class="id">// 0x08</span></h2>
+    <h2>data.management <span class="id">// 0x09</span></h2>
     <div style="font-size:12px;color:var(--dim);margin-bottom:14px;">
-      your data lives in this browser only. export to back up, sync to another device, or paste a fresh news briefing.
+      data lives in this browser. export to back up or sync devices.
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
       <button onclick="exportData()">⬇ export backup</button>
@@ -768,11 +785,11 @@
     </div>
   </section>
 
-  <!-- Daily / weekly notes log -->
+  <!-- Daily log -->
   <section class="panel col-12" id="panel-log">
-    <h2>captains.log <span class="id">// 0x09</span></h2>
+    <h2>captains.log <span class="id">// 0x0A</span></h2>
     <div class="input-row">
-      <textarea id="log-text" placeholder="$ what happened today? what did you learn? what's on your mind?" style="min-height:70px;"></textarea>
+      <textarea id="log-text" placeholder="$ what happened today? what did you learn? wins and frustrations." style="min-height:70px;"></textarea>
     </div>
     <div style="display:flex;justify-content:flex-end;margin-bottom:18px;">
       <button onclick="addLog()">commit entry</button>
@@ -787,622 +804,967 @@
 </footer>
 
 <script>
-  // ============================================================
-  // STATE
-  // ============================================================
-  const KEY = 'dash_v1';
-  let state = {
-    goals: [],
-    events: [],
-    improves: [],
-    htb: [],
-    school: [],
-    reading: [],
-    logs: [],
-    news: null  // { updated: ts, cyber: [...], political: [...] }
-  };
+// ============================================================
+// STATE
+// ============================================================
+const KEY = 'dash_v2';
+let state = {
+  // PRs (auto-update goal progress)
+  prs: {
+    bench: 135, pullups: 6, mile: 8.5,
+    squat: 185, deadlift: 225, ohp: 95,
+    benchHistory: [], pullupsHistory: [], mileHistory: []
+  },
+  // Goals derived from PRs (target only)
+  goalTargets: {
+    bench: 225, pullups: 15, mile: 6.0,
+    squat: 315, deadlift: 405, ohp: 155
+  },
+  // Health metrics: array of { date, weight, bf, sleep, rhr, energy, soreness, stress, steps, protein, water }
+  health: [],
+  // CPTS path
+  cpts: {
+    modules: [],          // populated from defaults if empty
+    studyHours: [],       // [{ date, hours, note }]
+  },
+  // Training
+  training: {
+    completed: {},        // { 'YYYY-MM-DD': true } — days the user marked done
+    startDate: null       // first day of program — for rotation calculation
+  },
+  // Other
+  events: [],
+  reading: [],
+  logs: [],
+  news: null
+};
 
-  const banners = [
-    `   _____  .__                                .__         _____ .__              .__       \n  /  _  \\ |  |   ____ ___  ___  ____   _____|  |__  ____/ ____\\|__|__   ____  |  |     \n /  /_\\  \\|  | _/ __ \\\\  \\/  /_/ __ \\ /     \\  |  \\/ __ \\   __\\ |  \\  \\ /  _ \\ |  |     \n/    |    \\  |_\\  ___/ >    < \\  ___/|  Y Y  \\   Y  \\  ___/|  |   |  |\\   ( <_> ||  |__   \n\\____|__  /____/\\___  >__/\\_ \\ \\___  >__|_|  /___|  /\\___  >__|   |__| \\_/\\____/|____/   \n        \\/          \\/      \\/     \\/      \\/     \\/     \\/                              `,
-  ];
+const banners = [
+  `   _____  .__                                .__         _____ .__              .__       \n  /  _  \\ |  |   ____ ___  ___  ____   _____|  |__  ____/ ____\\|__|__   ____  |  |     \n /  /_\\  \\|  | _/ __ \\\\  \\/  /_/ __ \\ /     \\  |  \\/ __ \\   __\\ |  \\  \\ /  _ \\ |  |     \n/    |    \\  |_\\  ___/ >    < \\  ___/|  Y Y  \\   Y  \\  ___/|  |   |  |\\   ( <_> ||  |__   \n\\____|__  /____/\\___  >__/\\_ \\ \\___  >__|_|  /___|  /\\___  >__|   |__| \\_/\\____/|____/   \n        \\/          \\/      \\/     \\/      \\/     \\/     \\/                              `
+];
 
-  // ============================================================
-  // STORAGE (localStorage — works on any hosted site)
-  // ============================================================
-  async function load() {
-    try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        state = { ...state, ...parsed };
-      } else {
-        seedDefaults();
-        await save();
-      }
-    } catch (e) {
-      console.error('load failed', e);
+// ============================================================
+// HYBRID TRAINING PROGRAM
+// 8-day rotation: keeps your Lower/Push/Pull/Rest/Lower/Upper/Rest, adds 2 quality runs
+// + light run mixed into one upper day. Research-backed: HIIT/intervals minimize
+// concurrent training interference; 6+ hr separation between lift and run when same day.
+// ============================================================
+const PROGRAM = [
+  {
+    name: 'Day 1 — Lower (Strength)',
+    tag: 'LIFT',
+    tagClass: 'lift',
+    exercises: [
+      { name: 'Back Squat', rx: '5x5 @ 80% 1RM' },
+      { name: 'Romanian Deadlift', rx: '4x6-8' },
+      { name: 'Bulgarian Split Squat', rx: '3x8/leg' },
+      { name: 'Walking Lunge (loaded)', rx: '3x12/leg' },
+      { name: 'Standing Calf Raise', rx: '4x12-15' },
+      { name: 'Hanging Leg Raise', rx: '3x10-15' }
+    ],
+    notes: 'Heavy lower work. No running today. 10-min warmup w/ glute activation. Track squat weight.'
+  },
+  {
+    name: 'Day 2 — Push + Easy Run',
+    tag: 'HYBRID',
+    tagClass: 'hybrid',
+    exercises: [
+      { name: 'Bench Press', rx: '5x5 @ 80% 1RM' },
+      { name: 'Overhead Press', rx: '4x6-8' },
+      { name: 'Incline DB Press', rx: '3x8-10' },
+      { name: 'Dips (weighted)', rx: '3xAMRAP' },
+      { name: 'Lateral Raise', rx: '3x12-15' },
+      { name: 'Tricep Pushdown', rx: '3x10-12' },
+      { name: '— PM (6+ hrs later) —', rx: '' },
+      { name: 'Easy Zone-2 run', rx: '3 mi @ 9:00-10:00 pace, conversational' }
+    ],
+    notes: 'Run AFTER lifting (or PM). Easy = HR <70% max. This is base mileage, do NOT push.'
+  },
+  {
+    name: 'Day 3 — Pull (Strength)',
+    tag: 'LIFT',
+    tagClass: 'lift',
+    exercises: [
+      { name: 'Deadlift', rx: '5x3 @ 85% 1RM' },
+      { name: 'Weighted Pullup', rx: '5x3-5 (build to bodyweight + 25lb)' },
+      { name: 'Bent-Over Row (barbell)', rx: '4x6-8' },
+      { name: 'Pullup (volume)', rx: '4xAMRAP -2 reps' },
+      { name: 'Face Pull', rx: '3x15' },
+      { name: 'Barbell Curl', rx: '3x8-10' }
+    ],
+    notes: 'Pullups are a goal — submax sets across the day will accelerate progress. Track total daily reps.'
+  },
+  {
+    name: 'Day 4 — Speed Run (Quality)',
+    tag: 'RUN',
+    tagClass: 'run',
+    exercises: [
+      { name: 'Warmup', rx: '15 min easy jog + 4x100m strides' },
+      { name: 'Main set (rotate weekly)', rx: '' },
+      { name: '· Wk A: 8x400m @ 90s', rx: '90s jog rest' },
+      { name: '· Wk B: 5x800m @ 3:00', rx: '3min jog rest' },
+      { name: '· Wk C: 1-mile time trial', rx: 'all-out, log result' },
+      { name: '· Wk D: 3x1K @ 5K pace', rx: '3min jog rest' },
+      { name: 'Cooldown', rx: '10 min easy' },
+      { name: 'Core finisher', rx: 'plank 3x60s, hollow holds 3x30s' }
+    ],
+    notes: '6-min mile = 90s/400m. This is your speed engine. Track every workout. NO heavy legs today.'
+  },
+  {
+    name: 'Day 5 — Rest / Mobility',
+    tag: 'REST',
+    tagClass: 'rest',
+    exercises: [
+      { name: 'Active recovery walk', rx: '20-30 min easy' },
+      { name: 'Mobility flow', rx: '15 min hips/ankles/t-spine' },
+      { name: 'Optional: easy swim/bike', rx: '20-30 min Z2 if energy is high' }
+    ],
+    notes: 'Real rest. Eat, sleep, hydrate. Do NOT train hard. CPTS study day — 2-3 hours.'
+  },
+  {
+    name: 'Day 6 — Lower (Power)',
+    tag: 'LIFT',
+    tagClass: 'lift',
+    exercises: [
+      { name: 'Front Squat', rx: '4x4 @ 75% 1RM (explosive)' },
+      { name: 'Trap Bar Deadlift (jumps optional)', rx: '5x3 fast' },
+      { name: 'Box Jump', rx: '5x3' },
+      { name: 'Single-Leg RDL', rx: '3x8/leg' },
+      { name: 'Goblet Squat (tempo)', rx: '3x10 @ 3-1-1' },
+      { name: 'Plank', rx: '3x60s' }
+    ],
+    notes: 'Power day. Move fast. Builds explosive strength that translates to running economy.'
+  },
+  {
+    name: 'Day 7 — Upper + Tempo Run',
+    tag: 'HYBRID',
+    tagClass: 'hybrid',
+    exercises: [
+      { name: 'Pullup (max set)', rx: '1 set to failure (log it)' },
+      { name: 'DB Bench Press', rx: '4x8-10' },
+      { name: 'Pendlay Row', rx: '4x6-8' },
+      { name: 'Push Press', rx: '4x5' },
+      { name: 'Pullup (drop sets)', rx: '3 sets descending' },
+      { name: 'Hammer Curl + Skullcrusher', rx: '3x10 superset' },
+      { name: '— PM (6+ hrs later) —', rx: '' },
+      { name: 'Tempo run', rx: '20 min @ comfortably hard (~7:00-7:30/mi)' }
+    ],
+    notes: 'Tempo builds your lactate threshold — the engine for sub-6 mile. Don\'t race it.'
+  },
+  {
+    name: 'Day 8 — Rest / Long Run (alternating weeks)',
+    tag: 'REST',
+    tagClass: 'rest',
+    exercises: [
+      { name: 'Even weeks: Long easy run', rx: '5-7 mi @ 9:30-10:30 pace' },
+      { name: 'Odd weeks: Full rest', rx: 'walk + mobility only' },
+      { name: 'Stretch', rx: '20 min full body' },
+      { name: 'CPTS study block', rx: '3-4 hours focused' }
+    ],
+    notes: 'Cycles between long aerobic build and full recovery. Critical for hybrid adaptation.'
+  }
+];
+
+// ============================================================
+// CPTS PATH — full 28-module Penetration Tester job-role path
+// Source: Hack The Box Academy CPTS curriculum
+// Cube costs from HTB module pricing where applicable
+// ============================================================
+const CPTS_DEFAULT_MODULES = [
+  // Tier 0 — Information Security Foundations
+  { tier: 0, name: 'Network Enumeration with Nmap', est: 6, status: 'todo' },
+  { tier: 0, name: 'Footprinting', est: 8, status: 'todo' },
+  { tier: 0, name: 'Information Gathering — Web Edition', est: 6, status: 'todo' },
+  { tier: 0, name: 'Vulnerability Assessment', est: 5, status: 'todo' },
+  { tier: 1, name: 'File Transfers', est: 4, status: 'todo' },
+  { tier: 1, name: 'Shells & Payloads', est: 8, status: 'todo' },
+  { tier: 1, name: 'Using Web Proxies', est: 4, status: 'todo' },
+  // Tier 2 — Exploitation
+  { tier: 2, name: 'Login Brute Forcing', est: 5, status: 'todo' },
+  { tier: 2, name: 'SQL Injection Fundamentals', est: 8, status: 'todo' },
+  { tier: 2, name: 'SQLMap Essentials', est: 5, status: 'todo' },
+  { tier: 2, name: 'Cross-Site Scripting (XSS)', est: 6, status: 'todo' },
+  { tier: 2, name: 'File Inclusion', est: 6, status: 'todo' },
+  { tier: 2, name: 'File Upload Attacks', est: 5, status: 'todo' },
+  { tier: 2, name: 'Command Injections', est: 5, status: 'todo' },
+  { tier: 2, name: 'Web Attacks', est: 8, status: 'todo' },
+  { tier: 2, name: 'Attacking Common Applications', est: 12, status: 'todo' },
+  { tier: 2, name: 'Password Attacks', est: 10, status: 'todo' },
+  { tier: 2, name: 'Attacking Common Services', est: 8, status: 'todo' },
+  { tier: 2, name: 'Pivoting, Tunneling, and Port Forwarding', est: 8, status: 'todo' },
+  { tier: 2, name: 'Active Directory Enumeration & Attacks', est: 20, status: 'todo' },
+  // Tier 3 — Privilege Escalation
+  { tier: 3, name: 'Using the Metasploit Framework', est: 6, status: 'todo' },
+  { tier: 3, name: 'Linux Privilege Escalation', est: 8, status: 'todo' },
+  { tier: 3, name: 'Windows Privilege Escalation', est: 10, status: 'todo' },
+  // Tier 4 — Final
+  { tier: 4, name: 'Documentation & Reporting', est: 4, status: 'todo' },
+  { tier: 4, name: 'Attacking Enterprise Networks', est: 8, status: 'todo' },
+  { tier: 4, name: 'Penetration Testing Process', est: 4, status: 'todo' },
+  { tier: 4, name: 'Getting Started', est: 3, status: 'todo' },
+  { tier: 4, name: 'Pentesting Mindset (capstone)', est: 4, status: 'todo' }
+];
+
+// ============================================================
+// STORAGE
+// ============================================================
+async function load() {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      state = deepMerge(state, parsed);
+    } else {
       seedDefaults();
       await save();
     }
-    render();
-  }
-
-  async function save() {
-    try {
-      localStorage.setItem(KEY, JSON.stringify(state));
-    } catch (e) {
-      console.error('save failed', e);
-    }
-  }
-
-  function seedDefaults() {
-    state.goals = [
-      { id: id(), name: 'bench press', current: 135, target: 225, unit: 'lbs' },
-      { id: id(), name: 'mile run', current: 8.5, target: 6.0, unit: 'min', invert: true },
-      { id: id(), name: 'pullups', current: 6, target: 15, unit: 'reps' }
-    ];
-    state.events = [
-      {
-        id: id(),
-        title: 'Intro Meeting: Alex Michel | Dan Gwizdak',
-        date: '2026-05-05',
-        time: '5:00 PM',
-        location: 'Google Meet',
-        done: false
-      },
-      { id: id(), title: 'Mother\'s Day', date: '2026-05-10', time: '', location: '', done: false },
-      { id: id(), title: 'Memorial Day', date: '2026-05-25', time: '', location: '', done: false }
-    ];
-    state.improves = [
-      { id: id(), text: 'ship faster — stop polishing forever', done: false },
-      { id: id(), text: 'sleep before midnight', done: false }
-    ];
-    state.htb = [
-      { id: id(), title: 'Active Directory enumeration', note: 'continue from rpcclient notes', done: false },
-      { id: id(), title: 'EvilCUPS lab', note: 'finish privesc path', done: false }
-    ];
-    state.school = [];
-    state.reading = [
-      { id: id(), title: 'The Pragmatic Programmer', author: 'Hunt & Thomas', status: 'reading' }
-    ];
-    state.logs = [];
-  }
-
-  function id() { return Math.random().toString(36).slice(2, 10); }
-
-  // ============================================================
-  // RENDER
-  // ============================================================
-  function render() {
-    renderGoals();
-    renderEvents();
-    renderImproves();
-    renderStudy('htb');
-    renderStudy('school');
-    renderReading();
-    renderLogs();
-    renderNews();
-    renderStats();
-  }
-
-  function renderStats() {
-    const upcomingEvents = state.events.filter(e => !e.done && new Date(e.date) >= new Date(new Date().toDateString())).length;
-    document.getElementById('s-events').textContent = upcomingEvents;
-    document.getElementById('s-improve').textContent = state.improves.filter(i => !i.done).length;
-    document.getElementById('s-htb').textContent = state.htb.filter(i => !i.done).length;
-    document.getElementById('s-school').textContent = state.school.filter(i => !i.done).length;
-    document.getElementById('s-reading').textContent = state.reading.filter(r => r.status !== 'done').length;
-    document.getElementById('s-streak').textContent = state.logs.length;
-
-    const totalActive = state.improves.filter(i => !i.done).length
-      + state.htb.filter(i => !i.done).length
-      + state.school.filter(i => !i.done).length;
-    document.getElementById('stat-tasks').textContent = totalActive;
-    document.getElementById('stat-goals').textContent = state.goals.length;
-
-    // motd
-    const motds = [
-      'discipline = freedom. one rep at a time.',
-      'compound interest applies to skills too.',
-      'the cave you fear holds the treasure you seek.',
-      'slow is smooth, smooth is fast.',
-      'consistency > intensity. show up.',
-      'no shortcuts. only repetitions.',
-    ];
-    const day = new Date().getDate();
-    document.getElementById('motd').textContent = '> ' + motds[day % motds.length];
-  }
-
-  // -- Goals --
-  function renderGoals() {
-    const el = document.getElementById('goals-list');
-    if (!state.goals.length) {
-      el.innerHTML = '<div class="empty">no goals yet — add one below to start tracking</div>';
-      return;
-    }
-    el.innerHTML = state.goals.map(g => {
-      const pct = goalPct(g);
-      return `
-        <div class="goal">
-          <div class="goal-head">
-            <span class="goal-name">${escape(g.name)}</span>
-            <span class="goal-stat">${g.current}${g.unit ? ' ' + escape(g.unit) : ''} / ${g.target}${g.unit ? ' ' + escape(g.unit) : ''}</span>
-          </div>
-          <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
-          <div class="goal-meta">
-            <span>${pct.toFixed(0)}% complete</span>
-            <span>${g.invert ? 'lower is better' : 'higher is better'}</span>
-          </div>
-          <div class="goal-actions">
-            <button class="small" onclick="updateGoal('${g.id}')">log progress</button>
-            <button class="small ghost" onclick="deleteGoal('${g.id}')">remove</button>
-          </div>
-        </div>`;
-    }).join('');
-  }
-
-  function goalPct(g) {
-    if (g.invert) {
-      const start = Math.max(g.current, g.target * 1.5);
-      const range = start - g.target;
-      const done = start - g.current;
-      return Math.max(0, Math.min(100, (done / range) * 100));
-    }
-    return Math.max(0, Math.min(100, (g.current / g.target) * 100));
-  }
-
-  async function addGoal() {
-    const name = document.getElementById('g-name').value.trim();
-    const current = parseFloat(document.getElementById('g-current').value);
-    const target = parseFloat(document.getElementById('g-target').value);
-    const unit = document.getElementById('g-unit').value.trim();
-    if (!name || isNaN(current) || isNaN(target)) return;
-    state.goals.push({
-      id: id(),
-      name, current, target, unit,
-      invert: target < current
-    });
-    document.getElementById('g-name').value = '';
-    document.getElementById('g-current').value = '';
-    document.getElementById('g-target').value = '';
-    document.getElementById('g-unit').value = '';
-    await save(); render();
-  }
-
-  async function updateGoal(gid) {
-    const g = state.goals.find(x => x.id === gid);
-    if (!g) return;
-    const v = prompt(`update ${g.name} (current: ${g.current}${g.unit ? ' ' + g.unit : ''})`, g.current);
-    if (v === null) return;
-    const num = parseFloat(v);
-    if (isNaN(num)) return;
-    g.current = num;
-    await save(); render();
-  }
-
-  async function deleteGoal(gid) {
-    if (!confirm('remove this goal?')) return;
-    state.goals = state.goals.filter(g => g.id !== gid);
-    await save(); render();
-  }
-
-  // -- Events --
-  function renderEvents() {
-    const el = document.getElementById('cal-list');
-    const sorted = [...state.events].sort((a, b) => new Date(a.date) - new Date(b.date));
-    if (!sorted.length) {
-      el.innerHTML = '<div class="empty">no events scheduled</div>';
-      return;
-    }
-    el.innerHTML = sorted.map(e => {
-      const d = new Date(e.date + 'T00:00');
-      const ds = d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
-      const past = d < new Date(new Date().toDateString()) && !e.done;
-      return `
-        <div class="item cal ${e.done ? 'done' : ''}">
-          <span class="check ${e.done ? 'checked' : ''}" onclick="toggleEvent('${e.id}')"></span>
-          <div class="body">
-            <div class="title">${escape(e.title)}</div>
-            <div class="sub">${ds}${e.time ? ' · ' + escape(e.time) : ''}${e.location ? ' · ' + escape(e.location) : ''}${past ? ' · <span style="color:var(--red)">past</span>' : ''}</div>
-          </div>
-          <div class="actions"><button class="x-btn" onclick="deleteEvent('${e.id}')">×</button></div>
-        </div>`;
-    }).join('');
-  }
-
-  async function addEvent() {
-    const title = document.getElementById('c-title').value.trim();
-    const date = document.getElementById('c-date').value;
-    const time = document.getElementById('c-time').value.trim();
-    const loc = document.getElementById('c-loc').value.trim();
-    if (!title || !date) return;
-    state.events.push({ id: id(), title, date, time, location: loc, done: false });
-    document.getElementById('c-title').value = '';
-    document.getElementById('c-date').value = '';
-    document.getElementById('c-time').value = '';
-    document.getElementById('c-loc').value = '';
-    await save(); render();
-  }
-
-  async function toggleEvent(eid) {
-    const e = state.events.find(x => x.id === eid);
-    if (!e) return;
-    e.done = !e.done;
-    await save(); render();
-  }
-
-  async function deleteEvent(eid) {
-    state.events = state.events.filter(e => e.id !== eid);
-    await save(); render();
-  }
-
-  // -- Improves --
-  function renderImproves() {
-    const el = document.getElementById('improve-list');
-    if (!state.improves.length) {
-      el.innerHTML = '<div class="empty">no items — what do you want to work on?</div>';
-      return;
-    }
-    el.innerHTML = state.improves.map(i => `
-      <div class="item imp ${i.done ? 'done' : ''}">
-        <span class="check ${i.done ? 'checked' : ''}" onclick="toggleImprove('${i.id}')"></span>
-        <div class="body"><div class="title">${escape(i.text)}</div></div>
-        <div class="actions"><button class="x-btn" onclick="deleteImprove('${i.id}')">×</button></div>
-      </div>
-    `).join('');
-  }
-
-  async function addImprove() {
-    const t = document.getElementById('i-text').value.trim();
-    if (!t) return;
-    state.improves.push({ id: id(), text: t, done: false });
-    document.getElementById('i-text').value = '';
-    await save(); render();
-  }
-  async function toggleImprove(iid) {
-    const i = state.improves.find(x => x.id === iid);
-    if (i) { i.done = !i.done; await save(); render(); }
-  }
-  async function deleteImprove(iid) {
-    state.improves = state.improves.filter(i => i.id !== iid);
-    await save(); render();
-  }
-
-  // -- Study --
-  function renderStudy(kind) {
-    const el = document.getElementById(kind + '-list');
-    const arr = state[kind];
-    if (!arr.length) {
-      el.innerHTML = '<div class="empty">queue empty</div>';
-      return;
-    }
-    el.innerHTML = arr.map(item => {
-      const dueText = item.due ? formatDate(item.due) : '';
-      const sub = kind === 'htb' ? (item.note || '') : dueText;
-      return `
-        <div class="item ${kind} ${item.done ? 'done' : ''}">
-          <span class="check ${item.done ? 'checked' : ''}" onclick="toggleStudy('${kind}','${item.id}')"></span>
-          <div class="body">
-            <div class="title">${escape(item.title)}</div>
-            ${sub ? `<div class="sub">${escape(sub)}</div>` : ''}
-          </div>
-          <div class="actions"><button class="x-btn" onclick="deleteStudy('${kind}','${item.id}')">×</button></div>
-        </div>`;
-    }).join('');
-  }
-
-  async function addStudy(kind) {
-    if (kind === 'htb') {
-      const title = document.getElementById('h-title').value.trim();
-      const note = document.getElementById('h-note').value.trim();
-      if (!title) return;
-      state.htb.push({ id: id(), title, note, done: false });
-      document.getElementById('h-title').value = '';
-      document.getElementById('h-note').value = '';
-    } else {
-      const title = document.getElementById('s-title').value.trim();
-      const due = document.getElementById('s-due').value;
-      if (!title) return;
-      state.school.push({ id: id(), title, due, done: false });
-      document.getElementById('s-title').value = '';
-      document.getElementById('s-due').value = '';
-    }
-    await save(); render();
-  }
-  async function toggleStudy(kind, sid) {
-    const x = state[kind].find(i => i.id === sid);
-    if (x) { x.done = !x.done; await save(); render(); }
-  }
-  async function deleteStudy(kind, sid) {
-    state[kind] = state[kind].filter(i => i.id !== sid);
-    await save(); render();
-  }
-
-  function switchTab(tab) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-    document.getElementById('study-htb').style.display = tab === 'htb' ? '' : 'none';
-    document.getElementById('study-school').style.display = tab === 'school' ? '' : 'none';
-  }
-
-  // -- Reading --
-  function renderReading() {
-    const el = document.getElementById('reading-list');
-    if (!state.reading.length) {
-      el.innerHTML = '<div class="empty">nothing on the list yet</div>';
-      return;
-    }
-    el.innerHTML = state.reading.map(r => `
-      <div class="item read ${r.status === 'done' ? 'done' : ''}">
-        <span class="check ${r.status === 'done' ? 'checked' : ''}" onclick="cycleReading('${r.id}')" title="click to cycle status"></span>
-        <div class="body">
-          <div class="title">${escape(r.title)}</div>
-          <div class="sub">${r.author ? escape(r.author) + ' · ' : ''}<span style="color:var(--magenta)">${escape(r.status)}</span></div>
-        </div>
-        <div class="actions"><button class="x-btn" onclick="deleteReading('${r.id}')">×</button></div>
-      </div>
-    `).join('');
-  }
-
-  async function addReading() {
-    const title = document.getElementById('r-title').value.trim();
-    const author = document.getElementById('r-author').value.trim();
-    const status = document.getElementById('r-status').value;
-    if (!title) return;
-    state.reading.push({ id: id(), title, author, status });
-    document.getElementById('r-title').value = '';
-    document.getElementById('r-author').value = '';
-    await save(); render();
-  }
-  async function cycleReading(rid) {
-    const r = state.reading.find(x => x.id === rid);
-    if (!r) return;
-    const order = ['want', 'reading', 'done'];
-    r.status = order[(order.indexOf(r.status) + 1) % order.length];
-    await save(); render();
-  }
-  async function deleteReading(rid) {
-    state.reading = state.reading.filter(r => r.id !== rid);
-    await save(); render();
-  }
-
-  // -- Logs --
-  function renderLogs() {
-    const el = document.getElementById('log-list');
-    if (!state.logs.length) {
-      el.innerHTML = '<div class="empty">no log entries yet — write your first one above</div>';
-      return;
-    }
-    const sorted = [...state.logs].sort((a, b) => b.ts - a.ts);
-    el.innerHTML = sorted.map(l => `
-      <div class="note-entry">
-        <div class="date">
-          <span>$ ${formatLogDate(l.ts)}</span>
-          <button class="x-btn" onclick="deleteLog('${l.id}')">×</button>
-        </div>
-        <div class="body">${escape(l.text)}</div>
-      </div>
-    `).join('');
-  }
-
-  async function addLog() {
-    const t = document.getElementById('log-text').value.trim();
-    if (!t) return;
-    state.logs.push({ id: id(), text: t, ts: Date.now() });
-    document.getElementById('log-text').value = '';
-    await save(); render();
-  }
-  async function deleteLog(lid) {
-    if (!confirm('delete this log entry?')) return;
-    state.logs = state.logs.filter(l => l.id !== lid);
-    await save(); render();
-  }
-
-  // -- News --
-  function renderNews() {
-    const el = document.getElementById('news-content');
-    const statusEl = document.getElementById('news-status');
-    const updatedEl = document.getElementById('news-updated');
-
-    if (!state.news || (!state.news.cyber?.length && !state.news.political?.length)) {
-      updatedEl.textContent = 'never';
-      statusEl.textContent = 'no briefing yet';
-      statusEl.className = '';
-      // keep the empty state hint
-      el.innerHTML = `
-        <div class="news-empty">
-          nothing loaded yet.<br/>
-          ask claude any time after 8pm: <span class="cmd">"daily briefing please"</span><br/>
-          <span style="color:var(--dim);font-size:10px;margin-top:8px;display:inline-block;">
-            claude pulls from multiple sources (left, right, center, international) and summarizes the middle ground for cyber + political news
-          </span>
-        </div>`;
-      return;
-    }
-
-    const updated = new Date(state.news.updated);
-    const ageHours = (Date.now() - state.news.updated) / 3600000;
-    updatedEl.textContent = updated.toLocaleString(undefined, {
-      weekday: 'short', month: 'short', day: 'numeric',
-      hour: 'numeric', minute: '2-digit'
-    });
-    if (ageHours < 24) {
-      statusEl.textContent = '● fresh briefing';
-      statusEl.className = 'fresh';
-    } else {
-      statusEl.textContent = '● stale — request refresh';
-      statusEl.className = 'stale';
-    }
-
-    let html = '';
-    if (state.news.cyber?.length) {
-      html += `<div class="news-section cyber">
-        <div class="news-section-title">cyber</div>
-        ${state.news.cyber.map(renderStory).join('')}
-      </div>`;
-    }
-    if (state.news.political?.length) {
-      html += `<div class="news-section political">
-        <div class="news-section-title">political</div>
-        ${state.news.political.map(renderStory).join('')}
-      </div>`;
-    }
-    el.innerHTML = html;
-  }
-
-  function renderStory(s) {
-    const sources = (s.sources || []).map(src => {
-      if (typeof src === 'string') return `<span>${escape(src)}</span>`;
-      return `<a href="${escape(src.url || '#')}" target="_blank" rel="noopener">${escape(src.name || src.url)}</a>`;
-    }).join('');
-    return `
-      <div class="news-story">
-        <div class="headline">${escape(s.headline || '')}</div>
-        <div class="summary">${escape(s.summary || '')}</div>
-        ${(s.left || s.right) ? `
-          <div class="perspectives">
-            <div class="perspective left">
-              <div class="label">◀ left frame</div>
-              <div class="text">${escape(s.left || '—')}</div>
-            </div>
-            <div class="perspective right">
-              <div class="label">right frame ▶</div>
-              <div class="text">${escape(s.right || '—')}</div>
-            </div>
-          </div>` : ''}
-        ${sources ? `<div class="sources">sources: ${sources}</div>` : ''}
-      </div>`;
-  }
-
-  function requestNewsRefresh() {
-    const msg = `To refresh: open Claude in another tab and ask "daily briefing please".\n\nThen paste the JSON Claude gives you into the import box at the bottom of the page.\n\n(Or just keep using the page — Claude can email you new briefings to import.)`;
-    alert(msg);
-  }
-
-  async function clearNews() {
-    if (!confirm('clear current briefing?')) return;
-    state.news = null;
-    await save(); render();
-  }
-
-  // External hook so Claude can paste a briefing payload into the dashboard
-  // by saving directly to storage. The dashboard auto-refreshes.
-  window.__updateNews = async function(payload) {
-    state.news = { ...payload, updated: Date.now() };
+  } catch (e) {
+    console.error('load failed', e);
+    seedDefaults();
     await save();
-    render();
+  }
+  // Always seed CPTS modules if empty
+  if (!state.cpts.modules || !state.cpts.modules.length) {
+    state.cpts.modules = CPTS_DEFAULT_MODULES.map(m => ({ ...m, id: id() }));
+    await save();
+  }
+  // Set training start date if missing
+  if (!state.training.startDate) {
+    state.training.startDate = new Date().toISOString().slice(0,10);
+    await save();
+  }
+  render();
+}
+async function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); }
+  catch (e) { console.error('save failed', e); }
+}
+function deepMerge(t, s) {
+  const out = { ...t };
+  for (const k in s) {
+    if (s[k] !== null && typeof s[k] === 'object' && !Array.isArray(s[k]) && t[k] && typeof t[k] === 'object') {
+      out[k] = deepMerge(t[k], s[k]);
+    } else {
+      out[k] = s[k];
+    }
+  }
+  return out;
+}
+function seedDefaults() {
+  state.events = [
+    { id: id(), title: 'Intro Meeting: Alex Michel | Dan Gwizdak', date: '2026-05-05', time: '5:00 PM', location: 'Google Meet', done: false },
+    { id: id(), title: 'Mother\'s Day', date: '2026-05-10', time: '', location: '', done: false },
+    { id: id(), title: 'Memorial Day', date: '2026-05-25', time: '', location: '', done: false }
+  ];
+  state.reading = [
+    { id: id(), title: 'The Pragmatic Programmer', author: 'Hunt & Thomas', status: 'reading' },
+    { id: id(), title: 'Penetration Testing — Georgia Weidman', author: 'Weidman', status: 'want' }
+  ];
+  // Seed first health entry to prime the engine
+  const today = new Date().toISOString().slice(0,10);
+  state.health = [];
+}
+function id() { return Math.random().toString(36).slice(2, 10); }
+function todayStr() { return new Date().toISOString().slice(0,10); }
+
+// ============================================================
+// RENDER
+// ============================================================
+function render() {
+  renderTraining();
+  renderGoals();
+  renderHealth();
+  renderDiag();
+  renderCPTS();
+  renderEvents();
+  renderReading();
+  renderLogs();
+  renderNews();
+  renderHeader();
+}
+
+function renderHeader() {
+  const dayIdx = currentDayIndex();
+  const day = PROGRAM[dayIdx];
+  document.getElementById('stat-trainday').textContent = day.tag.toLowerCase();
+  const cptsDone = state.cpts.modules.filter(m => m.status === 'done').length;
+  document.getElementById('stat-cpts').textContent = `${cptsDone}/28`;
+  const r = readinessScore();
+  const readEl = document.getElementById('stat-readiness');
+  readEl.textContent = r ? r + '/100' : '—';
+  const total = state.cpts.modules.filter(m => m.status !== 'done').length
+    + state.events.filter(e => !e.done).length;
+  document.getElementById('stat-tasks').textContent = total;
+}
+
+// ============================================================
+// TRAINING
+// ============================================================
+function currentDayIndex() {
+  const start = new Date(state.training.startDate + 'T00:00');
+  const today = new Date(todayStr() + 'T00:00');
+  const diff = Math.floor((today - start) / 86400000);
+  return ((diff % PROGRAM.length) + PROGRAM.length) % PROGRAM.length;
+}
+function renderTraining() {
+  const idx = currentDayIndex();
+  const day = PROGRAM[idx];
+  const isDone = !!state.training.completed[todayStr()];
+  document.getElementById('training-today').innerHTML = renderDayCard(day, true, isDone);
+
+  // full week
+  let weekHtml = '';
+  for (let i = 0; i < PROGRAM.length; i++) {
+    const d = PROGRAM[(idx + i) % PROGRAM.length];
+    weekHtml += renderDayCard(d, false, false, i === 0 ? 'TODAY' : `+${i}d`);
+  }
+  document.getElementById('training-week').innerHTML = weekHtml;
+}
+function renderDayCard(day, isToday, isDone, label) {
+  const exHtml = day.exercises.map(e => `
+    <li>
+      <span class="ex-name">${escape(e.name)}</span>
+      <span class="ex-rx">${escape(e.rx)}</span>
+    </li>`).join('');
+  return `
+    <div class="training-day ${isToday ? 'today' : ''} ${isDone ? 'done' : ''}">
+      <div class="training-day-head">
+        <span class="training-day-name">${escape(day.name)}${label ? ' · ' + label : ''}</span>
+        <span class="training-day-tag ${day.tagClass}">${day.tag}</span>
+      </div>
+      <ul class="exercise-list">${exHtml}</ul>
+      <div class="training-notes">${escape(day.notes)}</div>
+      ${isToday ? `<div style="margin-top:10px;display:flex;gap:6px;">
+        <button class="small" onclick="markTrainingDone()">${isDone ? '✓ logged' : 'mark complete'}</button>
+        ${isDone ? `<button class="small ghost" onclick="unmarkTrainingDone()">undo</button>` : ''}
+      </div>` : ''}
+    </div>`;
+}
+async function markTrainingDone() {
+  state.training.completed[todayStr()] = true;
+  await save(); render();
+}
+async function unmarkTrainingDone() {
+  delete state.training.completed[todayStr()];
+  await save(); render();
+}
+
+async function savePRs() {
+  const fields = [
+    { id: 'pr-bench', key: 'bench' },
+    { id: 'pr-pullups', key: 'pullups' },
+    { id: 'pr-mile', key: 'mile' },
+    { id: 'pr-squat', key: 'squat' },
+    { id: 'pr-deadlift', key: 'deadlift' },
+    { id: 'pr-ohp', key: 'ohp' }
+  ];
+  let changed = false;
+  for (const f of fields) {
+    const el = document.getElementById(f.id);
+    const v = parseFloat(el.value);
+    if (!isNaN(v) && v > 0) {
+      const oldVal = state.prs[f.key];
+      state.prs[f.key] = v;
+      if (oldVal !== v) {
+        // append history
+        const histKey = f.key + 'History';
+        if (!state.prs[histKey]) state.prs[histKey] = [];
+        state.prs[histKey].push({ date: todayStr(), value: v });
+      }
+      el.value = '';
+      changed = true;
+    }
+  }
+  if (changed) {
+    await save(); render();
+    alert('PRs saved. Goals updated.');
+  }
+}
+
+// ============================================================
+// GOALS — derived from PRs
+// ============================================================
+function renderGoals() {
+  const goals = [
+    { name: 'Bench Press', current: state.prs.bench, target: state.goalTargets.bench, unit: 'lbs' },
+    { name: 'Pullups (max)', current: state.prs.pullups, target: state.goalTargets.pullups, unit: 'reps' },
+    { name: 'Mile time', current: state.prs.mile, target: state.goalTargets.mile, unit: 'min', invert: true },
+    { name: 'Squat', current: state.prs.squat, target: state.goalTargets.squat, unit: 'lbs' },
+    { name: 'Deadlift', current: state.prs.deadlift, target: state.goalTargets.deadlift, unit: 'lbs' },
+    { name: 'Overhead Press', current: state.prs.ohp, target: state.goalTargets.ohp, unit: 'lbs' }
+  ];
+  const html = goals.map(g => {
+    const pct = goalPct(g);
+    const remaining = g.invert ? (g.current - g.target).toFixed(2) : (g.target - g.current);
+    const remainText = g.invert
+      ? (g.current > g.target ? `${remaining} min to cut` : 'achieved!')
+      : (g.target > g.current ? `${remaining} ${g.unit} to go` : 'achieved!');
+    return `
+      <div class="goal" style="margin-bottom:8px;padding:10px 12px;">
+        <div class="goal-head">
+          <span class="goal-name" style="font-size:12px;">${escape(g.name)}</span>
+          <span class="goal-stat" style="font-size:10px;">${g.current} → ${g.target}</span>
+        </div>
+        <div class="bar"><div class="bar-fill" style="width:${pct}%"></div></div>
+        <div class="goal-meta">
+          <span>${pct.toFixed(0)}%</span>
+          <span>${remainText}</span>
+        </div>
+      </div>`;
+  }).join('');
+  document.getElementById('goals-list').innerHTML = html;
+}
+function goalPct(g) {
+  if (g.invert) {
+    const start = Math.max(g.current, g.target * 1.6);
+    const range = start - g.target;
+    if (range <= 0) return 100;
+    const done = start - g.current;
+    return Math.max(0, Math.min(100, (done / range) * 100));
+  }
+  return Math.max(0, Math.min(100, (g.current / g.target) * 100));
+}
+
+// ============================================================
+// HEALTH METRICS
+// ============================================================
+async function saveHealth() {
+  const entry = { date: todayStr() };
+  const fields = ['weight', 'bf', 'sleep', 'rhr', 'energy', 'soreness', 'stress', 'steps', 'protein', 'water'];
+  let any = false;
+  fields.forEach(f => {
+    const el = document.getElementById('h-' + f);
+    const v = parseFloat(el.value);
+    if (!isNaN(v)) { entry[f] = v; any = true; el.value = ''; }
+  });
+  if (!any) return alert('enter at least one metric');
+  // Replace if same date already exists
+  state.health = state.health.filter(h => h.date !== entry.date);
+  state.health.push(entry);
+  state.health.sort((a, b) => a.date.localeCompare(b.date));
+  await save(); render();
+}
+
+function renderHealth() {
+  const score = healthScore();
+  const tip = healthTip(score);
+  const cls = score >= 75 ? '' : score >= 50 ? 'fair' : 'poor';
+  const label = score >= 75 ? 'optimized' : score >= 50 ? 'okay' : 'needs work';
+  document.getElementById('health-score-display').innerHTML = state.health.length ? `
+    <div class="health-score-card">
+      <div class="health-score ${cls}">${score}<span style="font-size:18px;color:var(--dim)">/100</span></div>
+      <div class="health-score-label">${label}</div>
+      <div class="health-tip">${tip}</div>
+    </div>
+  ` : `
+    <div class="health-score-card">
+      <div style="color:var(--dim);font-size:13px;">no health data yet — log your first day below to start the engine</div>
+    </div>
+  `;
+
+  // history
+  const recent = [...state.health].slice(-7).reverse();
+  document.getElementById('health-history').innerHTML = recent.length ? recent.map(h => {
+    const parts = [];
+    if (h.weight) parts.push(h.weight + 'lb');
+    if (h.sleep) parts.push(h.sleep + 'h sleep');
+    if (h.rhr) parts.push(h.rhr + 'bpm');
+    if (h.energy) parts.push('E' + h.energy);
+    if (h.protein) parts.push(h.protein + 'g pro');
+    return `<div class="metric-history-row">
+      <span class="date">${h.date.slice(5)}</span>
+      <span>${escape(parts.join(' · '))}</span>
+      <span></span>
+    </div>`;
+  }).join('') : '';
+}
+
+function healthScore() {
+  if (!state.health.length) return 0;
+  const recent = state.health.slice(-7);
+  const avg = (k) => {
+    const vs = recent.map(h => h[k]).filter(v => typeof v === 'number');
+    return vs.length ? vs.reduce((a, b) => a + b, 0) / vs.length : null;
   };
+  const sleep = avg('sleep'),
+        rhr = avg('rhr'),
+        energy = avg('energy'),
+        soreness = avg('soreness'),
+        stress = avg('stress'),
+        steps = avg('steps'),
+        protein = avg('protein');
 
-  // -- Backup / restore / import --
-  function exportData() {
-    const data = JSON.stringify(state, null, 2);
-    const blob = new Blob([data], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `dashboard-backup-${new Date().toISOString().slice(0,10)}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  let score = 0, weight = 0;
+  if (sleep !== null) {
+    // 7-9 hours = full points; drops linearly outside
+    const s = sleep >= 7 && sleep <= 9 ? 100 : sleep >= 6 && sleep < 7 ? 70 : sleep < 6 ? 40 : sleep > 9 ? 75 : 50;
+    score += s * 20; weight += 20;
+  }
+  if (rhr !== null) {
+    // <60 elite, 60-70 good, 70-80 ok, 80+ flag
+    const s = rhr < 60 ? 100 : rhr < 65 ? 90 : rhr < 70 ? 80 : rhr < 80 ? 60 : 35;
+    score += s * 15; weight += 15;
+  }
+  if (energy !== null) { score += (energy * 10) * 15; weight += 15; }
+  if (soreness !== null) {
+    // soreness inverted — low is good
+    score += ((10 - soreness) * 10) * 10; weight += 10;
+  }
+  if (stress !== null) {
+    score += ((10 - stress) * 10) * 10; weight += 10;
+  }
+  if (steps !== null) {
+    const s = steps >= 10000 ? 100 : steps >= 7000 ? 80 : steps >= 5000 ? 60 : steps >= 3000 ? 40 : 20;
+    score += s * 15; weight += 15;
+  }
+  if (protein !== null) {
+    // target: 0.8-1g/lb body weight; if no weight known, aim for 150g+
+    const w = avg('weight') || 170;
+    const target = w * 0.8;
+    const s = protein >= target ? 100 : protein >= target * 0.75 ? 75 : protein >= target * 0.5 ? 50 : 30;
+    score += s * 15; weight += 15;
+  }
+  return weight ? Math.round(score / weight) : 0;
+}
+
+function healthTip(score) {
+  if (!state.health.length) return 'Log your first day to get personalized tips.';
+  const recent = state.health.slice(-7);
+  const avg = (k) => {
+    const vs = recent.map(h => h[k]).filter(v => typeof v === 'number');
+    return vs.length ? vs.reduce((a, b) => a + b, 0) / vs.length : null;
+  };
+  const sleep = avg('sleep');
+  const protein = avg('protein');
+  const rhr = avg('rhr');
+  const stress = avg('stress');
+  const soreness = avg('soreness');
+
+  // Pick the worst-performing metric and call it out
+  const issues = [];
+  if (sleep !== null && sleep < 7) issues.push({ pri: 1, msg: `Sleep avg ${sleep.toFixed(1)}h — strength gains need 7-9h. Push lights-out earlier; this is the highest-leverage fix.` });
+  if (protein !== null && protein < 120) issues.push({ pri: 2, msg: `Protein avg ${protein.toFixed(0)}g — for hybrid training aim for 0.8-1g per lb bodyweight. Add 1-2 protein servings daily.` });
+  if (rhr !== null && rhr > 75) issues.push({ pri: 3, msg: `Resting HR ${rhr.toFixed(0)} bpm — could indicate accumulated fatigue. Consider a deload week if combined with low energy.` });
+  if (soreness !== null && soreness > 6) issues.push({ pri: 4, msg: `High soreness — interference effect risk. Make sure runs and lifts are 6+ hours apart on hybrid days.` });
+  if (stress !== null && stress > 6) issues.push({ pri: 5, msg: `Stress is elevated. High cortisol blocks hypertrophy and slows recovery. Schedule a non-training rest activity this week.` });
+
+  if (issues.length === 0) {
+    if (score >= 85) return '🟢 Recovery is dialed in. Push hard this week — your body is primed for PRs.';
+    return '🟢 Metrics look solid. Stay consistent and keep logging.';
+  }
+  issues.sort((a, b) => a.pri - b.pri);
+  return '⚠️ ' + issues[0].msg;
+}
+
+// ============================================================
+// READINESS SCORE — used for daily training adjustment
+// ============================================================
+function readinessScore() {
+  if (!state.health.length) return null;
+  const today = state.health.find(h => h.date === todayStr());
+  if (!today) return healthScore();
+  // Today's readiness = sleep*0.4 + (10-soreness)*0.3 + energy*0.3
+  let s = 0, w = 0;
+  if (today.sleep !== undefined) { s += Math.min(today.sleep, 9) / 9 * 100 * 40; w += 40; }
+  if (today.soreness !== undefined) { s += (10 - today.soreness) * 10 * 30; w += 30; }
+  if (today.energy !== undefined) { s += today.energy * 10 * 30; w += 30; }
+  return w ? Math.round(s / w) : null;
+}
+
+// ============================================================
+// DIAGNOSTIC ENGINE — auto-analysis
+// ============================================================
+function renderDiag() {
+  const issues = [];
+
+  // 1. Goal progress trajectory
+  const benchHist = state.prs.benchHistory || [];
+  if (benchHist.length >= 2) {
+    const last = benchHist[benchHist.length - 1];
+    const prev = benchHist[benchHist.length - 2];
+    const delta = last.value - prev.value;
+    if (delta > 0) issues.push({ class: 'good', label: 'Bench trending up', text: `+${delta} lbs since last log. Keep the 5x5 progression — you're on the right track for ${state.goalTargets.bench}.` });
+    else if (delta === 0) issues.push({ class: 'warn', label: 'Bench stalled', text: `No progress between last 2 logs. Time to deload 10% and reset, or try a 3-week wave (week of 5s, 3s, 1s).` });
+    else issues.push({ class: 'bad', label: 'Bench regressing', text: `Down ${Math.abs(delta)} lbs. Check sleep & protein, and ensure 48+ hrs between bench sessions.` });
+  } else {
+    issues.push({ class: 'warn', label: 'Need bench baseline', text: `Log your bench PR to start tracking progression toward ${state.goalTargets.bench} lbs.` });
   }
 
-  async function importData() {
-    const text = document.getElementById('import-text').value.trim();
-    if (!text) return;
-    try {
-      const parsed = JSON.parse(text);
-      if (!confirm('replace all current data with imported data? export first if you want to keep the current state.')) return;
-      state = { ...state, ...parsed };
-      await save();
-      document.getElementById('import-text').value = '';
-      document.getElementById('import-area').style.display = 'none';
-      render();
-      alert('imported successfully');
-    } catch (e) {
-      alert('invalid JSON: ' + e.message);
-    }
+  // 2. Mile time
+  const mileHist = state.prs.mileHistory || [];
+  if (mileHist.length >= 2) {
+    const last = mileHist[mileHist.length - 1];
+    const prev = mileHist[mileHist.length - 2];
+    const delta = last.value - prev.value;
+    if (delta < 0) issues.push({ class: 'good', label: 'Mile getting faster', text: `Down ${Math.abs(delta).toFixed(2)} min. Sub-6 means 1:30/400m — keep the Day 4 intervals consistent.` });
+    else if (delta === 0) issues.push({ class: 'warn', label: 'Mile plateaued', text: `Try increasing weekly mileage 10% or add hill sprints to Day 4.` });
+    else issues.push({ class: 'bad', label: 'Mile time slipping', text: `Up ${delta.toFixed(2)} min. Likely under-recovered. Check sleep + nutrition + interference (lift→run spacing).` });
+  } else {
+    issues.push({ class: 'warn', label: 'Need mile baseline', text: `Time-trial your mile this week. Currently at ${state.prs.mile} min, target ${state.goalTargets.mile}. Need to drop ${(state.prs.mile - state.goalTargets.mile).toFixed(2)} min.` });
   }
 
-  async function importNewsPrompt() {
-    const text = prompt('paste the news JSON Claude gave you (just the news object, with cyber and political arrays):');
-    if (!text) return;
-    try {
-      const parsed = JSON.parse(text);
-      // accept either {cyber, political} or {news: {cyber, political}}
-      const newsObj = parsed.news || parsed;
-      if (!newsObj.cyber && !newsObj.political) {
-        alert('JSON must have a "cyber" or "political" array');
-        return;
-      }
-      state.news = { ...newsObj, updated: Date.now() };
-      await save();
-      render();
-      alert('briefing updated');
-    } catch (e) {
-      alert('invalid JSON: ' + e.message);
-    }
+  // 3. Pullups
+  const pullupGap = state.goalTargets.pullups - state.prs.pullups;
+  if (pullupGap > 0) {
+    issues.push({ class: pullupGap <= 3 ? 'good' : 'warn', label: 'Pullup progression', text: `${state.prs.pullups} → ${state.goalTargets.pullups}. Tactic: greasing-the-groove. Do 50-70% of max (~${Math.floor(state.prs.pullups * 0.6)} reps) every 1-2 hrs throughout the day.` });
+  } else {
+    issues.push({ class: 'good', label: 'Pullup goal hit', text: `Set a new target — try weighted pullups for +25 lbs.` });
   }
 
-  async function resetAll() {
-    if (!confirm('this wipes everything: goals, events, log entries, all of it. continue?')) return;
-    if (!confirm('are you really sure? this cannot be undone.')) return;
-    localStorage.removeItem(KEY);
-    location.reload();
+  // 4. CPTS pace
+  const cptsDone = state.cpts.modules.filter(m => m.status === 'done').length;
+  const cptsTotal = state.cpts.modules.length;
+  const cptsHours = state.cpts.studyHours.reduce((a, h) => a + (h.hours || 0), 0);
+  const lastStudy = state.cpts.studyHours[state.cpts.studyHours.length - 1];
+  const daysSinceStudy = lastStudy
+    ? Math.floor((Date.now() - new Date(lastStudy.date + 'T00:00').getTime()) / 86400000)
+    : null;
+  if (daysSinceStudy === null) {
+    issues.push({ class: 'warn', label: 'CPTS not started', text: `28 modules ahead. Aim for 6+ hrs/week minimum. Start with Network Enumeration with Nmap.` });
+  } else if (daysSinceStudy > 3) {
+    issues.push({ class: 'bad', label: 'CPTS gap', text: `${daysSinceStudy} days since last study session. Cybersec retention drops fast — get a 1-hour block in TODAY.` });
+  } else {
+    const remaining = cptsTotal - cptsDone;
+    const moduleEst = state.cpts.modules.filter(m => m.status !== 'done').reduce((a, m) => a + m.est, 0);
+    const weeksAtPace = cptsHours > 0 && state.cpts.studyHours.length >= 3
+      ? Math.ceil(moduleEst / (cptsHours / Math.max(1, weeksTracked())))
+      : Math.ceil(moduleEst / 8);
+    issues.push({ class: 'good', label: 'CPTS on track', text: `${cptsDone}/${cptsTotal} done · ${moduleEst}h estimated remaining. At 8h/wk → ~${weeksAtPace} weeks to exam-ready.` });
   }
 
-  // ============================================================
-  // UTIL
-  // ============================================================
-  function escape(s) {
-    return String(s).replace(/[&<>"']/g, c => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    })[c]);
-  }
-  function formatDate(d) {
-    if (!d) return '';
-    return new Date(d + 'T00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-  }
-  function formatLogDate(ts) {
-    return new Date(ts).toLocaleString(undefined, {
-      weekday: 'short', month: 'short', day: 'numeric',
-      hour: 'numeric', minute: '2-digit'
-    });
+  // 5. Training consistency
+  const last7 = lastNDaysCompleted(7);
+  if (last7 < 4) issues.push({ class: 'bad', label: 'Training inconsistent', text: `${last7}/7 days completed. Target is 5-6 (rest days count when respected). Lock in.` });
+  else if (last7 >= 5) issues.push({ class: 'good', label: 'Training consistent', text: `${last7}/7 days. Adaptation comes from showing up. Keep it.` });
+
+  // 6. Recovery readiness
+  const r = readinessScore();
+  if (r !== null) {
+    if (r < 50) issues.push({ class: 'bad', label: 'Low readiness today', text: `Score ${r}. Consider swapping today's lift for active recovery — fatigue compounds.` });
+    else if (r >= 80) issues.push({ class: 'good', label: 'Primed today', text: `Readiness ${r}. Good day to push your top set or attack a hard interval.` });
   }
 
-  function tickClock() {
+  document.getElementById('diag-output').innerHTML = issues.map(i => `
+    <div class="diag-item ${i.class}">
+      <div class="diag-label">${i.label}</div>
+      <div>${i.text}</div>
+    </div>
+  `).join('');
+}
+
+function lastNDaysCompleted(n) {
+  let count = 0;
+  for (let i = 0; i < n; i++) {
     const d = new Date();
-    document.getElementById('datetime').textContent =
-      d.toLocaleString(undefined, {
-        weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
-        hour: '2-digit', minute: '2-digit', second: '2-digit'
-      });
+    d.setDate(d.getDate() - i);
+    const ds = d.toISOString().slice(0,10);
+    if (state.training.completed[ds]) count++;
   }
+  return count;
+}
+function weeksTracked() {
+  if (!state.cpts.studyHours.length) return 1;
+  const first = new Date(state.cpts.studyHours[0].date + 'T00:00');
+  const last = new Date(state.cpts.studyHours[state.cpts.studyHours.length - 1].date + 'T00:00');
+  return Math.max(1, (last - first) / (86400000 * 7));
+}
 
-  // banner
-  document.getElementById('banner').textContent = banners[0];
+// ============================================================
+// CPTS PANEL
+// ============================================================
+function renderCPTS() {
+  const mods = state.cpts.modules;
+  const done = mods.filter(m => m.status === 'done').length;
+  const inProgress = mods.filter(m => m.status === 'in-progress').length;
+  const pct = (done / mods.length) * 100;
+  const totalHours = state.cpts.studyHours.reduce((a, h) => a + (h.hours || 0), 0);
+  const remainingEst = mods.filter(m => m.status !== 'done').reduce((a, m) => a + m.est, 0);
 
-  // Pre-bundled briefing from May 3, 2026 — loads if no news in storage yet
-  const __BUNDLED_BRIEFING__ = {"cyber": [{"headline": "PyTorch Lightning hijacked in supply-chain attack \u2014 'Mini Shai-Hulud' worm spreads to PyPI", "summary": "Malicious versions 2.6.2 and 2.6.3 of the popular `lightning` Python package were published on April 30 with credential-stealing malware that runs at import. Attackers used compromised maintainer credentials to push the release and to silence disclosure issues on GitHub. The payload steals SSH keys, cloud credentials, npm/GitHub tokens, crypto wallets and VPN configs, then exfiltrates via attacker-controlled GitHub repos. PyPI has quarantined the package; pin to 2.6.1, rotate any secrets that touched affected machines, and audit CI logs.", "left": "Coverage emphasizes the systemic fragility of open-source supply chains and the need for stronger platform-level defenses (PyPI/GitHub maintainer auth, mandatory MFA).", "right": "Coverage emphasizes the threat actor (TeamPCP / LAPSUS$ ties), the speed of exploitation, and individual responsibility \u2014 patch fast, rotate keys, audit dependencies.", "sources": [{"name": "Socket", "url": "https://socket.dev/blog/lightning-pypi-package-compromised"}, {"name": "Snyk", "url": "https://snyk.io/blog/lightning-pypi-compromise-bun-based-credential-stealer/"}, {"name": "Semgrep", "url": "https://semgrep.dev/blog/2026/malicious-dependency-in-pytorch-lightning-used-for-ai-training/"}, {"name": "The Hacker News", "url": "https://thehackernews.com/2026/04/pytorch-lightning-compromised-in-pypi.html"}]}, {"headline": "Microsoft Patch Tuesday: 167 vulns, including SharePoint zero-day and 'BlueHammer' Defender bug", "summary": "Microsoft shipped fixes for 167 vulnerabilities \u2014 one of the largest patch sets of the year. CVE-2026-32201 (SharePoint Server) is being actively exploited for spoofing/phishing inside trusted environments. CVE-2026-33825 ('BlueHammer') is a Windows Defender privilege-escalation bug with public exploit code. Google Chrome also patched its 4th zero-day of 2026, and Adobe Reader pushed an emergency fix for an actively exploited RCE.", "left": "Frames as evidence that incumbent vendors still under-invest in security despite massive market share; calls for stricter regulatory pressure.", "right": "Frames as routine cycle proving the value of rapid private-sector disclosure and patching; emphasizes admin responsibility to deploy patches.", "sources": [{"name": "Krebs on Security", "url": "https://krebsonsecurity.com/"}, {"name": "BleepingComputer / Action1 advisory", "url": "https://krebsonsecurity.com/"}]}, {"headline": "FBI alert: organized cargo-theft rings now hacking freight brokers and carriers", "summary": "The FBI issued a new alert that criminal enterprises are systematically compromising trucking brokers and carrier IT systems to redirect and steal high-value cargo for resale. This sits alongside a separate sentencing of two men (Goldberg, Martin) to four years for cyber-enabled cargo fraud. The trend reflects how operational-tech and logistics companies \u2014 long seen as low-priority targets \u2014 are now squarely in scope.", "left": "Highlights worker-protection and supply-chain resilience angle; calls for federal regulatory baseline for transport-industry cybersecurity.", "right": "Highlights criminal-enterprise framing and law-enforcement success; favors prosecution and industry-led security investment over new mandates.", "sources": [{"name": "SecurityWeek", "url": "https://www.securityweek.com/"}]}, {"headline": "Linux kernel cryptographic flaw introduced in 2017 \u2014 affects all distros", "summary": "A vulnerability in the Linux kernel's `authencesn` cryptographic template, present since 2017, affects every distribution. Disclosed April 30, it joins a cluster of recent platform bugs including a critical GitHub CVE-2026-3854 RCE (exploitable via a single git push) and a critical cPanel auth bypass \u2014 all warranting urgent admin attention.", "left": "Underscores the case for federal funding of open-source maintenance and security audits.", "right": "Underscores private-sector responsibility and the strength of distributed open-source disclosure processes.", "sources": [{"name": "SecurityWeek", "url": "https://www.securityweek.com/"}, {"name": "The Hacker News", "url": "https://thehackernews.com/"}]}], "political": [{"headline": "Supreme Court guts Voting Rights Act Section 2 in Louisiana v. Callais (6-3)", "summary": "On April 29, the Court ruled 6-3 along ideological lines that Louisiana's congressional map \u2014 which created a second majority-Black district under a lower-court order \u2014 is an unconstitutional racial gerrymander. Alito's majority opinion did not formally strike Section 2, but reframed it to require proof of *intentional* discrimination rather than just discriminatory effect. Louisiana suspended its May 16 primary; Alabama, Florida, and other states are now scrambling to redraw maps. Analysts estimate up to 12 House seats could shift Republican; risk of the largest drop in Black congressional representation since Reconstruction.", "left": "Calls it a 'power grab' that hollows out civil-rights-era protections; Kagan's dissent says the majority left the VRA 'all but a dead letter.' Frames as an attack on minority political representation.", "right": "Calls it a step toward a 'colorblind Constitution' (echoing Roberts/Alito jurisprudence); argues VRA was being used to entrench partisan rather than racial outcomes; treats the map as illegal race-based districting.", "sources": [{"name": "SCOTUSblog", "url": "https://www.scotusblog.com/2026/04/in-major-voting-rights-act-case-supreme-court-strikes-down-redistricting-map-challenged-as-racia/"}, {"name": "NPR", "url": "https://www.npr.org/2026/04/29/nx-s1-5754657/supreme-court-louisiana-redistricting"}, {"name": "PBS NewsHour", "url": "https://www.pbs.org/newshour/show/how-the-supreme-courts-decision-weakens-the-voting-rights-act-nationwide"}, {"name": "Washington Post", "url": "https://www.washingtonpost.com/politics/2026/04/29/supreme-court-voting-rights-act-louisiana-voting-maps/"}, {"name": "Wikipedia (live)", "url": "https://en.wikipedia.org/wiki/Louisiana_v._Callais"}]}, {"headline": "Trump reviews Iran's 14-point plan as IRGC sets 30-day deadline on Hormuz blockade", "summary": "Iran's Revolutionary Guard set a 30-day deadline for the US to lift its naval blockade of Iranian ports, calling it a choice between 'an impossible military operation or a bad deal.' Trump said he is reviewing the plan delivered through Pakistani mediation but is 'not happy with it.' Tehran's proposal: reopen the Strait of Hormuz and end the blockade now in exchange for US/Israeli non-attack guarantees, with nuclear-program negotiations deferred for a later phase. Talks come after February strikes that killed Supreme Leader Khamenei and the April ceasefire. Disputes remain on uranium enrichment, missiles, and proxy funding.", "left": "Frames Trump's posture as inconsistent and overly hawkish; emphasizes humanitarian toll, oil-market disruption, and concerns about extended military action without congressional authorization.", "right": "Frames the blockade and February strikes as effective leverage that brought Iran to the table; emphasizes 'no nukes for Iran' as the bottom line and credits administration toughness for the ceasefire holding.", "sources": [{"name": "Reuters / CNBC", "url": "https://www.cnbc.com/2026/05/02/trump-iran-strait-of-hormuz.html"}, {"name": "Al Jazeera", "url": "https://www.aljazeera.com/news/liveblog/2026/5/3/iran-war-live-trump-says-reviewing-14-point-plan-israel-pounds-lebanon"}, {"name": "Arms Control Association", "url": "https://www.armscontrol.org/act/2026-05/news/trump-dismisses-using-nuclear-arms-against-iran-talks-stall"}, {"name": "UK House of Commons Library", "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10637/"}]}, {"headline": "Mid-cycle redistricting war escalates after Callais ruling", "summary": "States are racing to respond to the SCOTUS decision. Florida passed new maps the day of the ruling. Alabama Governor Ivey called a May 1 special session. Tennessee, Missouri, and Texas are weighing changes that could net Republicans additional seats. Some Democratic-led states (e.g. New Jersey, California via Prop 50) are preparing counter-redraws. The Cook Political Report and PBS analysts say 2026 impact will be limited because most primary windows have closed, but 2028 maps will be heavily reshaped.", "left": "Treats GOP-led redraws as undemocratic 'mid-cycle' power consolidation enabled by a partisan court; calls for federal redistricting reform.", "right": "Treats the redraws as legitimate correction of unconstitutional race-based maps and argues Democrats have used the same tactics for years (Prop 50 in CA cited as parallel).", "sources": [{"name": "CNN Politics", "url": "https://www.cnn.com/election/2026"}, {"name": "PBS NewsHour", "url": "https://www.pbs.org/newshour/show/how-the-supreme-courts-decision-weakens-the-voting-rights-act-nationwide"}, {"name": "NPR", "url": "https://www.npr.org/2026/04/30/nx-s1-5805050/supreme-court-voting-rights-congressional-black-caucus"}]}]};
+  document.getElementById('cpts-pct').textContent = pct.toFixed(0) + '%';
+  document.getElementById('cpts-done').textContent = `${done}/${mods.length}`;
+  document.getElementById('cpts-cubes').textContent = totalHours.toFixed(0) + 'h';
+  document.getElementById('cpts-fill').style.width = pct + '%';
 
-  async function bootstrapBriefing() {
-    try {
-      const existing = localStorage.getItem(KEY);
-      if (existing) {
-        const parsed = JSON.parse(existing);
-        if (parsed.news && parsed.news.cyber && parsed.news.cyber.length) return;
+  // ETA — assume 8 hr/week
+  const weeks = Math.ceil(remainingEst / 8);
+  document.getElementById('cpts-eta').textContent = remainingEst === 0 ? 'ready!' : `~${weeks} wks`;
+
+  // Streak
+  document.getElementById('cpts-streak').textContent = studyStreak() + 'd';
+
+  // Group by tier
+  const byTier = {};
+  mods.forEach(m => {
+    if (!byTier[m.tier]) byTier[m.tier] = [];
+    byTier[m.tier].push(m);
+  });
+  const tierNames = {
+    0: 'Tier 0 — Information Security Foundations',
+    1: 'Tier 1 — Operating Systems & Tools',
+    2: 'Tier 2 — Web & Network Exploitation',
+    3: 'Tier 3 — Privilege Escalation',
+    4: 'Tier 4 — Reporting & Capstone'
+  };
+  let html = '';
+  Object.keys(byTier).sort().forEach(tier => {
+    html += `<div class="module-tier">
+      <div class="module-tier-title">${tierNames[tier] || 'Tier ' + tier}</div>`;
+    byTier[tier].forEach(m => {
+      const cls = m.status === 'done' ? 'done' : m.status === 'in-progress' ? 'in-progress' : '';
+      const icon = m.status === 'done' ? '✓' : m.status === 'in-progress' ? '~' : '';
+      html += `<div class="module-row ${cls}" onclick="cycleModule('${m.id}')">
+        <span class="m-status">${icon}</span>
+        <span class="m-name">${escape(m.name)}</span>
+        <span class="m-est">~${m.est}h</span>
+        <span class="m-tier">T${m.tier}</span>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById('cpts-modules').innerHTML = html;
+}
+async function cycleModule(mid) {
+  const m = state.cpts.modules.find(x => x.id === mid);
+  if (!m) return;
+  const order = ['todo', 'in-progress', 'done'];
+  m.status = order[(order.indexOf(m.status) + 1) % order.length];
+  await save(); render();
+}
+async function logStudy() {
+  const hours = parseFloat(document.getElementById('study-hours').value);
+  const note = document.getElementById('study-note').value.trim();
+  if (isNaN(hours) || hours <= 0) return alert('enter hours');
+  state.cpts.studyHours.push({ date: todayStr(), hours, note });
+  document.getElementById('study-hours').value = '';
+  document.getElementById('study-note').value = '';
+  await save(); render();
+}
+function studyStreak() {
+  if (!state.cpts.studyHours.length) return 0;
+  const dates = new Set(state.cpts.studyHours.map(s => s.date));
+  let streak = 0;
+  let d = new Date();
+  while (true) {
+    const ds = d.toISOString().slice(0,10);
+    if (dates.has(ds)) {
+      streak++;
+      d.setDate(d.getDate() - 1);
+    } else {
+      // allow today to not count yet
+      if (streak === 0 && ds === todayStr()) {
+        d.setDate(d.getDate() - 1);
+        continue;
       }
-    } catch (e) {}
-    setTimeout(async () => {
-      state.news = { ...__BUNDLED_BRIEFING__, updated: Date.now() };
-      await save();
-      render();
-    }, 800);
+      break;
+    }
   }
+  return streak;
+}
 
-  setInterval(tickClock, 1000);
-  tickClock();
-  load();
-  bootstrapBriefing();
+// ============================================================
+// EVENTS / READING / LOGS / NEWS / IMPORT-EXPORT
+// (existing logic, condensed)
+// ============================================================
+function renderEvents() {
+  const el = document.getElementById('cal-list');
+  const sorted = [...state.events].sort((a, b) => new Date(a.date) - new Date(b.date));
+  if (!sorted.length) { el.innerHTML = '<div class="empty">no events scheduled</div>'; return; }
+  el.innerHTML = sorted.map(e => {
+    const d = new Date(e.date + 'T00:00');
+    const ds = d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+    const past = d < new Date(new Date().toDateString()) && !e.done;
+    return `<div class="item cal ${e.done ? 'done' : ''}">
+      <span class="check ${e.done ? 'checked' : ''}" onclick="toggleEvent('${e.id}')"></span>
+      <div class="body"><div class="title">${escape(e.title)}</div>
+        <div class="sub">${ds}${e.time ? ' · ' + escape(e.time) : ''}${e.location ? ' · ' + escape(e.location) : ''}${past ? ' · <span style="color:var(--red)">past</span>' : ''}</div>
+      </div>
+      <div class="actions"><button class="x-btn" onclick="deleteEvent('${e.id}')">×</button></div>
+    </div>`;
+  }).join('');
+}
+async function addEvent() {
+  const title = document.getElementById('c-title').value.trim();
+  const date = document.getElementById('c-date').value;
+  const time = document.getElementById('c-time').value.trim();
+  const loc = document.getElementById('c-loc').value.trim();
+  if (!title || !date) return;
+  state.events.push({ id: id(), title, date, time, location: loc, done: false });
+  ['c-title','c-date','c-time','c-loc'].forEach(i => document.getElementById(i).value = '');
+  await save(); render();
+}
+async function toggleEvent(eid) {
+  const e = state.events.find(x => x.id === eid);
+  if (e) { e.done = !e.done; await save(); render(); }
+}
+async function deleteEvent(eid) {
+  state.events = state.events.filter(e => e.id !== eid);
+  await save(); render();
+}
+
+function renderReading() {
+  const el = document.getElementById('reading-list');
+  if (!state.reading.length) { el.innerHTML = '<div class="empty">empty</div>'; return; }
+  el.innerHTML = state.reading.map(r => `<div class="item read ${r.status === 'done' ? 'done' : ''}">
+    <span class="check ${r.status === 'done' ? 'checked' : ''}" onclick="cycleReading('${r.id}')"></span>
+    <div class="body"><div class="title">${escape(r.title)}</div>
+      <div class="sub">${r.author ? escape(r.author) + ' · ' : ''}<span style="color:var(--magenta)">${escape(r.status)}</span></div>
+    </div>
+    <div class="actions"><button class="x-btn" onclick="deleteReading('${r.id}')">×</button></div>
+  </div>`).join('');
+}
+async function addReading() {
+  const title = document.getElementById('r-title').value.trim();
+  const author = document.getElementById('r-author').value.trim();
+  const status = document.getElementById('r-status').value;
+  if (!title) return;
+  state.reading.push({ id: id(), title, author, status });
+  ['r-title','r-author'].forEach(i => document.getElementById(i).value = '');
+  await save(); render();
+}
+async function cycleReading(rid) {
+  const r = state.reading.find(x => x.id === rid);
+  if (!r) return;
+  const order = ['want','reading','done'];
+  r.status = order[(order.indexOf(r.status) + 1) % order.length];
+  await save(); render();
+}
+async function deleteReading(rid) {
+  state.reading = state.reading.filter(r => r.id !== rid);
+  await save(); render();
+}
+
+function renderLogs() {
+  const el = document.getElementById('log-list');
+  if (!state.logs.length) { el.innerHTML = '<div class="empty">no entries yet</div>'; return; }
+  const sorted = [...state.logs].sort((a, b) => b.ts - a.ts);
+  el.innerHTML = sorted.map(l => `<div class="note-entry">
+    <div class="date"><span>$ ${formatLogDate(l.ts)}</span>
+      <button class="x-btn" onclick="deleteLog('${l.id}')">×</button>
+    </div>
+    <div class="body">${escape(l.text)}</div>
+  </div>`).join('');
+}
+async function addLog() {
+  const t = document.getElementById('log-text').value.trim();
+  if (!t) return;
+  state.logs.push({ id: id(), text: t, ts: Date.now() });
+  document.getElementById('log-text').value = '';
+  await save(); render();
+}
+async function deleteLog(lid) {
+  if (!confirm('delete?')) return;
+  state.logs = state.logs.filter(l => l.id !== lid);
+  await save(); render();
+}
+
+function renderNews() {
+  const el = document.getElementById('news-content');
+  const statusEl = document.getElementById('news-status');
+  const updatedEl = document.getElementById('news-updated');
+  if (!state.news || (!state.news.cyber?.length && !state.news.political?.length)) {
+    updatedEl.textContent = 'never';
+    statusEl.textContent = 'no briefing yet';
+    el.innerHTML = `<div class="news-empty">nothing loaded yet.<br/>ask claude any time after 8pm: <span class="cmd">"daily briefing please"</span></div>`;
+    return;
+  }
+  const updated = new Date(state.news.updated);
+  updatedEl.textContent = updated.toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+  const ageHours = (Date.now() - state.news.updated) / 3600000;
+  statusEl.textContent = ageHours < 24 ? '● fresh briefing' : '● stale — request refresh';
+  statusEl.className = ageHours < 24 ? 'fresh' : 'stale';
+  let html = '';
+  if (state.news.cyber?.length) html += `<div class="news-section cyber"><div class="news-section-title">cyber</div>${state.news.cyber.map(renderStory).join('')}</div>`;
+  if (state.news.political?.length) html += `<div class="news-section political"><div class="news-section-title">political</div>${state.news.political.map(renderStory).join('')}</div>`;
+  el.innerHTML = html;
+}
+function renderStory(s) {
+  const sources = (s.sources || []).map(src => typeof src === 'string'
+    ? `<span>${escape(src)}</span>`
+    : `<a href="${escape(src.url || '#')}" target="_blank" rel="noopener">${escape(src.name || src.url)}</a>`).join('');
+  return `<div class="news-story">
+    <div class="headline">${escape(s.headline || '')}</div>
+    <div class="summary">${escape(s.summary || '')}</div>
+    ${(s.left || s.right) ? `<div class="perspectives">
+      <div class="perspective left"><div class="label">◀ left frame</div><div class="text">${escape(s.left || '—')}</div></div>
+      <div class="perspective right"><div class="label">right frame ▶</div><div class="text">${escape(s.right || '—')}</div></div>
+    </div>` : ''}
+    ${sources ? `<div class="sources">sources: ${sources}</div>` : ''}
+  </div>`;
+}
+function requestNewsRefresh() {
+  alert('Open Claude and ask "daily briefing please". Copy the JSON Claude returns and paste it via "📰 paste news briefing" below.');
+}
+async function clearNews() {
+  if (!confirm('clear briefing?')) return;
+  state.news = null;
+  await save(); render();
+}
+
+// Backup / restore
+function exportData() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `dashboard-${todayStr()}.json`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+async function importData() {
+  const text = document.getElementById('import-text').value.trim();
+  if (!text) return;
+  try {
+    const parsed = JSON.parse(text);
+    if (!confirm('replace all data? export first if unsure.')) return;
+    state = deepMerge(state, parsed);
+    await save(); render();
+    document.getElementById('import-text').value = '';
+    document.getElementById('import-area').style.display = 'none';
+    alert('imported');
+  } catch (e) { alert('invalid JSON: ' + e.message); }
+}
+async function importNewsPrompt() {
+  const text = prompt('paste news JSON');
+  if (!text) return;
+  try {
+    const parsed = JSON.parse(text);
+    const newsObj = parsed.news || parsed;
+    if (!newsObj.cyber && !newsObj.political) return alert('JSON must have cyber or political array');
+    state.news = { ...newsObj, updated: Date.now() };
+    await save(); render();
+  } catch (e) { alert('invalid JSON: ' + e.message); }
+}
+async function resetAll() {
+  if (!confirm('wipe everything?')) return;
+  if (!confirm('really sure?')) return;
+  localStorage.removeItem(KEY);
+  location.reload();
+}
+
+window.__updateNews = async function(payload) {
+  state.news = { ...payload, updated: Date.now() };
+  await save(); render();
+};
+
+// ============================================================
+// UTIL
+// ============================================================
+function escape(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function formatLogDate(ts) {
+  return new Date(ts).toLocaleString(undefined, { weekday:'short', month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
+}
+function tickClock() {
+  document.getElementById('datetime').textContent = new Date().toLocaleString(undefined, {
+    weekday:'short', year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit'
+  });
+}
+
+document.getElementById('banner').textContent = banners[0];
+setInterval(tickClock, 1000);
+tickClock();
+load();
+
 </script>
 </body>
 </html>
