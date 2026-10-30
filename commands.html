@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commands - Your Name</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="name" href="index.html">Your Name</a>
+    <nav>
+      <a href="index.html">about</a>
+      <a href="challenges.html">challenges</a>
+      <a href="projects.html">projects</a>
+      <a class="current" href="commands.html">commands</a>
+    </nav>
+  </header>
+
+  <h1>Commands</h1>
+  <p class="muted">Stuff I run all the time. Add more in <code>commands.js</code>.</p>
+
+  <input id="search" type="text" placeholder="search (e.g. nmap, suid, shell)" autofocus>
+  <div id="results"></div>
+
+  <script src="commands.js"></script>
+  <script>
+    const box = document.getElementById("search");
+    const out = document.getElementById("results");
+
+    function render(q) {
+      q = q.toLowerCase().trim();
+      out.innerHTML = "";
+
+      const hits = commands.filter(c =>
+        (c.name + " " + c.desc + " " + c.tags.join(" ") + " " + c.cmd)
+          .toLowerCase().includes(q)
+      );
+
+      if (hits.length === 0) {
+        out.textContent = "nothing found.";
+        return;
+      }
+
+      for (const c of hits) {
+        const div = document.createElement("div");
+        div.className = "cmd";
+
+        const h = document.createElement("h3");
+        h.textContent = c.name;
+
+        const p = document.createElement("p");
+        p.textContent = c.desc;
+
+        const tags = document.createElement("p");
+        for (const t of c.tags) {
+          const s = document.createElement("span");
+          s.className = "tag";
+          s.textContent = "#" + t;
+          tags.appendChild(s);
+        }
+
+        const pre = document.createElement("pre");
+        const code = document.createElement("code");
+        code.textContent = c.cmd;
+        const btn = document.createElement("button");
+        btn.textContent = "copy";
+        btn.onclick = () => {
+          navigator.clipboard.writeText(c.cmd);
+          btn.textContent = "copied";
+          setTimeout(() => btn.textContent = "copy", 1000);
+        };
+        pre.appendChild(code);
+        pre.appendChild(btn);
+
+        div.append(h, p, tags, pre);
+        out.appendChild(div);
+      }
+    }
+
+    // lets you link to a search, e.g. commands.html#nmap
+    box.value = decodeURIComponent(location.hash.slice(1));
+    box.addEventListener("input", () => {
+      history.replaceState(null, "", box.value ? "#" + encodeURIComponent(box.value) : location.pathname);
+      render(box.value);
+    });
+    render(box.value);
+  </script>
+
+  <footer>last updated: yyyy-mm-dd</footer>
+</body>
+</html>
