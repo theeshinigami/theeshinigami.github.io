@@ -1,0 +1,225 @@
+{
+  "note": "Single source of truth for the writeups index. Each `file` is a body-only Markdown file under data/writeups/. OS, difficulty, tags and summaries were inferred during migration from Notion - edit freely. status: complete | partial | stub.",
+  "writeups": [
+    {
+      "slug": "wingdata",
+      "title": "WingData",
+      "file": "wingdata.md",
+      "os": "Linux",
+      "difficulty": "Medium",
+      "date": "2026-06-26",
+      "status": "complete",
+      "tags": ["wing-ftp", "CVE-2025-4517", "metasploit", "hashcat", "symlink", "sudo", "rce"],
+      "summary": "Wing FTP null-byte RCE, salt-cracked creds, then a root symlink attack on a sudo backup-restore script."
+    },
+    {
+      "slug": "blueedge",
+      "title": "BlueEdge (Second Round)",
+      "file": "blueedge.md",
+      "os": "Windows",
+      "difficulty": "Unknown",
+      "date": "2026-03-25",
+      "status": "partial",
+      "tags": ["active-directory", "mimikatz", "dcsync", "golden-ticket", "psexec"],
+      "summary": "Child-to-parent domain escalation: DCSync the krbtgt, forge a Golden Ticket, then PsExec across."
+    },
+    {
+      "slug": "thing",
+      "title": "Thing",
+      "file": "thing.md",
+      "os": "Other",
+      "difficulty": "Unknown",
+      "date": "2026-03-23",
+      "status": "stub",
+      "tags": ["pivoting", "ssh", "tcpdump", "pcap", "wireshark"],
+      "summary": "Reverse callback, pivot to a router, sniff with tcpdump, and analyze the captured pcap."
+    },
+    {
+      "slug": "haze",
+      "title": "Haze",
+      "file": "haze.md",
+      "os": "Windows",
+      "difficulty": "Hard",
+      "date": "2026-03-22",
+      "status": "complete",
+      "tags": ["active-directory", "splunk", "directory-traversal", "password-spray", "evil-winrm", "bloodyAD"],
+      "summary": "Splunk directory traversal leaks creds, password-spray into the domain, then abuse writable ACLs."
+    },
+    {
+      "slug": "gem",
+      "title": "Gem",
+      "file": "gem.md",
+      "os": "Linux",
+      "difficulty": "Unknown",
+      "date": "2026-01-31",
+      "status": "complete",
+      "tags": ["ruby-on-rails", "CVE-2019-5418", "path-traversal", "yaml-deserialization", "sqlite"],
+      "summary": "Rails path-traversal for an SSH key, crack a sqlite-stored password, then YAML.load deserialization to root."
+    },
+    {
+      "slug": "secret",
+      "title": "Secret",
+      "file": "secret.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-09-19",
+      "status": "partial",
+      "tags": ["nodejs", "git", "source-code", "jwt"],
+      "summary": "Leaked source zip with a .git history exposing secrets in a Node.js app on port 3000."
+    },
+    {
+      "slug": "evilcups",
+      "title": "EvilCUPS",
+      "file": "evilcups.md",
+      "os": "Linux",
+      "difficulty": "Medium",
+      "date": "2025-09-18",
+      "status": "complete",
+      "tags": ["cups", "CVE-2024-47176", "foomatic", "reverse-shell", "printing"],
+      "summary": "CUPS Foomatic command execution for a foothold, then recover a password from a spooled print job."
+    },
+    {
+      "slug": "blunder",
+      "title": "Blunder",
+      "file": "blunder.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-09-18",
+      "status": "complete",
+      "tags": ["bludit", "CVE-2019-17240", "brute-force", "cewl", "sudo"],
+      "summary": "Bludit brute-force bypass and file-upload RCE, then a sudo /bin/bash CVE to reach root."
+    },
+    {
+      "slug": "tabby",
+      "title": "Tabby",
+      "file": "tabby.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-09-01",
+      "status": "complete",
+      "tags": ["lfi", "tomcat", "webshell", "zip2john", "lxd", "privesc"],
+      "summary": "LFI leaks Tomcat manager creds for a webshell; crack a backup zip, then abuse the lxd group for root."
+    },
+    {
+      "slug": "gallery",
+      "title": "Gallery",
+      "file": "gallery.md",
+      "os": "Linux",
+      "difficulty": "Unknown",
+      "date": "2025-08-25",
+      "status": "stub",
+      "tags": ["sqli", "sqlmap", "web"],
+      "summary": "Form-based SQL injection exploited with sqlmap (reference stub)."
+    },
+    {
+      "slug": "analytical",
+      "title": "Analytical",
+      "file": "analytical.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-07-16",
+      "status": "complete",
+      "tags": ["metabase", "metasploit", "env-vars", "gameoverlay", "suid"],
+      "summary": "Metabase exploit for a shell, creds in environment variables, then the GameOverlay SUID kernel privesc."
+    },
+    {
+      "slug": "crossfit",
+      "title": "Crossfit",
+      "file": "crossfit.md",
+      "os": "Linux",
+      "difficulty": "Insane",
+      "date": "2025-06-23",
+      "status": "partial",
+      "tags": ["xss", "cors", "ftp", "wfuzz", "stored-xss"],
+      "summary": "Stored XSS into a security report, then CORS-based subdomain discovery toward the ftp vhost (in progress)."
+    },
+    {
+      "slug": "backdoor",
+      "title": "Backdoor",
+      "file": "backdoor.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-05-18",
+      "status": "complete",
+      "tags": ["wordpress", "directory-traversal", "gdbserver", "metasploit", "screen"],
+      "summary": "WordPress plugin directory traversal to fingerprint gdbserver on 1337, exploit it, then attach root's screen session."
+    },
+    {
+      "slug": "alert",
+      "title": "Alert",
+      "file": "alert.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-05-04",
+      "status": "complete",
+      "tags": ["xss", "markdown", "lfi", "hashcat", "reverse-shell"],
+      "summary": "Markdown XSS exfiltrates a config via LFI; crack the hash, then a root-run localhost webserver for privesc."
+    },
+    {
+      "slug": "swagshop",
+      "title": "Swagshop",
+      "file": "swagshop.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-04-24",
+      "status": "complete",
+      "tags": ["magento", "sqli", "rce", "php-deserialization", "sudo", "vi"],
+      "summary": "Magento SQLi to create an admin, then a patched deserialization RCE; root via sudo vi."
+    },
+    {
+      "slug": "twomillion",
+      "title": "TwoMillion",
+      "file": "twomillion.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-04-18",
+      "status": "stub",
+      "tags": ["api", "invite-code", "overlayfs"],
+      "summary": "Placeholder - no notes captured yet."
+    },
+    {
+      "slug": "nibbles",
+      "title": "Nibbles",
+      "file": "nibbles.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-04-09",
+      "status": "complete",
+      "tags": ["nibbleblog", "metasploit", "sudo", "cron", "reverse-shell"],
+      "summary": "Guess the Nibbleblog admin password, exploit the CMS, then abuse a sudo monitor.sh script for root."
+    },
+    {
+      "slug": "wallet",
+      "title": "Wallet Walkthrough",
+      "file": "wallet.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-04-05",
+      "status": "complete",
+      "tags": ["cms", "rce", "reverse-shell", "openssl", "gtfobins", "tar"],
+      "summary": "Vulnerable CMS to a PHP reverse shell, decrypt an OpenSSL password vault, then a GTFOBins tar sudo escape."
+    },
+    {
+      "slug": "academy",
+      "title": "Academy",
+      "file": "academy.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-04-05",
+      "status": "complete",
+      "tags": ["idor", "laravel", "metasploit", "linpeas", "gtfobins", "composer"],
+      "summary": "Register as admin via a roleid tweak, Laravel CVE for a shell, then GTFOBins composer for root."
+    },
+    {
+      "slug": "armageddon",
+      "title": "Armageddon",
+      "file": "armageddon.md",
+      "os": "Linux",
+      "difficulty": "Easy",
+      "date": "2025-04-05",
+      "status": "complete",
+      "tags": ["drupal", "drupalgeddon2", "CVE-2018-7600", "metasploit", "hashcat", "snap", "dirty-sock"],
+      "summary": "Drupalgeddon2 RCE, crack a DB hash for SSH, then the dirty_sock snap exploit for root."
+    }
+  ]
+}

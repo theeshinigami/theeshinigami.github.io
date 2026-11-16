@@ -1,40 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="home">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name</title>
-  <link rel="stylesheet" href="style.css">
+  <title>theeshinigami — HTB Knowledge Base</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <a class="name" href="index.html">Your Name</a>
-    <nav>
-      <a class="current" href="index.html">about</a>
-      <a href="challenges.html">challenges</a>
-      <a href="projects.html">projects</a>
-      <a href="commands.html">commands</a>
-    </nav>
-  </header>
+  <header class="site-header" id="site-header" role="banner"></header>
 
-  <h1>About</h1>
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero__prompt">theeshinigami@htb:~$</div>
+      <div class="hero__wordmark">theeshinigami</div>
+      <p class="hero__tagline">Hack The Box field notes. Writeups, commands, and techniques collected along the way.</p>
+      <div class="hero__stats" id="hero-stats">
+        <span><span class="hero__stat-value" id="stat-writeups">--</span> writeups</span>
+        <span><span class="hero__stat-value" id="stat-commands">--</span> commands</span>
+      </div>
+    </div>
+  </section>
 
-  <p>
-    Hi, I'm Your Name. Write a few sentences here about who you are, what you're
-    into (CTFs, pentesting, whatever), and what you're working on right now.
-  </p>
+  <main class="container" id="main">
+    <section class="recent-section">
+      <div class="section-label">Recent writeups</div>
+      <div class="recent-grid" id="recent-writeups"></div>
+      <div class="mt-1">
+        <a href="writeups.html" class="btn">All writeups</a>
+      </div>
+    </section>
 
-  <p>
-    This site is mostly notes for myself: writeups for boxes and challenges I've
-    done, projects I've built, and the commands I keep looking up.
-  </p>
+    <section class="cta-block">
+      <div class="cta-block__inner">
+        <div class="cta-block__text">
+          <strong id="cta-cmd-count">200</strong> commands, tools, and techniques — searchable and filterable.
+        </div>
+        <a href="commands.html" class="btn btn--primary">Command reference</a>
+      </div>
+    </section>
+  </main>
 
-  <h2>Contact</h2>
-  <ul>
-    <li>GitHub: <a href="https://github.com/yourname">github.com/yourname</a></li>
-    <li>Email: you@example.com</li>
-  </ul>
+  <footer class="site-footer" id="site-footer" role="contentinfo"></footer>
 
-  <footer>last updated: yyyy-mm-dd</footer>
+  <script src="assets/js/common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Load writeup stats & recent
+      fetchJSON('data/writeups.json')
+        .then(function (data) {
+          var writeups = (data.writeups || []).sort(function (a, b) {
+            return b.date.localeCompare(a.date);
+          });
+          document.getElementById('stat-writeups').textContent = writeups.length;
+
+          var recent = writeups.slice(0, 5);
+          var grid = document.getElementById('recent-writeups');
+          grid.innerHTML = recent.map(function (w) {
+            var diffLabel = w.difficulty === 'Unknown' ? '\u2014' : w.difficulty;
+            return '<a class="recent-card" href="writeup.html?slug=' + encodeURIComponent(w.slug) + '">' +
+              '<div class="recent-card__title">' + escapeHTML(w.title) + '</div>' +
+              '<div class="recent-card__meta">' +
+                '<span>' + escapeHTML(w.os) + '</span>' +
+                '<span>' + diffLabel + '</span>' +
+                '<span>' + w.date + '</span>' +
+              '</div>' +
+              '<div class="recent-card__summary">' + escapeHTML(w.summary) + '</div>' +
+            '</a>';
+          }).join('');
+        })
+        .catch(function () {
+          document.getElementById('recent-writeups').innerHTML =
+            '<div class="error-state">Could not load writeups.</div>';
+        });
+
+      // Load command count
+      fetchJSON('data/commands.json')
+        .then(function (data) {
+          var count = (data.commands || []).length;
+          document.getElementById('stat-commands').textContent = count;
+          document.getElementById('cta-cmd-count').textContent = count;
+        })
+        .catch(function () {});
+    });
+  })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,3733 @@
+{
+  "count": 265,
+  "commands": [
+    {
+      "id": "rail-on-ruby-directory-traversal",
+      "name": "Rail on Ruby Directory Traversal",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "burpsuite",
+      "useCase": "Certain versions of Rails on Ruby are vulnerable to Directory Traversal",
+      "tags": [
+        "burpsuite",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "ruby-yaml-dep-script",
+      "name": "Ruby YAML Dep Script",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "ruby,yaml",
+      "useCase": "Trying to take advantage of an update dependancies",
+      "tags": [
+        "Linux",
+        "Privilege Escalation",
+        "ruby",
+        "yaml"
+      ]
+    },
+    {
+      "id": "clear-event-logs",
+      "name": "Clear event logs",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "wevtutil, PowerShell",
+      "useCase": "Indicator Removal - Clear Windows Event Logs",
+      "tags": [
+        "Exploitation",
+        "PowerShell",
+        "wevtutil",
+        "Windows"
+      ]
+    },
+    {
+      "id": "ssh-key-enumeration",
+      "name": "SSH key enumeration",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "find, ssh",
+      "useCase": "Private Keys - SSH key discovery",
+      "tags": [
+        "Enumeration",
+        "find",
+        "Linux",
+        "ssh"
+      ]
+    },
+    {
+      "id": "on-target-compilation",
+      "name": "On-target compilation",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "gcc, csc.exe",
+      "useCase": "Compile After Delivery - Build on target",
+      "tags": [
+        "Both",
+        "csc.exe",
+        "Exploitation",
+        "gcc"
+      ]
+    },
+    {
+      "id": "evil-winrm-winrm-lateral-movement",
+      "name": "evil-winrm - WinRM lateral movement",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "evil-winrm",
+      "useCase": "Remote Services - Windows Remote Management",
+      "tags": [
+        "evil-winrm",
+        "Lateral Movement",
+        "Windows"
+      ]
+    },
+    {
+      "id": "lfi-php-filter-base64",
+      "name": "LFI - PHP filter base64",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl, PHP filters",
+      "useCase": "Local File Inclusion - Read PHP source",
+      "tags": [
+        "Both",
+        "curl",
+        "Exploitation",
+        "PHP filters"
+      ]
+    },
+    {
+      "id": "dcsync-attack",
+      "name": "DCSync attack",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "impacket, mimikatz",
+      "useCase": "OS Credential Dumping - DCSync domain credentials",
+      "tags": [
+        "impacket",
+        "mimikatz",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "chisel-socks-proxy-tunneling",
+      "name": "Chisel - SOCKS proxy tunneling",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "chisel",
+      "useCase": "Protocol Tunneling - Dynamic port forwarding",
+      "tags": [
+        "Both",
+        "chisel",
+        "Lateral Movement"
+      ]
+    },
+    {
+      "id": "burp-suite-techniques",
+      "name": "Burp Suite techniques",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "Burp Suite",
+      "useCase": "Application Layer Protocol - Web request manipulation",
+      "tags": [
+        "Both",
+        "Burp Suite",
+        "Enumeration"
+      ]
+    },
+    {
+      "id": "ssh-l-local-remote-port-user-host",
+      "name": "ssh -L <local>:<remote>:<port> user@host",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "ssh",
+      "useCase": "Local port forwarding",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "ssh"
+      ]
+    },
+    {
+      "id": "invoke-obfuscation-av-evasion",
+      "name": "Invoke-Obfuscation - AV evasion",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "Invoke-Obfuscation",
+      "useCase": "Obfuscated Files or Information - PowerShell obfuscation",
+      "tags": [
+        "Exploitation",
+        "Invoke-Obfuscation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "wireless-attacks-aircrack-ng",
+      "name": "Wireless attacks - aircrack-ng",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "aircrack-ng",
+      "useCase": "Wireless Network Exploitation",
+      "tags": [
+        "aircrack-ng",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "rubeus-kerberos-attacks",
+      "name": "Rubeus - Kerberos attacks",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "Rubeus",
+      "useCase": "Steal or Forge Kerberos Tickets - Multiple attacks",
+      "tags": [
+        "Exploitation",
+        "Rubeus",
+        "Windows"
+      ]
+    },
+    {
+      "id": "nc-file-transfer",
+      "name": "nc file transfer",
+      "category": "File Transfer",
+      "os": "Both",
+      "tool": "netcat",
+      "useCase": "Ingress Tool Transfer - Simple file transfer",
+      "tags": [
+        "Both",
+        "File Transfer",
+        "netcat"
+      ]
+    },
+    {
+      "id": "backdoor-user-creation",
+      "name": "Backdoor user creation",
+      "category": "Persistence",
+      "os": "Both",
+      "tool": "useradd, net user",
+      "useCase": "Create Account - Backdoor users",
+      "tags": [
+        "Both",
+        "net user",
+        "Persistence",
+        "useradd"
+      ]
+    },
+    {
+      "id": "windows-reverse-shells-powershell",
+      "name": "Windows reverse shells - PowerShell",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Command and Scripting - Windows reverse shells",
+      "tags": [
+        "Exploitation",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "regsvr32-squiblydoo",
+      "name": "Regsvr32 - Squiblydoo",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "regsvr32",
+      "useCase": "LOLBin - Regsvr32 bypass",
+      "tags": [
+        "Exploitation",
+        "regsvr32",
+        "Windows"
+      ]
+    },
+    {
+      "id": "arp-spoofing-mitm",
+      "name": "ARP spoofing - MitM",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "bettercap, arpspoof, ettercap",
+      "useCase": "Man-in-the-Middle - ARP poisoning",
+      "tags": [
+        "arpspoof",
+        "bettercap",
+        "ettercap",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "advanced-winrm-usage",
+      "name": "Advanced WinRM usage",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "PowerShell, evil-winrm",
+      "useCase": "Remote Services - WinRM command execution",
+      "tags": [
+        "evil-winrm",
+        "Lateral Movement",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "subdomain-enumeration",
+      "name": "Subdomain enumeration",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "subfinder, amass",
+      "useCase": "Active Scanning - Subdomain discovery",
+      "tags": [
+        "amass",
+        "Both",
+        "Enumeration",
+        "subfinder"
+      ]
+    },
+    {
+      "id": "linux-etc-passwd-exploitation",
+      "name": "Linux /etc/passwd exploitation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "openssl, john",
+      "useCase": "OS Credential Dumping - Writable passwd file",
+      "tags": [
+        "john",
+        "Linux",
+        "openssl",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "keylogging-techniques",
+      "name": "Keylogging techniques",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "logkeys, PowerShell",
+      "useCase": "Input Capture - Keylogging",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "logkeys",
+        "PowerShell"
+      ]
+    },
+    {
+      "id": "kerberoasting-getuserspns",
+      "name": "Kerberoasting - GetUserSPNs",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "impacket, Rubeus",
+      "useCase": "Steal or Forge Kerberos Tickets - Kerberoasting",
+      "tags": [
+        "Exploitation",
+        "impacket",
+        "Rubeus",
+        "Windows"
+      ]
+    },
+    {
+      "id": "lsa-secrets-dumping",
+      "name": "LSA secrets dumping",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "impacket, mimikatz",
+      "useCase": "OS Credential Dumping - LSA secrets and cached creds",
+      "tags": [
+        "impacket",
+        "mimikatz",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "find-perm-4000-2-dev-null",
+      "name": "find / -perm -4000 2>/dev/null",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "find",
+      "useCase": "Find SUID binaries",
+      "tags": [
+        "find",
+        "Linux",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "url-parameter-fuzzing",
+      "name": "URL parameter fuzzing",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "wfuzz, arjun",
+      "useCase": "Active Scanning - Parameter discovery",
+      "tags": [
+        "arjun",
+        "Both",
+        "Enumeration",
+        "wfuzz"
+      ]
+    },
+    {
+      "id": "ad-cs-exploitation-certipy",
+      "name": "AD CS exploitation - Certipy",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "certipy",
+      "useCase": "Domain Policy Modification - AD CS abuse",
+      "tags": [
+        "certipy",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "gobuster-dir-u-url-w-wordlist",
+      "name": "gobuster dir -u <URL> -w <wordlist>",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "gobuster",
+      "useCase": "Directory brute forcing",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "gobuster"
+      ]
+    },
+    {
+      "id": "lazagne-credential-harvester",
+      "name": "LaZagne credential harvester",
+      "category": "Privilege Escalation",
+      "os": "Both",
+      "tool": "LaZagne",
+      "useCase": "OS Credential Dumping - Multi-source credential extraction",
+      "tags": [
+        "Both",
+        "LaZagne",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "network-packet-capture-tcpdump",
+      "name": "Network packet capture - tcpdump",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "tcpdump",
+      "useCase": "Network Sniffing - Packet capture",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "tcpdump"
+      ]
+    },
+    {
+      "id": "ssh-key-theft-and-abuse",
+      "name": "SSH key theft and abuse",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "ssh-keygen, ssh2john",
+      "useCase": "Private Keys - SSH key exploitation",
+      "tags": [
+        "Linux",
+        "Privilege Escalation",
+        "ssh-keygen",
+        "ssh2john"
+      ]
+    },
+    {
+      "id": "screen-capture-techniques",
+      "name": "Screen capture techniques",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "scrot, PowerShell",
+      "useCase": "Screen Capture - Screenshots",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "PowerShell",
+        "scrot"
+      ]
+    },
+    {
+      "id": "path-hijacking",
+      "name": "PATH hijacking",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "export",
+      "useCase": "PATH Hijacking - Environment variable abuse",
+      "tags": [
+        "export",
+        "Linux",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "hash-cracking-hashcat",
+      "name": "Hash cracking - hashcat",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "hashcat",
+      "useCase": "Credential Access - Password cracking",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "hashcat"
+      ]
+    },
+    {
+      "id": "group-policy-abuse-gpp",
+      "name": "Group Policy abuse - GPP",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "PowerView, gpp-decrypt",
+      "useCase": "Domain Policy Modification - GPP password extraction",
+      "tags": [
+        "gpp-decrypt",
+        "PowerView",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "ldapdomaindump-ad-enum",
+      "name": "ldapdomaindump - AD enum",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "ldapdomaindump",
+      "useCase": "Account Discovery - Comprehensive AD enumeration",
+      "tags": [
+        "Enumeration",
+        "ldapdomaindump",
+        "Windows"
+      ]
+    },
+    {
+      "id": "git-repository-disclosure",
+      "name": "Git repository disclosure",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "git, git-dumper",
+      "useCase": "Git Disclosure - Extract repository contents",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "git",
+        "git-dumper"
+      ]
+    },
+    {
+      "id": "impacket-lateral-movement-suite",
+      "name": "Impacket lateral movement suite",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "impacket",
+      "useCase": "Remote Services - Various SMB lateral movement",
+      "tags": [
+        "impacket",
+        "Lateral Movement",
+        "Windows"
+      ]
+    },
+    {
+      "id": "process-injection-techniques",
+      "name": "Process injection techniques",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "PowerSploit, donut",
+      "useCase": "Process Injection - Inject into running processes",
+      "tags": [
+        "donut",
+        "Exploitation",
+        "PowerSploit",
+        "Windows"
+      ]
+    },
+    {
+      "id": "plink-ssh-tunneling-windows",
+      "name": "plink - SSH tunneling (Windows)",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "plink",
+      "useCase": "Protocol Tunneling - SSH tunneling from Windows",
+      "tags": [
+        "Lateral Movement",
+        "plink",
+        "Windows"
+      ]
+    },
+    {
+      "id": "chisel-server-p-port-reverse",
+      "name": "chisel server -p <PORT> --reverse",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "chisel",
+      "useCase": "Setup chisel server for pivoting",
+      "tags": [
+        "Both",
+        "chisel",
+        "Lateral Movement"
+      ]
+    },
+    {
+      "id": "shell-upgrade-techniques",
+      "name": "Shell upgrade techniques",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "python, script, socat",
+      "useCase": "Shell stabilization and upgrade",
+      "tags": [
+        "Exploitation",
+        "Linux",
+        "python",
+        "script",
+        "socat"
+      ]
+    },
+    {
+      "id": "redis-enumeration-exploitation",
+      "name": "Redis enumeration & exploitation",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "redis-cli",
+      "useCase": "Database Exploitation - Redis RCE",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "redis-cli"
+      ]
+    },
+    {
+      "id": "proxy-and-pivoting-setup",
+      "name": "Proxy and pivoting setup",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "ssh, proxychains, chisel",
+      "useCase": "Internal Proxy - Pivot through networks",
+      "tags": [
+        "Both",
+        "chisel",
+        "Lateral Movement",
+        "proxychains",
+        "ssh"
+      ]
+    },
+    {
+      "id": "websocket-attacks",
+      "name": "WebSocket attacks",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "wscat, Burp",
+      "useCase": "WebSocket Exploitation",
+      "tags": [
+        "Both",
+        "Burp",
+        "Exploitation",
+        "wscat"
+      ]
+    },
+    {
+      "id": "linux-cron-persistence",
+      "name": "Linux cron persistence",
+      "category": "Persistence",
+      "os": "Linux",
+      "tool": "crontab, pspy",
+      "useCase": "Scheduled Task/Job - Cron persistence",
+      "tags": [
+        "crontab",
+        "Linux",
+        "Persistence",
+        "pspy"
+      ]
+    },
+    {
+      "id": "linux-password-cracking",
+      "name": "Linux password cracking",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "john, hashcat",
+      "useCase": "Credential Dumping - /etc/shadow",
+      "tags": [
+        "hashcat",
+        "john",
+        "Linux",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "advanced-web-shells",
+      "name": "Advanced web shells",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "PHP",
+      "useCase": "Server Software Component - Advanced web shells",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "PHP"
+      ]
+    },
+    {
+      "id": "nanodump-stealth-lsass-dump",
+      "name": "NanoDump - stealth LSASS dump",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "nanodump, pypykatz",
+      "useCase": "OS Credential Dumping - Evasive LSASS dumping",
+      "tags": [
+        "nanodump",
+        "Privilege Escalation",
+        "pypykatz",
+        "Windows"
+      ]
+    },
+    {
+      "id": "email-collection-local-clients",
+      "name": "Email collection - local clients",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "find, PowerShell",
+      "useCase": "Email Collection - Local email extraction",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "find",
+        "PowerShell"
+      ]
+    },
+    {
+      "id": "http-request-smuggling",
+      "name": "HTTP request smuggling",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "Burp, curl",
+      "useCase": "HTTP Smuggling - Bypass security controls",
+      "tags": [
+        "Both",
+        "Burp",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "windows-cmd-enumeration",
+      "name": "Windows CMD enumeration",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "cmd",
+      "useCase": "Windows Enumeration - CMD commands",
+      "tags": [
+        "cmd",
+        "Enumeration",
+        "Windows"
+      ]
+    },
+    {
+      "id": "ftp-server-setup",
+      "name": "FTP server setup",
+      "category": "File Transfer",
+      "os": "Both",
+      "tool": "pyftpdlib, pure-ftpd",
+      "useCase": "File Transfer Protocols - FTP file transfer",
+      "tags": [
+        "Both",
+        "File Transfer",
+        "pure-ftpd",
+        "pyftpdlib"
+      ]
+    },
+    {
+      "id": "rdp-session-hijacking",
+      "name": "RDP session hijacking",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "tscon, reg",
+      "useCase": "Remote Desktop Protocol - Session hijacking",
+      "tags": [
+        "Lateral Movement",
+        "reg",
+        "tscon",
+        "Windows"
+      ]
+    },
+    {
+      "id": "base64-exfiltration",
+      "name": "Base64 exfiltration",
+      "category": "File Transfer",
+      "os": "Both",
+      "tool": "base64, certutil",
+      "useCase": "Exfiltration - Encode data for text-based exfil",
+      "tags": [
+        "base64",
+        "Both",
+        "certutil",
+        "File Transfer"
+      ]
+    },
+    {
+      "id": "scheduled-tasks-persistence",
+      "name": "Scheduled tasks - persistence",
+      "category": "Persistence",
+      "os": "Both",
+      "tool": "schtasks, cron",
+      "useCase": "Scheduled Task/Job - Create persistence mechanism",
+      "tags": [
+        "Both",
+        "cron",
+        "Persistence",
+        "schtasks"
+      ]
+    },
+    {
+      "id": "crackmapexec-database",
+      "name": "CrackMapExec database",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "crackmapexec",
+      "useCase": "Account Discovery - Track compromised credentials",
+      "tags": [
+        "crackmapexec",
+        "Enumeration",
+        "Windows"
+      ]
+    },
+    {
+      "id": "group-policy-preferences-cpassword",
+      "name": "Group Policy Preferences - cpassword",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "PowerShell, Get-GPPPassword",
+      "useCase": "GPP Credentials - Extract from SYSVOL",
+      "tags": [
+        "Get-GPPPassword",
+        "PowerShell",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "procdump-mimikatz-lsass-dump",
+      "name": "procdump + mimikatz - LSASS dump",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "procdump, mimikatz",
+      "useCase": "OS Credential Dumping - Stealth LSASS extraction",
+      "tags": [
+        "mimikatz",
+        "Privilege Escalation",
+        "procdump",
+        "Windows"
+      ]
+    },
+    {
+      "id": "netexec-next-gen-cme",
+      "name": "NetExec - next-gen CME",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "netexec",
+      "useCase": "Multi-protocol network exploitation",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "netexec"
+      ]
+    },
+    {
+      "id": "nfs-enumeration-and-mounting",
+      "name": "NFS enumeration and mounting",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "showmount, mount",
+      "useCase": "Network Service Discovery - NFS shares",
+      "tags": [
+        "Enumeration",
+        "Linux",
+        "mount",
+        "showmount"
+      ]
+    },
+    {
+      "id": "crackmapexec-mass-exploitation",
+      "name": "crackmapexec - mass exploitation",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "crackmapexec",
+      "useCase": "Remote Services - Multi-protocol network attack",
+      "tags": [
+        "crackmapexec",
+        "Lateral Movement",
+        "Windows"
+      ]
+    },
+    {
+      "id": "xxe-extract-files",
+      "name": "XXE - Extract files",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl, Burp",
+      "useCase": "XML External Entity - File extraction",
+      "tags": [
+        "Both",
+        "Burp",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "ssti-server-side-template-injection",
+      "name": "SSTI - Server-Side Template Injection",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl, Python",
+      "useCase": "Server-Side Template Injection - RCE via templates",
+      "tags": [
+        "Both",
+        "curl",
+        "Exploitation",
+        "Python"
+      ]
+    },
+    {
+      "id": "container-escape-techniques",
+      "name": "Container escape techniques",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "docker, kubectl",
+      "useCase": "Container Escape - Docker/Kubernetes breakout",
+      "tags": [
+        "docker",
+        "kubectl",
+        "Linux",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "zip-archive-data-staging",
+      "name": "Zip archive - data staging",
+      "category": "File Transfer",
+      "os": "Both",
+      "tool": "7z, zip, tar",
+      "useCase": "Archive Collected Data - Compress before exfil",
+      "tags": [
+        "7z",
+        "Both",
+        "File Transfer",
+        "tar",
+        "zip"
+      ]
+    },
+    {
+      "id": "web-service-c2-channels",
+      "name": "Web service C2 channels",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl",
+      "useCase": "Web Service - Legitimate service abuse",
+      "tags": [
+        "Both",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "system-information-gathering",
+      "name": "System information gathering",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "systeminfo, uname",
+      "useCase": "System Discovery - Comprehensive enumeration",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "systeminfo",
+        "uname"
+      ]
+    },
+    {
+      "id": "python-library-hijacking",
+      "name": "Python library hijacking",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "python",
+      "useCase": "Command and Scripting Interpreter - Python privesc",
+      "tags": [
+        "Linux",
+        "Privilege Escalation",
+        "python"
+      ]
+    },
+    {
+      "id": "advanced-bash-techniques",
+      "name": "Advanced Bash techniques",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "bash",
+      "useCase": "Unix Shell - Advanced shell techniques",
+      "tags": [
+        "bash",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "ntlm-relay-attacks",
+      "name": "NTLM relay attacks",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "impacket-ntlmrelayx",
+      "useCase": "Man-in-the-Middle - NTLM relay",
+      "tags": [
+        "impacket-ntlmrelayx",
+        "Lateral Movement",
+        "Windows"
+      ]
+    },
+    {
+      "id": "uac-bypass-techniques",
+      "name": "UAC bypass techniques",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Abuse Elevation Control - UAC bypass",
+      "tags": [
+        "PowerShell",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "rdp-access-techniques",
+      "name": "RDP access techniques",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "xfreerdp, rdesktop",
+      "useCase": "Valid Accounts - RDP lateral movement",
+      "tags": [
+        "Lateral Movement",
+        "rdesktop",
+        "Windows",
+        "xfreerdp"
+      ]
+    },
+    {
+      "id": "nosql-injection",
+      "name": "NoSQL injection",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "MongoDB",
+      "useCase": "Exploit Public-Facing Application - NoSQL injection",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "MongoDB"
+      ]
+    },
+    {
+      "id": "kerbrute-ad-password-spray",
+      "name": "Kerbrute - AD password spray",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "kerbrute",
+      "useCase": "Brute Force - Kerberos password spraying",
+      "tags": [
+        "Exploitation",
+        "kerbrute",
+        "Windows"
+      ]
+    },
+    {
+      "id": "msfvenom-payload-generation",
+      "name": "MSFVenom payload generation",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "msfvenom",
+      "useCase": "Obfuscated Files or Information - Generate payloads",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "msfvenom"
+      ]
+    },
+    {
+      "id": "advanced-timestomping",
+      "name": "Advanced timestomping",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "touch, PowerShell",
+      "useCase": "Timestomp - Advanced timestamp manipulation",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "PowerShell",
+        "touch"
+      ]
+    },
+    {
+      "id": "virtualization-detection",
+      "name": "Virtualization detection",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "systemd-detect-virt",
+      "useCase": "Environment Detection - Identify VMs/containers",
+      "tags": [
+        "Enumeration",
+        "Linux",
+        "systemd-detect-virt"
+      ]
+    },
+    {
+      "id": "windows-dll-hijacking",
+      "name": "Windows DLL Hijacking",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Hijack Execution Flow - DLL Search Order Hijacking",
+      "tags": [
+        "PowerShell",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "certutil-file-download",
+      "name": "certutil - file download",
+      "category": "File Transfer",
+      "os": "Windows",
+      "tool": "certutil",
+      "useCase": "Ingress Tool Transfer - Download files using LOLBin",
+      "tags": [
+        "certutil",
+        "File Transfer",
+        "Windows"
+      ]
+    },
+    {
+      "id": "multi-hop-pivoting",
+      "name": "Multi-hop pivoting",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "ssh",
+      "useCase": "Multi-hop Proxy - Chain pivots",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "ssh"
+      ]
+    },
+    {
+      "id": "automated-windows-privesc-check",
+      "name": "Automated Windows privesc check",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "winPEAS, PowerUp, PrivescCheck",
+      "useCase": "Automated privilege escalation enumeration",
+      "tags": [
+        "PowerUp",
+        "PrivescCheck",
+        "Privilege Escalation",
+        "Windows",
+        "winPEAS"
+      ]
+    },
+    {
+      "id": "ldap-enumeration-ldapsearch",
+      "name": "LDAP enumeration - ldapsearch",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "ldapsearch",
+      "useCase": "Remote System Discovery - Active Directory enumeration",
+      "tags": [
+        "Enumeration",
+        "ldapsearch",
+        "Windows"
+      ]
+    },
+    {
+      "id": "web-fuzzing-gobuster-ffuf",
+      "name": "Web fuzzing - gobuster/ffuf",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "gobuster, ffuf, wfuzz",
+      "useCase": "Exploit Public-Facing Application - Directory/parameter fuzzing",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "ffuf",
+        "gobuster",
+        "wfuzz"
+      ]
+    },
+    {
+      "id": "ssh-tunneling-and-pivoting",
+      "name": "SSH tunneling and pivoting",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "ssh",
+      "useCase": "SSH Tunneling - Port forwarding",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "ssh"
+      ]
+    },
+    {
+      "id": "delegation-abuse-s4u2self",
+      "name": "Delegation abuse - S4U2Self",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "Rubeus, PowerView, impacket",
+      "useCase": "Kerberos Delegation - Constrained/unconstrained delegation",
+      "tags": [
+        "impacket",
+        "PowerView",
+        "Privilege Escalation",
+        "Rubeus",
+        "Windows"
+      ]
+    },
+    {
+      "id": "exfiltration-over-c2-channel",
+      "name": "Exfiltration over C2 channel",
+      "category": "File Transfer",
+      "os": "Both",
+      "tool": "curl, Invoke-WebRequest",
+      "useCase": "Exfiltration Over C2 Channel - Upload via HTTP",
+      "tags": [
+        "Both",
+        "curl",
+        "File Transfer",
+        "Invoke-WebRequest"
+      ]
+    },
+    {
+      "id": "powershell-history-enumeration",
+      "name": "PowerShell history enumeration",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Command History - Extract PowerShell history",
+      "tags": [
+        "Enumeration",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "linux-reverse-shells",
+      "name": "Linux reverse shells",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "bash, nc, python",
+      "useCase": "Command and Scripting Interpreter - Reverse shells",
+      "tags": [
+        "bash",
+        "Exploitation",
+        "Linux",
+        "nc",
+        "python"
+      ]
+    },
+    {
+      "id": "rootkit-detection",
+      "name": "Rootkit detection",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "chkrootkit, rkhunter",
+      "useCase": "Rootkit Detection - Defensive checks",
+      "tags": [
+        "chkrootkit",
+        "Enumeration",
+        "Linux",
+        "rkhunter"
+      ]
+    },
+    {
+      "id": "http-file-servers",
+      "name": "HTTP file servers",
+      "category": "File Transfer",
+      "os": "Both",
+      "tool": "python, php, uploadserver",
+      "useCase": "Ingress Tool Transfer - HTTP file transfer",
+      "tags": [
+        "Both",
+        "File Transfer",
+        "php",
+        "python",
+        "uploadserver"
+      ]
+    },
+    {
+      "id": "mimikatz-credential-dumping",
+      "name": "Mimikatz - credential dumping",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "mimikatz",
+      "useCase": "OS Credential Dumping - Extract credentials from memory",
+      "tags": [
+        "mimikatz",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "nfs-enumeration-and-exploitation",
+      "name": "NFS enumeration and exploitation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "showmount, nmap",
+      "useCase": "Network Service Discovery - NFS no_root_squash exploit",
+      "tags": [
+        "Linux",
+        "nmap",
+        "Privilege Escalation",
+        "showmount"
+      ]
+    },
+    {
+      "id": "dns-exfiltration-and-tunneling",
+      "name": "DNS exfiltration and tunneling",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "dnscat2, iodine",
+      "useCase": "DNS Exfiltration - Covert channel",
+      "tags": [
+        "Both",
+        "dnscat2",
+        "Exploitation",
+        "iodine"
+      ]
+    },
+    {
+      "id": "ssti-payloads",
+      "name": "SSTI payloads",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "Various frameworks",
+      "useCase": "Exploit Public-Facing Application - Template injection",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "Various frameworks"
+      ]
+    },
+    {
+      "id": "windows-credential-extraction-lazagne",
+      "name": "Windows credential extraction - LaZagne",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "lazagne, SessionGopher",
+      "useCase": "Credential Access - Multiple sources",
+      "tags": [
+        "lazagne",
+        "Privilege Escalation",
+        "SessionGopher",
+        "Windows"
+      ]
+    },
+    {
+      "id": "sensitive-file-discovery",
+      "name": "Sensitive file discovery",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "find, PowerShell",
+      "useCase": "File Discovery - Locate sensitive data",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "find",
+        "PowerShell"
+      ]
+    },
+    {
+      "id": "gtfobins-suid-exploitation",
+      "name": "GTFOBins - SUID exploitation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "find, various",
+      "useCase": "SUID Binary Exploitation - GTFOBins techniques",
+      "tags": [
+        "find",
+        "Linux",
+        "Privilege Escalation",
+        "various"
+      ]
+    },
+    {
+      "id": "ld-preload-exploitation",
+      "name": "LD_PRELOAD exploitation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "gcc",
+      "useCase": "Library Hijacking - LD_PRELOAD/LD_LIBRARY_PATH",
+      "tags": [
+        "gcc",
+        "Linux",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "cloud-metadata-exploitation-aws",
+      "name": "Cloud metadata exploitation - AWS",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl, aws cli",
+      "useCase": "Cloud Instance Metadata API - AWS credentials",
+      "tags": [
+        "aws cli",
+        "Both",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "ngrok-reverse-proxy",
+      "name": "Ngrok - reverse proxy",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "ngrok",
+      "useCase": "Acquire Infrastructure - Expose services publicly",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "ngrok"
+      ]
+    },
+    {
+      "id": "mssql-enumeration-exploitation",
+      "name": "MSSQL enumeration & exploitation",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "impacket-mssqlclient",
+      "useCase": "Database Exploitation - MSSQL command execution",
+      "tags": [
+        "Exploitation",
+        "impacket-mssqlclient",
+        "Windows"
+      ]
+    },
+    {
+      "id": "crackmapexec-smb-ip-u-user-p-pass",
+      "name": "crackmapexec smb <IP> -u <user> -p <pass>",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "crackmapexec",
+      "useCase": "SMB enumeration and authentication",
+      "tags": [
+        "crackmapexec",
+        "Enumeration",
+        "Windows"
+      ]
+    },
+    {
+      "id": "bloodhound-cypher-queries",
+      "name": "BloodHound Cypher queries",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "BloodHound, Neo4j",
+      "useCase": "Permission Groups Discovery - AD analysis queries",
+      "tags": [
+        "BloodHound",
+        "Enumeration",
+        "Neo4j",
+        "Windows"
+      ]
+    },
+    {
+      "id": "create-hidden-accounts",
+      "name": "Create hidden accounts",
+      "category": "Persistence",
+      "os": "Windows",
+      "tool": "net, PowerShell",
+      "useCase": "Create Account - Hidden local/domain accounts",
+      "tags": [
+        "net",
+        "Persistence",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "socat-port-forwarding",
+      "name": "socat - port forwarding",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "socat",
+      "useCase": "Protocol Tunneling - Port forwarding relay",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "socat"
+      ]
+    },
+    {
+      "id": "laps-abuse",
+      "name": "LAPS abuse",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "PowerView, CrackMapExec",
+      "useCase": "Valid Accounts - LAPS password extraction",
+      "tags": [
+        "CrackMapExec",
+        "PowerView",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "race-condition-exploitation",
+      "name": "Race condition exploitation",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "Burp Turbo Intruder",
+      "useCase": "Race Condition - Timing attacks",
+      "tags": [
+        "Both",
+        "Burp Turbo Intruder",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "ssh-tunneling-techniques",
+      "name": "SSH tunneling techniques",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "ssh",
+      "useCase": "Remote Services - SSH port forwarding and tunneling",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "ssh"
+      ]
+    },
+    {
+      "id": "dns-zone-transfer-dig-fierce",
+      "name": "DNS zone transfer - dig/fierce",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "dig, fierce",
+      "useCase": "Active Scanning - DNS zone transfer",
+      "tags": [
+        "Both",
+        "dig",
+        "Enumeration",
+        "fierce"
+      ]
+    },
+    {
+      "id": "windows-powershell-reverse-shells",
+      "name": "Windows PowerShell reverse shells",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Command and Scripting Interpreter - Windows reverse shells",
+      "tags": [
+        "Exploitation",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "dns-tunneling-c2",
+      "name": "DNS tunneling - C2",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "dnscat2, iodine",
+      "useCase": "Application Layer Protocol - DNS C2 channel",
+      "tags": [
+        "Both",
+        "dnscat2",
+        "iodine",
+        "Lateral Movement"
+      ]
+    },
+    {
+      "id": "lfi-to-rce-log-poisoning",
+      "name": "LFI to RCE - Log poisoning",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "netcat, curl",
+      "useCase": "Local File Inclusion - Escalate to RCE",
+      "tags": [
+        "curl",
+        "Exploitation",
+        "Linux",
+        "netcat"
+      ]
+    },
+    {
+      "id": "rundll32-execution-lolbin",
+      "name": "Rundll32 execution - LOLBin",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "rundll32",
+      "useCase": "LOLBin - Rundll32 abuse",
+      "tags": [
+        "Exploitation",
+        "rundll32",
+        "Windows"
+      ]
+    },
+    {
+      "id": "ssh-keys-authorized-keys",
+      "name": "SSH keys - authorized_keys",
+      "category": "Persistence",
+      "os": "Linux",
+      "tool": "ssh-keygen",
+      "useCase": "Account Manipulation - SSH Authorized Keys",
+      "tags": [
+        "Linux",
+        "Persistence",
+        "ssh-keygen"
+      ]
+    },
+    {
+      "id": "windows-token-impersonation",
+      "name": "Windows Token Impersonation",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "PowerShell, incognito",
+      "useCase": "Access Token Manipulation - Impersonate privileged tokens",
+      "tags": [
+        "incognito",
+        "PowerShell",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "amsi-bypass-powershell",
+      "name": "AMSI bypass - PowerShell",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Impair Defenses - Bypass AMSI",
+      "tags": [
+        "Exploitation",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "registry-persistence-run-keys",
+      "name": "Registry persistence - Run keys",
+      "category": "Persistence",
+      "os": "Windows",
+      "tool": "reg",
+      "useCase": "Boot or Logon Autostart - Registry Run keys",
+      "tags": [
+        "Persistence",
+        "reg",
+        "Windows"
+      ]
+    },
+    {
+      "id": "cron-job-exploitation",
+      "name": "Cron job exploitation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "crontab, pspy",
+      "useCase": "Cron - Scheduled job abuse",
+      "tags": [
+        "crontab",
+        "Linux",
+        "Privilege Escalation",
+        "pspy"
+      ]
+    },
+    {
+      "id": "proxychains-configuration",
+      "name": "Proxychains configuration",
+      "category": "Lateral Movement",
+      "os": "Linux",
+      "tool": "proxychains",
+      "useCase": "Proxy - Pivot through compromised hosts",
+      "tags": [
+        "Lateral Movement",
+        "Linux",
+        "proxychains"
+      ]
+    },
+    {
+      "id": "ssrf-internal-network-access",
+      "name": "SSRF - Internal network access",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl, Burp",
+      "useCase": "Server-Side Request Forgery - Access internal services",
+      "tags": [
+        "Both",
+        "Burp",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "python3-m-http-server-8000",
+      "name": "python3 -m http.server 8000",
+      "category": "File Transfer",
+      "os": "Linux",
+      "tool": "python",
+      "useCase": "Quick HTTP server for file transfer",
+      "tags": [
+        "File Transfer",
+        "Linux",
+        "python"
+      ]
+    },
+    {
+      "id": "advanced-nmap-techniques",
+      "name": "Advanced nmap techniques",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nmap",
+      "useCase": "Active Scanning - Fast comprehensive port scanning",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "nmap"
+      ]
+    },
+    {
+      "id": "nc-lvnp-port",
+      "name": "nc -lvnp <PORT>",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "netcat",
+      "useCase": "Setup listener for reverse shell",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "netcat"
+      ]
+    },
+    {
+      "id": "sudo-l",
+      "name": "sudo -l",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "sudo",
+      "useCase": "Check sudo privileges",
+      "tags": [
+        "Linux",
+        "Privilege Escalation",
+        "sudo"
+      ]
+    },
+    {
+      "id": "snmp-enumeration-snmpwalk",
+      "name": "SNMP enumeration - snmpwalk",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "snmpwalk, onesixtyone",
+      "useCase": "Network Service Discovery - SNMP information gathering",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "onesixtyone",
+        "snmpwalk"
+      ]
+    },
+    {
+      "id": "malicious-service-creation",
+      "name": "Malicious service creation",
+      "category": "Persistence",
+      "os": "Windows",
+      "tool": "sc, PowerShell",
+      "useCase": "Windows Services - Persistence",
+      "tags": [
+        "Persistence",
+        "PowerShell",
+        "sc",
+        "Windows"
+      ]
+    },
+    {
+      "id": "as-rep-roasting-getnpusers",
+      "name": "AS-REP Roasting - GetNPUsers",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "impacket, Rubeus",
+      "useCase": "Steal or Forge Kerberos Tickets - AS-REP Roasting",
+      "tags": [
+        "Exploitation",
+        "impacket",
+        "Rubeus",
+        "Windows"
+      ]
+    },
+    {
+      "id": "timestomping-modify-timestamps",
+      "name": "Timestomping - modify timestamps",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "PowerShell, touch",
+      "useCase": "Indicator Removal - Timestomp",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "PowerShell",
+        "touch"
+      ]
+    },
+    {
+      "id": "java-deserialization-ysoserial",
+      "name": "Java deserialization - ysoserial",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "ysoserial",
+      "useCase": "Deserialization - Java RCE",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "ysoserial"
+      ]
+    },
+    {
+      "id": "dcom-lateral-movement",
+      "name": "DCOM lateral movement",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "PowerShell, impacket",
+      "useCase": "DCOM - Distributed Component Object Model",
+      "tags": [
+        "impacket",
+        "Lateral Movement",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "csrf-token-bypass",
+      "name": "CSRF token bypass",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "Burp, curl",
+      "useCase": "Cross-Site Request Forgery",
+      "tags": [
+        "Both",
+        "Burp",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "windows-registry-enumeration",
+      "name": "Windows Registry enumeration",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "reg, PowerShell",
+      "useCase": "Query Registry - Find credentials and config",
+      "tags": [
+        "Enumeration",
+        "PowerShell",
+        "reg",
+        "Windows"
+      ]
+    },
+    {
+      "id": "jwt-attacks-signature-bypass",
+      "name": "JWT attacks - Signature bypass",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "jwt_tool, Python",
+      "useCase": "JWT - Forge tokens and bypass authentication",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "jwt_tool",
+        "Python"
+      ]
+    },
+    {
+      "id": "packet-capture-tcpdump-tshark",
+      "name": "Packet capture - tcpdump/tshark",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "tcpdump, tshark, wireshark",
+      "useCase": "Network Sniffing - Capture and analyze traffic",
+      "tags": [
+        "Enumeration",
+        "Linux",
+        "tcpdump",
+        "tshark",
+        "wireshark"
+      ]
+    },
+    {
+      "id": "linux-capabilities-exploitation",
+      "name": "Linux capabilities exploitation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "getcap, python",
+      "useCase": "Capabilities - CAP_SETUID and others",
+      "tags": [
+        "getcap",
+        "Linux",
+        "Privilege Escalation",
+        "python"
+      ]
+    },
+    {
+      "id": "windows-credential-files",
+      "name": "Windows credential files",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "PowerShell, cmdkey",
+      "useCase": "Credentials from Files - Extract saved credentials",
+      "tags": [
+        "cmdkey",
+        "Enumeration",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "windows-defender-disable-bypass",
+      "name": "Windows Defender - disable/bypass",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Impair Defenses - Disable Windows Defender",
+      "tags": [
+        "Exploitation",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "graphql-enumeration-exploitation",
+      "name": "GraphQL enumeration & exploitation",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl, graphql-cop",
+      "useCase": "API Exploitation - GraphQL introspection",
+      "tags": [
+        "Both",
+        "curl",
+        "Exploitation",
+        "graphql-cop"
+      ]
+    },
+    {
+      "id": "password-spraying-automation",
+      "name": "Password spraying - automation",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "crackmapexec, kerbrute",
+      "useCase": "Brute Force - Password spraying",
+      "tags": [
+        "crackmapexec",
+        "Exploitation",
+        "kerbrute",
+        "Windows"
+      ]
+    },
+    {
+      "id": "impacket-psexec-lateral-movement",
+      "name": "impacket-psexec - lateral movement",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "impacket",
+      "useCase": "Remote Services - SMB/Admin Share lateral movement",
+      "tags": [
+        "impacket",
+        "Lateral Movement",
+        "Windows"
+      ]
+    },
+    {
+      "id": "living-off-the-land-lolbins",
+      "name": "Living off the land - LOLBins",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "certutil, mshta, regsvr32",
+      "useCase": "Defense Evasion - Living off the land binaries",
+      "tags": [
+        "certutil",
+        "Exploitation",
+        "mshta",
+        "regsvr32",
+        "Windows"
+      ]
+    },
+    {
+      "id": "responder-llmnr-nbt-ns-poisoning",
+      "name": "Responder - LLMNR/NBT-NS poisoning",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "Responder",
+      "useCase": "Man-in-the-Middle - Network credential capture",
+      "tags": [
+        "Exploitation",
+        "Responder",
+        "Windows"
+      ]
+    },
+    {
+      "id": "nslookup-dig-dns-enumeration",
+      "name": "nslookup / dig - DNS enumeration",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nslookup, dig",
+      "useCase": "Active Scanning - DNS queries for infrastructure mapping",
+      "tags": [
+        "Both",
+        "dig",
+        "Enumeration",
+        "nslookup"
+      ]
+    },
+    {
+      "id": "smb-enumeration-enum4linux",
+      "name": "SMB enumeration - enum4linux",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "enum4linux, smbclient",
+      "useCase": "Network Service Discovery - SMB/CIFS enumeration",
+      "tags": [
+        "enum4linux",
+        "Enumeration",
+        "smbclient",
+        "Windows"
+      ]
+    },
+    {
+      "id": "hide-files-and-artifacts",
+      "name": "Hide files and artifacts",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "attrib, chattr",
+      "useCase": "Hidden Files - Conceal malware",
+      "tags": [
+        "attrib",
+        "Both",
+        "chattr",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "linux-reverse-shells-one-liners",
+      "name": "Linux reverse shells - one-liners",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "bash, python, perl",
+      "useCase": "Command and Scripting - Reverse shells",
+      "tags": [
+        "bash",
+        "Exploitation",
+        "Linux",
+        "perl",
+        "python"
+      ]
+    },
+    {
+      "id": "linux-credential-hunting",
+      "name": "Linux credential hunting",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "grep, find",
+      "useCase": "Credentials In Files - Find passwords on Linux",
+      "tags": [
+        "Enumeration",
+        "find",
+        "grep",
+        "Linux"
+      ]
+    },
+    {
+      "id": "ad-enumeration-native-tools",
+      "name": "AD enumeration - native tools",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "net, nltest, PowerShell",
+      "useCase": "Remote System Discovery - Active Directory recon",
+      "tags": [
+        "Enumeration",
+        "net",
+        "nltest",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "ligolo-ng-advanced-pivoting",
+      "name": "ligolo-ng - advanced pivoting",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "ligolo-ng",
+      "useCase": "Protocol Tunneling - Network pivoting",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "ligolo-ng"
+      ]
+    },
+    {
+      "id": "windows-clipboard-stealing",
+      "name": "Windows Clipboard stealing",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Clipboard Data - Extract clipboard contents",
+      "tags": [
+        "Enumeration",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "nmap-sc-sv-oa-scan-ip",
+      "name": "nmap -sC -sV -oA scan <IP>",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nmap",
+      "useCase": "Default script scan with version detection",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "nmap"
+      ]
+    },
+    {
+      "id": "nosql-injection-mongodb",
+      "name": "NoSQL injection - MongoDB",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl, Burp",
+      "useCase": "NoSQL Injection - MongoDB bypass",
+      "tags": [
+        "Both",
+        "Burp",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "alwaysinstallelevated-exploit",
+      "name": "AlwaysInstallElevated exploit",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "msfvenom, PowerShell",
+      "useCase": "Abuse Elevation Control - MSI package privilege escalation",
+      "tags": [
+        "msfvenom",
+        "PowerShell",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "force-ntlm-authentication",
+      "name": "Force NTLM authentication",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "Responder, SCF files",
+      "useCase": "Forced Authentication - Capture NTLM hashes",
+      "tags": [
+        "Exploitation",
+        "Responder",
+        "SCF files",
+        "Windows"
+      ]
+    },
+    {
+      "id": "domain-fronting-techniques",
+      "name": "Domain fronting techniques",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl",
+      "useCase": "Domain Fronting - C2 obfuscation",
+      "tags": [
+        "Both",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "email-enumeration-smtp",
+      "name": "Email enumeration - SMTP",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "smtp-user-enum",
+      "useCase": "Email Account Discovery",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "smtp-user-enum"
+      ]
+    },
+    {
+      "id": "mysql-enumeration-exploitation",
+      "name": "MySQL enumeration & exploitation",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "mysql",
+      "useCase": "Database Exploitation - MySQL command execution",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "mysql"
+      ]
+    },
+    {
+      "id": "golden-silver-ticket-attacks",
+      "name": "Golden/Silver ticket attacks",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "mimikatz, impacket",
+      "useCase": "Steal or Forge Kerberos Tickets - Golden/Silver tickets",
+      "tags": [
+        "impacket",
+        "mimikatz",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "powershell-download-cradle",
+      "name": "PowerShell download cradle",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Command and Scripting Interpreter - Download and execute",
+      "tags": [
+        "Exploitation",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "mssql-exploitation",
+      "name": "MSSQL exploitation",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "impacket-mssqlclient",
+      "useCase": "Exploitation of Remote Services - MSSQL command execution",
+      "tags": [
+        "Exploitation",
+        "impacket-mssqlclient",
+        "Windows"
+      ]
+    },
+    {
+      "id": "python3-c-import-pty-pty-spawn-bin-bash",
+      "name": "python3 -c 'import pty;pty.spawn(\"/bin/bash\")'",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "python",
+      "useCase": "Upgrade to TTY shell",
+      "tags": [
+        "Exploitation",
+        "Linux",
+        "python"
+      ]
+    },
+    {
+      "id": "lfi-exploitation-techniques",
+      "name": "LFI exploitation techniques",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl",
+      "useCase": "Exploit Public-Facing Application - LFI to RCE",
+      "tags": [
+        "Both",
+        "curl",
+        "Exploitation"
+      ]
+    },
+    {
+      "id": "automated-data-collection",
+      "name": "Automated data collection",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "bash, PowerShell",
+      "useCase": "Automated Collection - Data gathering",
+      "tags": [
+        "bash",
+        "Both",
+        "Exploitation",
+        "PowerShell"
+      ]
+    },
+    {
+      "id": "wordpress-enumeration-wpscan",
+      "name": "WordPress enumeration - wpscan",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "wpscan",
+      "useCase": "CMS Enumeration - WordPress",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "wpscan"
+      ]
+    },
+    {
+      "id": "password-brute-force-hydra",
+      "name": "Password brute force - Hydra",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "hydra, medusa",
+      "useCase": "Brute Force - Multiple protocols",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "hydra",
+        "medusa"
+      ]
+    },
+    {
+      "id": "meterpreter-payloads-msfvenom",
+      "name": "Meterpreter payloads - msfvenom",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "msfvenom",
+      "useCase": "Payload Generation - Meterpreter shells",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "msfvenom"
+      ]
+    },
+    {
+      "id": "powerview-ad-enumeration",
+      "name": "PowerView - AD enumeration",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "PowerView",
+      "useCase": "Domain Trust Discovery - PowerShell AD enumeration",
+      "tags": [
+        "Enumeration",
+        "PowerView",
+        "Windows"
+      ]
+    },
+    {
+      "id": "privilege-escalation-checks-automated",
+      "name": "Privilege escalation checks - automated",
+      "category": "Privilege Escalation",
+      "os": "Both",
+      "tool": "LinEnum, winPEAS",
+      "useCase": "Automated privilege escalation enumeration",
+      "tags": [
+        "Both",
+        "LinEnum",
+        "Privilege Escalation",
+        "winPEAS"
+      ]
+    },
+    {
+      "id": "python-post-exploitation",
+      "name": "Python post-exploitation",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "python",
+      "useCase": "Python - Reverse shells and file operations",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "python"
+      ]
+    },
+    {
+      "id": "directory-fuzzing-web-content",
+      "name": "Directory fuzzing - web content",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "ffuf, feroxbuster",
+      "useCase": "Active Scanning - Directory/file discovery",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "feroxbuster",
+        "ffuf"
+      ]
+    },
+    {
+      "id": "malicious-office-macros",
+      "name": "Malicious Office macros",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "msfvenom, VBA",
+      "useCase": "Visual Basic - Macro payload delivery",
+      "tags": [
+        "Exploitation",
+        "msfvenom",
+        "VBA",
+        "Windows"
+      ]
+    },
+    {
+      "id": "arp-spoofing-arpspoof-ettercap",
+      "name": "ARP spoofing - arpspoof/ettercap",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "arpspoof, ettercap",
+      "useCase": "Man-in-the-Middle - ARP poisoning",
+      "tags": [
+        "arpspoof",
+        "ettercap",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "web-shells-and-backdoors",
+      "name": "Web shells and backdoors",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "PHP, ASP, JSP",
+      "useCase": "Command and Scripting Interpreter - Web shell deployment",
+      "tags": [
+        "ASP",
+        "Both",
+        "Exploitation",
+        "JSP",
+        "PHP"
+      ]
+    },
+    {
+      "id": "bloodhound-ad-enumeration",
+      "name": "BloodHound - AD enumeration",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "BloodHound, SharpHound",
+      "useCase": "Domain Trust Discovery - Active Directory attack paths",
+      "tags": [
+        "BloodHound",
+        "Enumeration",
+        "SharpHound",
+        "Windows"
+      ]
+    },
+    {
+      "id": "windows-service-exploitation",
+      "name": "Windows Service exploitation",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "sc, PowerShell",
+      "useCase": "Service Exploitation - Modify/create services",
+      "tags": [
+        "PowerShell",
+        "Privilege Escalation",
+        "sc",
+        "Windows"
+      ]
+    },
+    {
+      "id": "api-key-enumeration",
+      "name": "API key enumeration",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "grep, trufflehog",
+      "useCase": "Credentials from Files - API keys",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "grep",
+        "trufflehog"
+      ]
+    },
+    {
+      "id": "startup-folder-persistence",
+      "name": "Startup folder persistence",
+      "category": "Persistence",
+      "os": "Windows",
+      "tool": "PowerShell, cmd",
+      "useCase": "Startup - Autorun persistence",
+      "tags": [
+        "cmd",
+        "Persistence",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "gtfobins-sudo-exploitation",
+      "name": "GTFOBins - sudo exploitation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "sudo, various",
+      "useCase": "Sudo Abuse - GTFOBins techniques",
+      "tags": [
+        "Linux",
+        "Privilege Escalation",
+        "sudo",
+        "various"
+      ]
+    },
+    {
+      "id": "vnc-enumeration-and-access",
+      "name": "VNC enumeration and access",
+      "category": "Lateral Movement",
+      "os": "Both",
+      "tool": "vncviewer, nmap",
+      "useCase": "VNC - Remote access",
+      "tags": [
+        "Both",
+        "Lateral Movement",
+        "nmap",
+        "vncviewer"
+      ]
+    },
+    {
+      "id": "flask-session-cookie-decoding",
+      "name": "Flask session cookie decoding",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "flask-unsign",
+      "useCase": "Session Hijacking - Flask cookie manipulation",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "flask-unsign"
+      ]
+    },
+    {
+      "id": "hash-cracking-hashcat-john",
+      "name": "Hash cracking - hashcat/john",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "hashcat, john",
+      "useCase": "Brute Force - Crack password hashes",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "hashcat",
+        "john"
+      ]
+    },
+    {
+      "id": "anti-forensics-file-deletion",
+      "name": "Anti-forensics - file deletion",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "shred, wevtutil",
+      "useCase": "Indicator Removal - Cover tracks",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "shred",
+        "wevtutil"
+      ]
+    },
+    {
+      "id": "bitsadmin-file-download",
+      "name": "bitsadmin - file download",
+      "category": "File Transfer",
+      "os": "Windows",
+      "tool": "bitsadmin",
+      "useCase": "Ingress Tool Transfer - Background file download",
+      "tags": [
+        "bitsadmin",
+        "File Transfer",
+        "Windows"
+      ]
+    },
+    {
+      "id": "ntds-dit-extraction",
+      "name": "NTDS.dit extraction",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "vssadmin, impacket",
+      "useCase": "OS Credential Dumping - Extract NTDS.dit",
+      "tags": [
+        "impacket",
+        "Privilege Escalation",
+        "vssadmin",
+        "Windows"
+      ]
+    },
+    {
+      "id": "hydra-multi-protocol-brute-force",
+      "name": "Hydra - multi-protocol brute force",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "hydra, crowbar",
+      "useCase": "Brute Force - Password attacks on services",
+      "tags": [
+        "Both",
+        "crowbar",
+        "Exploitation",
+        "hydra"
+      ]
+    },
+    {
+      "id": "python-pickle-deserialization",
+      "name": "Python pickle deserialization",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "python",
+      "useCase": "Deserialization - Python RCE",
+      "tags": [
+        "Both",
+        "Exploitation",
+        "python"
+      ]
+    },
+    {
+      "id": "steganography-detection",
+      "name": "Steganography detection",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "steghide, stegseek",
+      "useCase": "Data from Information Repositories - Hidden data",
+      "tags": [
+        "Both",
+        "Enumeration",
+        "steghide",
+        "stegseek"
+      ]
+    },
+    {
+      "id": "payload-encoding-techniques",
+      "name": "Payload encoding techniques",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "base64, xxd",
+      "useCase": "Obfuscation - Encode payloads",
+      "tags": [
+        "base64",
+        "Both",
+        "Exploitation",
+        "xxd"
+      ]
+    },
+    {
+      "id": "windows-defender-bypass-amsi",
+      "name": "Windows Defender bypass - AMSI",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "PowerShell",
+      "useCase": "Defense Evasion - AMSI bypass techniques",
+      "tags": [
+        "Exploitation",
+        "PowerShell",
+        "Windows"
+      ]
+    },
+    {
+      "id": "linux-kernel-exploit-suggester",
+      "name": "Linux kernel exploit suggester",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "linux-exploit-suggester",
+      "useCase": "Exploitation for Privilege Escalation - Kernel exploits",
+      "tags": [
+        "Linux",
+        "linux-exploit-suggester",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "rpc-enumeration-rpcclient",
+      "name": "RPC enumeration - rpcclient",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "rpcclient",
+      "useCase": "RPC Enumeration - Windows domain info",
+      "tags": [
+        "Enumeration",
+        "rpcclient",
+        "Windows"
+      ]
+    },
+    {
+      "id": "suid-binary-privilege-escalation",
+      "name": "SUID binary privilege escalation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "find, GTFOBins",
+      "useCase": "Abuse Elevation Control - SUID exploitation",
+      "tags": [
+        "find",
+        "GTFOBins",
+        "Linux",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "advanced-kerberoasting",
+      "name": "Advanced Kerberoasting",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "Rubeus, impacket, PowerView",
+      "useCase": "Steal or Forge Kerberos Tickets - Kerberoasting",
+      "tags": [
+        "Exploitation",
+        "impacket",
+        "PowerView",
+        "Rubeus",
+        "Windows"
+      ]
+    },
+    {
+      "id": "https-exfiltration",
+      "name": "HTTPS exfiltration",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "curl, PowerShell",
+      "useCase": "HTTPS Exfil - Encrypted exfiltration",
+      "tags": [
+        "Both",
+        "curl",
+        "Exploitation",
+        "PowerShell"
+      ]
+    },
+    {
+      "id": "pass-the-ticket",
+      "name": "Pass-the-Ticket",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "mimikatz, Rubeus, impacket",
+      "useCase": "Use Alternate Authentication Material - Pass the Ticket",
+      "tags": [
+        "impacket",
+        "Lateral Movement",
+        "mimikatz",
+        "Rubeus",
+        "Windows"
+      ]
+    },
+    {
+      "id": "wmi-persistence",
+      "name": "WMI persistence",
+      "category": "Persistence",
+      "os": "Windows",
+      "tool": "wmic, PowerShell",
+      "useCase": "Event Triggered Execution - WMI Event Subscription",
+      "tags": [
+        "Persistence",
+        "PowerShell",
+        "Windows",
+        "wmic"
+      ]
+    },
+    {
+      "id": "docker-container-escape",
+      "name": "Docker container escape",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "docker",
+      "useCase": "Exploitation for Privilege Escalation - Docker escape",
+      "tags": [
+        "docker",
+        "Linux",
+        "Privilege Escalation"
+      ]
+    },
+    {
+      "id": "rdp-enumeration-and-access",
+      "name": "RDP enumeration and access",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "xfreerdp, rdesktop",
+      "useCase": "Remote Desktop Protocol",
+      "tags": [
+        "Lateral Movement",
+        "rdesktop",
+        "Windows",
+        "xfreerdp"
+      ]
+    },
+    {
+      "id": "activedirectory-powershell-module",
+      "name": "ActiveDirectory PowerShell Module",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "PowerShell, ActiveDirectory Module",
+      "useCase": "Import and use the ActiveDirectory PowerShell module to enumerate domain users, groups, trusts, and Kerberoastable accounts",
+      "tags": [
+        "PowerShell",
+        "Active Directory",
+        "Kerberoasting",
+        "Enumeration",
+        "Windows"
+      ]
+    },
+    {
+      "id": "apache-nginx-web-server-hardening",
+      "name": "Apache Nginx Web Server Hardening",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "Apache, Nginx",
+      "useCase": "Harden Apache and Nginx web server configs to reduce attack surface with security headers, rate limiting, and WAF",
+      "tags": [
+        "Apache",
+        "Nginx",
+        "Web Server",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "autorecon-automated-recon",
+      "name": "Autorecon - Automated Recon",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "autorecon",
+      "useCase": "Automated multi-stage recon that runs nmap, gobuster, nikto, and more in parallel",
+      "tags": [
+        "autorecon",
+        "Recon",
+        "Automation",
+        "Enumeration",
+        "Linux"
+      ]
+    },
+    {
+      "id": "bits-persistence-and-transfer",
+      "name": "BITS Persistence and Transfer",
+      "category": "Persistence",
+      "os": "Windows",
+      "tool": "bitsadmin, PowerShell",
+      "useCase": "Abuse Windows BITS jobs for persistent file transfer and payload execution",
+      "tags": [
+        "BITS",
+        "bitsadmin",
+        "Persistence",
+        "File Transfer",
+        "Windows"
+      ]
+    },
+    {
+      "id": "bash-script-reverse-shell-doesnt-close",
+      "name": "Bash Script Reverse Shell (Doesn't Close)",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "Python, socket, bash",
+      "useCase": "Python script that sends a bash reverse shell payload over a TCP socket connection to inject commands",
+      "tags": [
+        "Reverse Shell",
+        "Python",
+        "Bash",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "binary-exploitation-bof-basics",
+      "name": "Binary Exploitation - BOF Basics",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "gdb, pwntools, msfvenom",
+      "useCase": "Basic buffer overflow exploitation including offset finding, shellcode generation, and NOP sled techniques",
+      "tags": [
+        "Buffer Overflow",
+        "BOF",
+        "Binary Exploitation",
+        "pwntools",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "command-injection-wordlist-generator",
+      "name": "Command Injection Wordlist Generator",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "Bash",
+      "useCase": "Generate a wordlist of filename variations to bypass file upload whitelist filters via command injection characters",
+      "tags": [
+        "Wordlist",
+        "Command Injection",
+        "File Upload",
+        "Bypass",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "crackmapexec-smb-share-enumeration",
+      "name": "CrackMapExec - SMB Share Enumeration",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "crackmapexec",
+      "useCase": "Enumerate SMB shares with null session or valid credentials using CrackMapExec",
+      "tags": [
+        "CrackMapExec",
+        "SMB",
+        "Shares",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "cron-job-scheduled-task-monitoring",
+      "name": "Cron Job & Scheduled Task Monitoring",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "cron, inotifywait, auditctl",
+      "useCase": "Detect and monitor malicious cron jobs used for persistence by listing, watching, and restricting cron access",
+      "tags": [
+        "Cron",
+        "Monitoring",
+        "Persistence Detection",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "enum4linux-full-smb-netbios-enumeration",
+      "name": "Enum4Linux - Full SMB NetBIOS Enumeration",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "enum4linux",
+      "useCase": "Enumerate users, groups, shares, and password policy from SMB/NetBIOS services",
+      "tags": [
+        "enum4linux",
+        "SMB",
+        "NetBIOS",
+        "Enumeration",
+        "Linux"
+      ]
+    },
+    {
+      "id": "ftp-hardening-vsftpd",
+      "name": "FTP Hardening (vsftpd)",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "vsftpd",
+      "useCase": "Secure vsftpd configuration to prevent anonymous access, enforce SSL/TLS, and restrict users",
+      "tags": [
+        "FTP",
+        "vsftpd",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "fail2ban-configuration",
+      "name": "Fail2Ban Configuration",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "fail2ban",
+      "useCase": "Auto-ban IPs with repeated failed login attempts across SSH, FTP, and web services",
+      "tags": [
+        "Fail2Ban",
+        "Brute Force Protection",
+        "SSH",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "file-upload-bypasses",
+      "name": "File Upload Bypasses",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "exiftool, exiv2",
+      "useCase": "Bypass file upload filters using extension tricks, magic bytes, double extensions, MIME manipulation, and metadata injection",
+      "tags": [
+        "File Upload",
+        "Bypass",
+        "Web Shell",
+        "exiftool",
+        "Exploitation",
+        "Both"
+      ]
+    },
+    {
+      "id": "get-whole-directory",
+      "name": "Get Whole Directory",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "Bash, find, cat",
+      "useCase": "Bash script to dump the contents of every file in a directory recursively",
+      "tags": [
+        "Bash",
+        "Directory",
+        "File Dump",
+        "Enumeration",
+        "Linux"
+      ]
+    },
+    {
+      "id": "hydra-password-brute-force-http-ssh",
+      "name": "Hydra - Password Brute Force (HTTP, SSH)",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "hydra",
+      "useCase": "Brute force credentials against HTTP POST forms or SSH using wordlists",
+      "tags": [
+        "Hydra",
+        "Brute Force",
+        "HTTP",
+        "SSH",
+        "Exploitation",
+        "Both"
+      ]
+    },
+    {
+      "id": "inveigh-zero",
+      "name": "Inveigh Zero",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "Inveigh",
+      "useCase": "Capture NTLMv2 hashes via LLMNR/mDNS/NBNS poisoning and spoofing on a Windows network",
+      "tags": [
+        "Inveigh",
+        "LLMNR",
+        "NTLM",
+        "Hash Capture",
+        "Poisoning",
+        "Exploitation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "lsass-dump-file-creation",
+      "name": "LSASS Dump File Creation",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "PowerShell, rundll32, comsvcs.dll",
+      "useCase": "Find the LSASS process ID and create a memory dump file for offline credential extraction",
+      "tags": [
+        "LSASS",
+        "Credential Dumping",
+        "Memory Dump",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "linux-system-hardening",
+      "name": "Linux System Hardening",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "sysctl, auditd, systemctl",
+      "useCase": "OS-level hardening including kernel parameters, disabling unused services, file permissions, and audit logging",
+      "tags": [
+        "sysctl",
+        "ASLR",
+        "Audit",
+        "Services",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "living-off-the-land-windows",
+      "name": "Living Off the Land (Windows)",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "cmd, PowerShell, wmic",
+      "useCase": "Built-in Windows commands for host enumeration including hostname, OS version, patches, network config, and logged-on users",
+      "tags": [
+        "LOTL",
+        "Living Off the Land",
+        "WMI",
+        "Enumeration",
+        "Windows"
+      ]
+    },
+    {
+      "id": "log-monitoring-siem-basics",
+      "name": "Log Monitoring & SIEM Basics",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "journalctl, grep, auditd, logwatch",
+      "useCase": "Monitor system logs for suspicious activity like failed logins, new users, and sudo usage",
+      "tags": [
+        "Logging",
+        "SIEM",
+        "journalctl",
+        "Monitoring",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "msfvenom-generate-reverse-shell-payloads",
+      "name": "MSFVenom - Generate Reverse Shell Payloads",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "msfvenom, nc",
+      "useCase": "Generate Windows or Linux reverse shell executables for delivery to a target host",
+      "tags": [
+        "msfvenom",
+        "Reverse Shell",
+        "Payload",
+        "Metasploit",
+        "Exploitation",
+        "Both"
+      ]
+    },
+    {
+      "id": "mysql-mariadb-hardening",
+      "name": "MySQL MariaDB Hardening",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "mysql",
+      "useCase": "Secure MySQL/MariaDB configuration by removing defaults, restricting privileges, and enabling logging",
+      "tags": [
+        "MySQL",
+        "MariaDB",
+        "Database",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "ntlm-hash-crack",
+      "name": "NTLM Hash Crack",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "hashcat",
+      "useCase": "Crack captured NTLMv2 hashes offline using hashcat with wordlists like rockyou.txt",
+      "tags": [
+        "Hashcat",
+        "NTLM",
+        "NTLMv2",
+        "Password Cracking",
+        "Exploitation",
+        "Both"
+      ]
+    },
+    {
+      "id": "ntlm-relay-attack",
+      "name": "NTLM Relay Attack",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "ntlmrelayx, Responder",
+      "useCase": "Relay captured NTLM authentication to target systems to gain access, dump SAM/NTDS, or escalate privileges",
+      "tags": [
+        "NTLM Relay",
+        "Responder",
+        "impacket",
+        "Man-in-the-Middle",
+        "Exploitation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "netdiscover-arp-host-discovery",
+      "name": "Netdiscover - ARP Host Discovery",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "netdiscover",
+      "useCase": "Passive or active ARP-based host discovery on local network segments",
+      "tags": [
+        "netdiscover",
+        "ARP",
+        "Host Discovery",
+        "Enumeration",
+        "Linux"
+      ]
+    },
+    {
+      "id": "network-traffic-analysis-defensive",
+      "name": "Network Traffic Analysis (Defensive)",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "tcpdump, ss, netstat, lsof",
+      "useCase": "Monitor live network connections and capture traffic to detect threats and anomalies",
+      "tags": [
+        "tcpdump",
+        "netstat",
+        "Traffic Analysis",
+        "Monitoring",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "nmap-full-tcp-port-scan",
+      "name": "Nmap - Full TCP Port Scan",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nmap",
+      "useCase": "Comprehensive scan of all 65535 TCP ports with version, script, and OS detection",
+      "tags": [
+        "Nmap",
+        "TCP",
+        "Port Scan",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "nmap-full-udp-port-scan",
+      "name": "Nmap - Full UDP Port Scan",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nmap",
+      "useCase": "Scan all UDP ports with version and script detection",
+      "tags": [
+        "Nmap",
+        "UDP",
+        "Port Scan",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "nmap-host-discovery-no-ping-top-50-ports",
+      "name": "Nmap - Host Discovery (no ping, top 50 ports)",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nmap",
+      "useCase": "Discover live hosts on a subnet without ICMP by checking only the top 50 TCP ports",
+      "tags": [
+        "Nmap",
+        "Host Discovery",
+        "No Ping",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "nmap-ping-sweep",
+      "name": "Nmap - Ping Sweep",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nmap",
+      "useCase": "Discover live hosts via ICMP ping sweep across a subnet range",
+      "tags": [
+        "Nmap",
+        "Ping Sweep",
+        "Host Discovery",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "nmap-smb-enumeration",
+      "name": "Nmap - SMB Enumeration",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nmap",
+      "useCase": "Enumerate SMB shares and users via Nmap NSE scripts on ports 139 and 445",
+      "tags": [
+        "Nmap",
+        "SMB",
+        "NSE",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "nmap-vulnerability-scan",
+      "name": "Nmap - Vulnerability Scan",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nmap",
+      "useCase": "Run all vulnerability NSE scripts against all ports on a target",
+      "tags": [
+        "Nmap",
+        "Vulnerability Scan",
+        "NSE",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "php-bash-web-shell",
+      "name": "PHP Bash Web Shell",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "PHP",
+      "useCase": "Full-featured PHP web shell with command execution, file upload, and interactive console for post-exploitation",
+      "tags": [
+        "PHP",
+        "Web Shell",
+        "File Upload",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "password-policy-pam-hardening",
+      "name": "Password Policy & PAM Hardening",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "PAM, passwd, chage",
+      "useCase": "Enforce strong password policies, complexity requirements, and account lockout via PAM",
+      "tags": [
+        "PAM",
+        "Password Policy",
+        "Account Lockout",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "password-spray-bash-script",
+      "name": "Password Spray Bash Script",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "rpcclient, bash",
+      "useCase": "Bash loop to password spray domain users via rpcclient over RPC",
+      "tags": [
+        "Password Spray",
+        "rpcclient",
+        "Brute Force",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "password-spray-internal-domain-spraying",
+      "name": "Password Spray Internal - Domain Spraying",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "DomainPasswordSpray.ps1",
+      "useCase": "Spray a single password against all domain users from a domain-joined Windows host using PowerShell",
+      "tags": [
+        "Password Spray",
+        "Active Directory",
+        "PowerShell",
+        "Exploitation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "password-spraying-crackmapexec",
+      "name": "Password Spraying - CrackMapExec",
+      "category": "Exploitation",
+      "os": "Windows",
+      "tool": "crackmapexec",
+      "useCase": "Password spray attack against SMB, WinRM, or LDAP services using CrackMapExec",
+      "tags": [
+        "CrackMapExec",
+        "Password Spray",
+        "SMB",
+        "Brute Force",
+        "Exploitation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "pypykatz",
+      "name": "Pypykatz",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "pypykatz",
+      "useCase": "Parse LSASS memory dump files offline to extract NTLM hashes, Kerberos tickets, and DPAPI keys",
+      "tags": [
+        "pypykatz",
+        "LSASS",
+        "Credential Dumping",
+        "NTLM",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "registry-hive-dumping",
+      "name": "Registry Hive Dumping",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "reg.exe, impacket-smbserver",
+      "useCase": "Save SAM, SYSTEM, and SECURITY registry hives and exfiltrate them via SMB for offline credential extraction",
+      "tags": [
+        "Registry",
+        "SAM",
+        "Credential Dumping",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "runas-alternate-credentials",
+      "name": "RunAs - Alternate Credentials",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "runas, PowerShell",
+      "useCase": "Execute commands or processes with different user credentials on Windows",
+      "tags": [
+        "RunAs",
+        "Credentials",
+        "Lateral Movement",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "smbclient-browse-and-download-shares",
+      "name": "SMBClient - Browse and Download Shares",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "smbclient",
+      "useCase": "Browse SMB shares and download files anonymously or with credentials",
+      "tags": [
+        "smbclient",
+        "SMB",
+        "File Download",
+        "Enumeration",
+        "Linux"
+      ]
+    },
+    {
+      "id": "smbmap",
+      "name": "SMBMap",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "smbmap",
+      "useCase": "Enumerate SMB share permissions, recursively list directories, and search file contents with domain credentials",
+      "tags": [
+        "SMBMap",
+        "SMB",
+        "Shares",
+        "Active Directory",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "smtp-user-and-command-enumeration",
+      "name": "SMTP User and Command Enumeration",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "nc, nmap",
+      "useCase": "Enumerate valid email users and available SMTP commands on a mail server using VRFY and NSE scripts",
+      "tags": [
+        "SMTP",
+        "User Enumeration",
+        "Nmap",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "sql-cheatsheet",
+      "name": "SQL Cheatsheet",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "mysql, SQL",
+      "useCase": "Comprehensive MySQL reference covering queries, injection payloads, auth bypass, union injection, and file read/write",
+      "tags": [
+        "SQL",
+        "MySQL",
+        "SQL Injection",
+        "Cheatsheet",
+        "Exploitation",
+        "Both"
+      ]
+    },
+    {
+      "id": "sql-injections-nitectf",
+      "name": "SQL Injections (NiteCTF)",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "SQL",
+      "useCase": "SQL injection filter bypass payloads using IS NOT NULL, IN, and BETWEEN operators",
+      "tags": [
+        "SQL Injection",
+        "CTF",
+        "Bypass",
+        "Exploitation",
+        "Both"
+      ]
+    },
+    {
+      "id": "sql-injection-sqlmap",
+      "name": "SQL Injection - sqlmap",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "sqlmap",
+      "useCase": "Automate SQL injection detection and exploitation including database dumping, OS shell, and file read",
+      "tags": [
+        "sqlmap",
+        "SQL Injection",
+        "Database",
+        "Exploitation",
+        "Both"
+      ]
+    },
+    {
+      "id": "ssh-hardening",
+      "name": "SSH Hardening",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "sshd, fail2ban",
+      "useCase": "Secure SSH configuration by disabling root login, enforcing key-based auth, and restricting ciphers",
+      "tags": [
+        "SSH",
+        "sshd",
+        "Key Auth",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "secretsdump",
+      "name": "Secretsdump",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "impacket-secretsdump",
+      "useCase": "Dump local SAM hashes from saved registry hive files using Impacket secretsdump",
+      "tags": [
+        "secretsdump",
+        "SAM",
+        "Credential Dumping",
+        "impacket",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "snaffler",
+      "name": "Snaffler",
+      "category": "Enumeration",
+      "os": "Windows",
+      "tool": "Snaffler",
+      "useCase": "Crawl Active Directory shares to find sensitive files like credentials, SSH keys, and database dumps",
+      "tags": [
+        "Snaffler",
+        "Active Directory",
+        "Share Crawling",
+        "Credential Hunting",
+        "Enumeration",
+        "Windows"
+      ]
+    },
+    {
+      "id": "sudoers-hardening",
+      "name": "Sudoers Hardening",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "sudo, visudo",
+      "useCase": "Restrict and audit sudo access to prevent privilege escalation with logging and secure defaults",
+      "tags": [
+        "sudo",
+        "visudo",
+        "Privilege Escalation Prevention",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "username-enumeration",
+      "name": "Username Enumeration",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "username-anarchy",
+      "useCase": "Generate common username format variations from real names for use in brute force and password spraying attacks",
+      "tags": [
+        "Username",
+        "Wordlist",
+        "username-anarchy",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "windows-defender-av-hardening",
+      "name": "Windows Defender & AV Hardening",
+      "category": "Hardening/Defense",
+      "os": "Windows",
+      "tool": "PowerShell, Windows Defender",
+      "useCase": "Configure Windows Defender real-time protection, Attack Surface Reduction rules, and Credential Guard",
+      "tags": [
+        "Windows Defender",
+        "ASR",
+        "Credential Guard",
+        "Antivirus",
+        "Hardening/Defense",
+        "Windows"
+      ]
+    },
+    {
+      "id": "windows-firewall-defender-rules",
+      "name": "Windows Firewall (Defender) Rules",
+      "category": "Hardening/Defense",
+      "os": "Windows",
+      "tool": "netsh, PowerShell",
+      "useCase": "Configure Windows Defender Firewall via CLI to block and restrict inbound/outbound traffic",
+      "tags": [
+        "Windows Firewall",
+        "netsh",
+        "Firewall Rules",
+        "Hardening/Defense",
+        "Windows"
+      ]
+    },
+    {
+      "id": "writable-files-exploitation",
+      "name": "Writable Files Exploitation",
+      "category": "Privilege Escalation",
+      "os": "Linux",
+      "tool": "find, bash",
+      "useCase": "Find and abuse world-writable files, /etc/passwd, PATH scripts, and systemd services for privilege escalation",
+      "tags": [
+        "Writable Files",
+        "File Permissions",
+        "Privilege Escalation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "xxe-exploitation",
+      "name": "XXE Exploitation",
+      "category": "Exploitation",
+      "os": "Both",
+      "tool": "XML",
+      "useCase": "Exploit XML External Entity vulnerabilities for file read, SSRF, and blind out-of-band data exfiltration",
+      "tags": [
+        "XXE",
+        "XML",
+        "SSRF",
+        "File Read",
+        "Exploitation",
+        "Both"
+      ]
+    },
+    {
+      "id": "arp-scan-local-network-discovery",
+      "name": "arp-scan - Local Network Discovery",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "arp-scan",
+      "useCase": "Quick ARP scan of local network to find all reachable hosts on the subnet",
+      "tags": [
+        "arp-scan",
+        "ARP",
+        "Host Discovery",
+        "Enumeration",
+        "Linux"
+      ]
+    },
+    {
+      "id": "curl-cheatsheet",
+      "name": "cURL Cheatsheet",
+      "category": "Enumeration",
+      "os": "Both",
+      "tool": "curl",
+      "useCase": "Quick-reference commands for HTTP requests, file transfer, authentication, headers, proxies, and recon",
+      "tags": [
+        "curl",
+        "HTTP",
+        "API",
+        "Cheatsheet",
+        "Enumeration",
+        "Both"
+      ]
+    },
+    {
+      "id": "iptables-basic-firewall-rules",
+      "name": "iptables - Basic Firewall Rules",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "iptables",
+      "useCase": "Set up default deny policy with iptables and allow only necessary traffic with rate limiting",
+      "tags": [
+        "iptables",
+        "Firewall",
+        "Network Security",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "iptables-block-common-attacks",
+      "name": "iptables - Block Common Attacks",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "iptables",
+      "useCase": "Drop malformed packets, port scans (SYN/NULL/XMAS), SYN floods, and spoofed IPs with iptables",
+      "tags": [
+        "iptables",
+        "Firewall",
+        "Anti-Scan",
+        "DDoS Protection",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "nftables-modern-firewall",
+      "name": "nftables - Modern Firewall",
+      "category": "Hardening/Defense",
+      "os": "Linux",
+      "tool": "nftables",
+      "useCase": "Modern replacement for iptables with cleaner syntax for firewall rules, rate limiting, and logging",
+      "tags": [
+        "nftables",
+        "Firewall",
+        "Network Security",
+        "Hardening/Defense",
+        "Linux"
+      ]
+    },
+    {
+      "id": "pth-winexe-pass-the-hash-smb",
+      "name": "pth-winexe - Pass the Hash (SMB)",
+      "category": "Lateral Movement",
+      "os": "Windows",
+      "tool": "pth-winexe",
+      "useCase": "Execute commands on a remote Windows host using an NTLM hash without cracking the password",
+      "tags": [
+        "Pass the Hash",
+        "PtH",
+        "NTLM",
+        "SMB",
+        "Lateral Movement",
+        "Windows"
+      ]
+    },
+    {
+      "id": "secretsdump-credential-extraction",
+      "name": "secretsdump - Credential Extraction",
+      "category": "Privilege Escalation",
+      "os": "Windows",
+      "tool": "impacket-secretsdump",
+      "useCase": "Dump credentials from SAM, NTDS.dit, and LSA secrets remotely or from local files using Impacket",
+      "tags": [
+        "secretsdump",
+        "impacket",
+        "DCSync",
+        "NTDS",
+        "SAM",
+        "Privilege Escalation",
+        "Windows"
+      ]
+    },
+    {
+      "id": "sendemail-send-crafted-email-via-smtp",
+      "name": "sendEmail - Send Crafted Email via SMTP",
+      "category": "Exploitation",
+      "os": "Linux",
+      "tool": "sendEmail",
+      "useCase": "Send a phishing or test email with an attachment via an open or authenticated SMTP relay",
+      "tags": [
+        "sendEmail",
+        "SMTP",
+        "Phishing",
+        "Email",
+        "Exploitation",
+        "Linux"
+      ]
+    },
+    {
+      "id": "smbget-recursive-smb-download",
+      "name": "smbget - Recursive SMB Download",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "smbget",
+      "useCase": "Recursively download all files from an SMB share for offline analysis",
+      "tags": [
+        "smbget",
+        "SMB",
+        "File Download",
+        "Enumeration",
+        "Linux"
+      ]
+    },
+    {
+      "id": "tcpdump-capture-network-traffic",
+      "name": "tcpdump - Capture Network Traffic",
+      "category": "Enumeration",
+      "os": "Linux",
+      "tool": "tcpdump",
+      "useCase": "Capture live traffic on a specific interface and port to detect callbacks or credentials in transit",
+      "tags": [
+        "tcpdump",
+        "Packet Capture",
+        "Network",
+        "Enumeration",
+        "Linux"
+      ]
+    }
+  ]
+}

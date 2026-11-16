@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-page="writeups">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writeups — theeshinigami</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header" id="site-header" role="banner"></header>
+
+  <main class="container" id="main">
+    <h1>Writeups</h1>
+    <p style="color:var(--ink-2);margin-bottom:1.5rem;font-size:0.9rem;">HTB box writeups, newest first. Some are stubs or partial notes.</p>
+
+    <label for="wu-search" class="sr-only">Filter writeups</label>
+    <input type="search" id="wu-search" class="search-input" placeholder="Filter by title, tags, summary&hellip;" autocomplete="off">
+
+    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin:1rem 0;">
+      <div class="filter-bar" id="wu-os-bar"></div>
+      <div class="filter-bar" id="wu-diff-bar"></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+      <span class="results-count" id="wu-count"></span>
+      <button type="button" class="btn btn--small" id="wu-clear" style="display:none;">Clear filters</button>
+    </div>
+
+    <div class="writeup-list" id="wu-list" role="list"></div>
+
+    <div class="empty-state" id="wu-no-match" style="display:none;">
+      No writeups match your filters. Try a different search or clear the filters.
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer" role="contentinfo"></footer>
+
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/writeups.js"></script>
+</body>
+</html>

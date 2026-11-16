@@ -1,92 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="commands">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Commands - Your Name</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Commands — theeshinigami</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <a class="name" href="index.html">Your Name</a>
-    <nav>
-      <a href="index.html">about</a>
-      <a href="challenges.html">challenges</a>
-      <a href="projects.html">projects</a>
-      <a class="current" href="commands.html">commands</a>
-    </nav>
-  </header>
+  <header class="site-header" id="site-header" role="banner"></header>
 
-  <h1>Commands</h1>
-  <p class="muted">Stuff I run all the time. Add more in <code>commands.js</code>.</p>
+  <main class="container" id="main">
+    <h1>Command reference</h1>
+    <p style="color:var(--ink-2);margin-bottom:1.5rem;font-size:0.9rem;">Search across 200 commands, tools, and techniques. Filter by category or OS.</p>
 
-  <input id="search" type="text" placeholder="search (e.g. nmap, suid, shell)" autofocus>
-  <div id="results"></div>
+    <label for="cmd-search" class="sr-only">Search commands</label>
+    <input type="search" id="cmd-search" class="search-input" placeholder="Search commands, tools, techniques&hellip;" autocomplete="off">
 
-  <script src="commands.js"></script>
-  <script>
-    const box = document.getElementById("search");
-    const out = document.getElementById("results");
+    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin:1rem 0;">
+      <div class="filter-bar" id="cmd-cat-bar"></div>
+      <div class="filter-bar" id="cmd-os-bar"></div>
+    </div>
 
-    function render(q) {
-      q = q.toLowerCase().trim();
-      out.innerHTML = "";
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+      <span class="results-count" id="cmd-count"></span>
+      <button type="button" class="btn btn--small" id="cmd-clear" style="display:none;">Clear filters</button>
+    </div>
 
-      const hits = commands.filter(c =>
-        (c.name + " " + c.desc + " " + c.tags.join(" ") + " " + c.cmd)
-          .toLowerCase().includes(q)
-      );
+    <ul class="cmd-list" id="cmd-list" aria-label="Command results"></ul>
 
-      if (hits.length === 0) {
-        out.textContent = "nothing found.";
-        return;
-      }
+    <div class="empty-state" id="cmd-no-match" style="display:none;">
+      No commands match your filters. Try a different search or clear the filters.
+    </div>
+  </main>
 
-      for (const c of hits) {
-        const div = document.createElement("div");
-        div.className = "cmd";
+  <footer class="site-footer" id="site-footer" role="contentinfo"></footer>
 
-        const h = document.createElement("h3");
-        h.textContent = c.name;
-
-        const p = document.createElement("p");
-        p.textContent = c.desc;
-
-        const tags = document.createElement("p");
-        for (const t of c.tags) {
-          const s = document.createElement("span");
-          s.className = "tag";
-          s.textContent = "#" + t;
-          tags.appendChild(s);
-        }
-
-        const pre = document.createElement("pre");
-        const code = document.createElement("code");
-        code.textContent = c.cmd;
-        const btn = document.createElement("button");
-        btn.textContent = "copy";
-        btn.onclick = () => {
-          navigator.clipboard.writeText(c.cmd);
-          btn.textContent = "copied";
-          setTimeout(() => btn.textContent = "copy", 1000);
-        };
-        pre.appendChild(code);
-        pre.appendChild(btn);
-
-        div.append(h, p, tags, pre);
-        out.appendChild(div);
-      }
-    }
-
-    // lets you link to a search, e.g. commands.html#nmap
-    box.value = decodeURIComponent(location.hash.slice(1));
-    box.addEventListener("input", () => {
-      history.replaceState(null, "", box.value ? "#" + encodeURIComponent(box.value) : location.pathname);
-      render(box.value);
-    });
-    render(box.value);
-  </script>
-
-  <footer>last updated: yyyy-mm-dd</footer>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/commands.js"></script>
 </body>
 </html>
