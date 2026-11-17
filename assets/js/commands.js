@@ -139,7 +139,7 @@
 
   function matchesSearch(cmd, terms) {
     if (!terms.length) return true;
-    var haystack = (cmd.name + ' ' + cmd.tool + ' ' + cmd.useCase + ' ' + cmd.category + ' ' + cmd.tags.join(' ')).toLowerCase();
+    var haystack = (cmd.name + ' ' + cmd.tool + ' ' + cmd.useCase + ' ' + cmd.category + ' ' + cmd.tags.join(' ') + ' ' + (cmd.snippet || '')).toLowerCase();
     return terms.every(function (t) { return haystack.indexOf(t) !== -1; });
   }
 
@@ -168,10 +168,18 @@
         return '<span class="chip" data-filter-tag="' + escapeHTML(t.trim()) + '">' + highlightText(t.trim(), searchTerms) + '</span>';
       }).join('');
 
+      var snippetHTML = '';
+      if (cmd.snippet) {
+        snippetHTML = '<div class="cmd-snippet">' + escapeHTML(cmd.snippet) + '</div>';
+      }
+
+      var copyText = cmd.snippet || cmd.name;
+
       return '<li class="cmd-item">' +
         '<div>' +
           '<div class="cmd-name">' + nameHTML + '</div>' +
           '<div class="cmd-usecase">' + useCaseHTML + '</div>' +
+          snippetHTML +
           '<div class="cmd-meta">' +
             '<span class="chip" data-filter-tag="' + escapeHTML(cmd.category) + '">' + escapeHTML(cmd.category) + '</span>' +
             '<span class="chip chip--os" data-filter-tag="' + escapeHTML(cmd.os) + '">' + escapeHTML(cmd.os) + '</span>' +
@@ -179,7 +187,7 @@
           '</div>' +
         '</div>' +
         '<div class="cmd-actions">' +
-          '<button type="button" class="copy-btn" data-copy="' + escapeHTML(cmd.name) + '">copy</button>' +
+          '<button type="button" class="copy-btn" data-copy="' + escapeHTML(copyText) + '">copy</button>' +
         '</div>' +
       '</li>';
     }).join('');
