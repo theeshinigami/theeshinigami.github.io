@@ -1,0 +1,23 @@
+# Build instructions (not needed in deployed site)
+BUILD_INSTRUCTIONS.md
+
+# Build scripts (one-off generators, not runtime)
+_build/
+
+# Claude Code local settings
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
