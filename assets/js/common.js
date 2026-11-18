@@ -12,6 +12,7 @@
       { label: 'Home', href: 'index.html', page: 'home' },
       { label: 'Writeups', href: 'writeups.html', page: 'writeups' },
       { label: 'Commands', href: 'commands.html', page: 'commands' },
+      { label: 'Tools', href: 'tools.html', page: 'tools' },
       { label: 'About', href: 'about.html', page: 'about' },
     ];
 

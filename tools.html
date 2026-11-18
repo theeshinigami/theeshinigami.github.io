@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-page="tools">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tools — theeshinigami</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header" id="site-header" role="banner"></header>
+
+  <main class="container" id="main">
+    <h1>Tools</h1>
+    <p style="color:var(--ink-2);margin-bottom:1.5rem;font-size:0.9rem;">Scripts and tools you can download and run. These are standalone utilities, not copy-paste commands.</p>
+
+    <div class="writeup-list" role="list">
+
+      <div class="tool-card" style="border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.75rem;">
+          <div>
+            <h2 style="margin:0 0 0.5rem 0;font-size:1.1rem;">ctf-autoflag.sh</h2>
+            <p style="color:var(--ink-2);margin:0 0 0.75rem 0;font-size:0.85rem;">
+              Automated CTF service scanner &amp; flag hunter. Supports 10 services: HTTP, FTP, SSH, SMB, Telnet, DNS, SMTP, MySQL, Redis, SNMP. Give it a target, a flag prefix, and it hunts for flags automatically.
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;font-size:0.75rem;">
+              <span class="tag" style="background:var(--surface-2);padding:0.2rem 0.5rem;border-radius:4px;">bash</span>
+              <span class="tag" style="background:var(--surface-2);padding:0.2rem 0.5rem;border-radius:4px;">ctf</span>
+              <span class="tag" style="background:var(--surface-2);padding:0.2rem 0.5rem;border-radius:4px;">scanner</span>
+              <span class="tag" style="background:var(--surface-2);padding:0.2rem 0.5rem;border-radius:4px;">enumeration</span>
+            </div>
+          </div>
+          <a href="tools/ctf-autoflag.sh" download class="btn btn--primary" style="white-space:nowrap;">Download</a>
+        </div>
+        <details style="margin-top:1rem;">
+          <summary style="cursor:pointer;color:var(--ink-2);font-size:0.85rem;">Usage</summary>
+          <pre style="margin-top:0.5rem;padding:0.75rem;background:var(--surface-2);border-radius:6px;overflow-x:auto;font-size:0.8rem;"><code>chmod +x ctf-autoflag.sh
+
+# Basic usage
+./ctf-autoflag.sh &lt;service&gt; &lt;target_ip&gt; &lt;flag_prefix&gt; [port] [options]
+
+# Examples
+./ctf-autoflag.sh http 10.10.10.1 flag
+./ctf-autoflag.sh ftp 10.10.10.1 picoCTF 2121
+./ctf-autoflag.sh ssh 10.10.10.1 HTB -u root -p toor
+./ctf-autoflag.sh dns 10.10.10.1 ctf -d challenge.ctf
+
+# List supported services
+./ctf-autoflag.sh --list
+
+# Detailed help for a service
+./ctf-autoflag.sh --help-service http</code></pre>
+        </details>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer" role="contentinfo"></footer>
+
+  <script src="assets/js/common.js"></script>
+</body>
+</html>
