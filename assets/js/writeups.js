@@ -8,7 +8,7 @@
   var activeDifficulty = null;
 
   var OS_VALUES = ['Linux', 'Windows', 'Other'];
-  var DIFFICULTIES = ['Easy', 'Medium', 'Hard', 'Insane', 'Unknown'];
+  var DIFFICULTIES = ['Easy', 'Intermediate', 'Medium', 'Advanced', 'Hard', 'Insane', 'Unknown'];
 
   var searchInput, listEl, countEl, clearBtn, osBar, diffBar, noMatch;
 

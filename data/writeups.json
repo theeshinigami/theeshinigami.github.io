@@ -3,91 +3,14 @@
   "writeups": [
     {
       "slug": "12-week-project",
-      "title": "12 Week Project: Binex Fundamentals",
+      "title": "12 Week Project",
       "file": "12-week-project.md",
       "os": "Other",
-      "difficulty": "Hard",
-      "date": "2026-11-18",
+      "difficulty": "Advanced",
+      "date": "2026-11-15",
       "status": "complete",
-      "tags": ["binex", "format-string", "pie", "pwntools", "stack-alignment", "radare2", "gdb"],
-      "summary": "Authored a custom binex challenge combining reversing, format string PIE bypass, and a ret-to-printme payload."
-    },
-    {
-      "slug": "binex-heap3",
-      "title": "Heap 3 (picoCTF 2024)",
-      "file": "heap3.md",
-      "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-11-09",
-      "status": "complete",
-      "tags": ["binex", "heap", "use-after-free", "pwn", "picoctf"],
-      "summary": "Use-after-free exploit: free a struct, reallocate with controlled data to overwrite the flag field."
-    },
-    {
-      "slug": "binex-heap2",
-      "title": "Heap 2 (picoCTF 2024)",
-      "file": "heap2.md",
-      "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-11-09",
-      "status": "complete",
-      "tags": ["binex", "heap", "function-pointer", "pwn", "picoctf"],
-      "summary": "Heap overflow to overwrite a function pointer with the address of win."
-    },
-    {
-      "slug": "binex-heap1",
-      "title": "Heap 1 (picoCTF 2024)",
-      "file": "heap1.md",
-      "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-11-09",
-      "status": "complete",
-      "tags": ["binex", "heap", "overflow", "pwn", "picoctf"],
-      "summary": "Basic heap overflow: overwrite adjacent heap data to change safe_var to 'pico'."
-    },
-    {
-      "slug": "binex-format-string-3",
-      "title": "Format String 3 (picoCTF 2024)",
-      "file": "format-string-3.md",
-      "os": "Other",
-      "difficulty": "Hard",
-      "date": "2026-11-09",
-      "status": "complete",
-      "tags": ["binex", "format-string", "got-overwrite", "plt", "libc", "pwn", "picoctf"],
-      "summary": "GOT overwrite via format string — replace puts with system to turn puts('/bin/sh') into a shell."
-    },
-    {
-      "slug": "binex-buffer-overflow-3",
-      "title": "Buffer Overflow 3 (picoCTF 2022)",
-      "file": "buffer-overflow-3.md",
-      "os": "Other",
-      "difficulty": "Hard",
-      "date": "2026-11-09",
-      "status": "complete",
-      "tags": ["binex", "buffer-overflow", "canary-brute-force", "pwn", "picoctf"],
-      "summary": "Brute-force a static 4-byte canary byte-by-byte, then classic ret-to-win overflow."
-    },
-    {
-      "slug": "binex-format-string-2",
-      "title": "Format String 2 (picoCTF 2024)",
-      "file": "format-string-2.md",
-      "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-11-09",
-      "status": "complete",
-      "tags": ["binex", "format-string", "arbitrary-write", "pwn", "picoctf"],
-      "summary": "Format string write — use fmtstr_payload to change a global variable and unlock the flag."
-    },
-    {
-      "slug": "binex-format-string-1",
-      "title": "Format String 1 (picoCTF 2024)",
-      "file": "format-string-1.md",
-      "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-11-09",
-      "status": "complete",
-      "tags": ["binex", "format-string", "stack-leak", "pwn", "picoctf"],
-      "summary": "Basic format string leak — read secrets off the stack with %p and decode with pwntools p64."
+      "tags": ["format-string", "pie", "pwntools", "stack-alignment", "canary", "radare2", "gdb"],
+      "summary": "Custom binex challenge combining reversing, format-string PIE bypass, a hardcoded canary, and a ret-to-printme exploit."
     },
     {
       "slug": "csctf-key-custody",
@@ -95,10 +18,10 @@
       "file": "csctf-key-custody.md",
       "os": "Other",
       "difficulty": "Medium",
-      "date": "2026-11-07",
+      "date": "2026-11-10",
       "status": "complete",
-      "tags": ["ctf", "csctf", "jwt", "kid", "directory-traversal", "web"],
-      "summary": "JWT KID directory traversal — sign a forged admin token with a known file to access the recovery key."
+      "tags": ["jwt", "kid", "directory-traversal", "web", "csctf"],
+      "summary": "JWT KID directory-traversal to sign a forged admin token using a known public file on the server."
     },
     {
       "slug": "csctf-command-seal",
@@ -106,10 +29,10 @@
       "file": "csctf-command-seal.md",
       "os": "Other",
       "difficulty": "Medium",
-      "date": "2026-11-06",
+      "date": "2026-11-08",
       "status": "complete",
-      "tags": ["ctf", "csctf", "xxe", "xml", "web"],
-      "summary": "XXE injection to read server files, then replay a valid order with a forged auth check to get the flag."
+      "tags": ["xxe", "xml", "web", "csctf"],
+      "summary": "XXE entity injection to read a file, then replay a forged order to bypass auth and retrieve the flag."
     },
     {
       "slug": "csctf-access-log",
@@ -117,65 +40,142 @@
       "file": "csctf-access-log.md",
       "os": "Other",
       "difficulty": "Medium",
-      "date": "2026-11-06",
+      "date": "2026-11-05",
       "status": "complete",
-      "tags": ["ctf", "csctf", "log-analysis", "timing-attack", "forensics"],
-      "summary": "Reconstruct a flag from SQL injection timing-based brute force attempts in an access log."
+      "tags": ["log-analysis", "sqli", "time-based", "side-channel", "csctf"],
+      "summary": "Reconstruct a blind SQL injection flag from access-log timing side-channels by filtering on response time."
     },
     {
-      "slug": "re-reverse1-weirdsnake",
-      "title": "weirdSnake - reverse1 (picoCTF 2024)",
-      "file": "reverse1-weirdsnake.md",
+      "slug": "heap3",
+      "title": "Heap 3",
+      "file": "heap3.md",
       "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-10-24",
+      "difficulty": "Intermediate",
+      "date": "2026-11-01",
       "status": "complete",
-      "tags": ["reverse-engineering", "python", "bytecode", "xor", "picoctf"],
-      "summary": "Reverse Python bytecode instruction-by-instruction to reconstruct a XOR decryption script."
+      "tags": ["heap", "use-after-free", "pwntools", "picoctf"],
+      "summary": "Use-after-free: free an object, reallocate into the same slot, and overwrite the flag field to pass the win check."
     },
     {
-      "slug": "re-reverse2-packer",
-      "title": "packer - reverse2 (picoCTF 2024)",
-      "file": "reverse2-packer.md",
+      "slug": "heap2",
+      "title": "Heap 2",
+      "file": "heap2.md",
       "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-10-24",
+      "difficulty": "Intermediate",
+      "date": "2026-10-28",
       "status": "complete",
-      "tags": ["reverse-engineering", "upx", "packing", "cyberchef", "picoctf"],
-      "summary": "Unpack a UPX-packed binary and extract the hardcoded flag from the unpacked executable."
+      "tags": ["heap", "function-pointer", "pwntools", "picoctf"],
+      "summary": "Heap overflow to overwrite a function pointer with the address of win, redirecting execution to print the flag."
     },
     {
-      "slug": "re-reverse3-factcheck",
-      "title": "FactCheck - reverse3 (picoCTF 2024)",
-      "file": "reverse3-factcheck.md",
+      "slug": "heap1",
+      "title": "Heap 1",
+      "file": "heap1.md",
       "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-10-24",
+      "difficulty": "Intermediate",
+      "date": "2026-10-25",
       "status": "complete",
-      "tags": ["reverse-engineering", "gdb", "dynamic-analysis", "cpp", "picoctf"],
-      "summary": "Dynamic analysis with gdb — break after C++ string concatenation to find the flag in rdx."
+      "tags": ["heap", "overflow", "pwntools", "picoctf"],
+      "summary": "Basic heap overflow: write 32 bytes past the input buffer to overwrite safe_var with 'pico' and trigger the win check."
     },
     {
-      "slug": "re-reverse4-bit-o-asm",
-      "title": "Bit-O-Asm-4 - reverse4 (picoCTF 2024)",
-      "file": "reverse4-bit-o-asm.md",
+      "slug": "format-string-3",
+      "title": "Format String 3",
+      "file": "format-string-3.md",
       "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-10-24",
+      "difficulty": "Intermediate",
+      "date": "2026-10-20",
       "status": "complete",
-      "tags": ["reverse-engineering", "assembly", "x86-64", "picoctf"],
-      "summary": "Trace x86-64 assembly line by line: a compare, conditional jump, and subtract to find eax."
+      "tags": ["format-string", "got-overwrite", "plt", "libc", "pwntools", "picoctf"],
+      "summary": "GOT overwrite via format-string: replace puts with system in the GOT so the final puts('/bin/sh') pops a shell."
     },
     {
-      "slug": "re-reverse5-bbbbloat",
-      "title": "Bbbbloat - reverse5 (picoCTF 2022)",
+      "slug": "format-string-2",
+      "title": "Format String 2",
+      "file": "format-string-2.md",
+      "os": "Other",
+      "difficulty": "Intermediate",
+      "date": "2026-10-15",
+      "status": "complete",
+      "tags": ["format-string", "arbitrary-write", "pwntools", "picoctf"],
+      "summary": "Format-string arbitrary write: use fmtstr_payload to overwrite the 'sus' global variable and pass the win condition."
+    },
+    {
+      "slug": "format-string-1",
+      "title": "Format String 1",
+      "file": "format-string-1.md",
+      "os": "Other",
+      "difficulty": "Intermediate",
+      "date": "2026-10-10",
+      "status": "complete",
+      "tags": ["format-string", "stack-leak", "pwntools", "picoctf"],
+      "summary": "Basic format-string leak: spray %p to find secret-menu data on the stack, then decode the little-endian flag."
+    },
+    {
+      "slug": "buffer-overflow-3",
+      "title": "Buffer Overflow 3",
+      "file": "buffer-overflow-3.md",
+      "os": "Other",
+      "difficulty": "Advanced",
+      "date": "2026-10-05",
+      "status": "complete",
+      "tags": ["buffer-overflow", "canary", "brute-force", "pwntools", "picoctf"],
+      "summary": "Brute-force a 4-byte static canary one character at a time, then ret-to-win past the overwritten stack frame."
+    },
+    {
+      "slug": "reverse5-bbbbloat",
+      "title": "Reverse 5: Bbbbloat",
       "file": "reverse5-bbbbloat.md",
       "os": "Other",
-      "difficulty": "Medium",
-      "date": "2026-10-24",
+      "difficulty": "Intermediate",
+      "date": "2026-09-28",
       "status": "complete",
-      "tags": ["reverse-engineering", "radare2", "pie", "stripped", "picoctf"],
-      "summary": "Use radare2 to find a hardcoded number comparison in a stripped PIE binary — convert hex to decimal for the flag."
+      "tags": ["reverse-engineering", "radare2", "cmp", "picoctf"],
+      "summary": "Stripped PIE binary with a hardcoded compare: find the hex constant in radare2 and convert to decimal for the flag."
+    },
+    {
+      "slug": "reverse4-bit-o-asm",
+      "title": "Reverse 4: Bit-O-Asm-4",
+      "file": "reverse4-bit-o-asm.md",
+      "os": "Other",
+      "difficulty": "Intermediate",
+      "date": "2026-09-25",
+      "status": "complete",
+      "tags": ["reverse-engineering", "assembly", "x86-64", "picoctf"],
+      "summary": "Trace x86-64 assembly by hand: a cmp/jle branch leads to a subtract, yielding the eax value 654773."
+    },
+    {
+      "slug": "reverse3-factcheck",
+      "title": "Reverse 3: FactCheck",
+      "file": "reverse3-factcheck.md",
+      "os": "Other",
+      "difficulty": "Intermediate",
+      "date": "2026-09-20",
+      "status": "complete",
+      "tags": ["reverse-engineering", "gdb", "dynamic-analysis", "picoctf"],
+      "summary": "Dynamic analysis in GDB: break after runtime string concatenation and read the assembled flag from rdx."
+    },
+    {
+      "slug": "reverse2-packer",
+      "title": "Reverse 2: Packer",
+      "file": "reverse2-packer.md",
+      "os": "Other",
+      "difficulty": "Intermediate",
+      "date": "2026-09-15",
+      "status": "complete",
+      "tags": ["reverse-engineering", "upx", "packing", "picoctf"],
+      "summary": "UPX-packed binary: unpack with upx -d, then find the hardcoded hex flag string next to 'Password correct'."
+    },
+    {
+      "slug": "reverse1-weirdsnake",
+      "title": "Reverse 1: weirdSnake",
+      "file": "reverse1-weirdsnake.md",
+      "os": "Other",
+      "difficulty": "Intermediate",
+      "date": "2026-09-10",
+      "status": "complete",
+      "tags": ["reverse-engineering", "python-bytecode", "xor", "picoctf"],
+      "summary": "Reverse Python bytecode: reconstruct the key string from BINARY_OP ordering, extend and XOR against the input list."
     },
     {
       "slug": "wingdata",
